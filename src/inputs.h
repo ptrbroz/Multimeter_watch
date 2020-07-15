@@ -1,7 +1,5 @@
 #include <Arduino.h>
 
-
-
 #define mask_butt_left 0x20
 #define mask_butt_right 0x01
 #define mask_joy_press  0x40

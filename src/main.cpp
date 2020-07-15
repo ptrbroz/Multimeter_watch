@@ -5,9 +5,11 @@
 
 #include <SSD1306AsciiAvrI2c.h>
 
+#include <PinChangeInterrupt.h>
+
 #include "inputs.h"
 
-#define INCREMENT(variable) {variable = variable + 1;}
+
 
 
 // 0X3C+SA0 - 0x3C or 0x3D
@@ -18,7 +20,13 @@
 
 #define DEBOUNCE_TIME 200 //in milliseconds
 
+
 SSD1306AsciiAvrI2c oled;
+volatile uint8_t inputsByte = 0x00;
+volatile int interruptCountA = 0;
+volatile int interruptCountB = 0;
+
+
 //------------------------------------------------------------------------------
 void setup() {
 
@@ -29,19 +37,38 @@ void setup() {
   #endif // RST_PIN >= 0
   // Call oled.setI2cClock(frequency) to change from the default frequency.
 
-  pinMode(D0,INPUT);
-  pinMode(D1,INPUT);
-  pinMode(D2,INPUT);
-  pinMode(D3,INPUT);
-  pinMode(D4,INPUT);
-  pinMode(D5,INPUT);
-  pinMode(D6,INPUT);
+  for(int i = D1; i<= D7; i++){
+    pinMode(i, INPUT);
+  }
 
+  //Dunno why this is broken! Only the rising interrupt happens.
+  //Maybe the library cannot handle having both a rising and a falling interrupt for a single pin?
+  #define ATTACH_LAMBDAS_BROKEN(pin) \
+    attachPCINT(digitalPinToPCINT(pin), []{inputsByte = (inputsByte & (~(0x01<<(pin-D1))));interruptCountA += 1;}, FALLING); \
+    attachPCINT(digitalPinToPCINT(pin), []{inputsByte = (inputsByte | (0x01<<(pin-D1)));interruptCountB += 1;}, RISING); \
+
+  #define ATTACH_LAMBDAS(pin) \
+    attachPCINT(digitalPinToPCINT(pin), []{ \
+      if(getPinChangeInterruptTrigger(digitalPinToPCINT(pin))==RISING){ \
+        inputsByte = (inputsByte | (0x01<<(pin-D1))); \
+        interruptCountA += 1; \
+      } \
+      else{ \
+        inputsByte = inputsByte & (~(0x01<<(pin-D1))); \
+        interruptCountB += 1; \
+      } \
+    }, CHANGE); \
+
+  ATTACH_LAMBDAS(D1);
+  ATTACH_LAMBDAS(D2);
+  ATTACH_LAMBDAS(D3);
+  ATTACH_LAMBDAS(D4);
+  ATTACH_LAMBDAS(D5);
+  ATTACH_LAMBDAS(D6);
+  ATTACH_LAMBDAS(D7);
 
   oled.setFont(Adafruit5x7);
 }
-
-
 
 uint8_t readInputsImmediate(){
   
@@ -75,24 +102,23 @@ void printByteToOled(uint8_t inbyte){
 }
 
 
+
+
 //------------------------------------------------------------------------------
 void loop() {
 
-
     oled.clear();
-    oled.println("Hello world!");
-    oled.println("A long line may be truncated");
     oled.println();
     int x = 1;
 
   while(1){
-    delay(500);
+
     oled.clear();
 
-    uint8_t inputsState = readInputsImmediate();
+  /*
     uint8_t risingEdges;
     uint8_t fallingEdges;
-    UPDATE_EDGES(inputsState, risingEdges, fallingEdges);
+    UPDATE_EDGES(inputsByte, risingEdges, fallingEdges);
 
     if(BUTT_LEFT(risingEdges)){
       x = x+1;
@@ -102,12 +128,18 @@ void loop() {
       x = x-1;
     }
 
-    oled.println();
-    printByteToOled(inputsState);
-    printByteToOled(risingEdges);
-    printByteToOled(fallingEdges);
-    oled.println(x);
+*/
+    
 
+    oled.println();
+    printByteToOled(inputsByte);
+    //printByteToOled(risingEdges);
+    //printByteToOled(fallingEdges);
+    oled.println(x);
+    oled.print("  ");
+    oled.print(interruptCountA);
+    oled.print(":");
+    oled.print(interruptCountB);
 
 
   }
