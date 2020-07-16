@@ -8,23 +8,21 @@
 #include <PinChangeInterrupt.h>
 
 #include "inputs.h"
+#include "funWrapper.h"
+#include "display.h"
+#include "prog_clockFace.h"
 
 
 
 
-// 0X3C+SA0 - 0x3C or 0x3D
-#define I2C_ADDRESS 0x3C
-
-// Define proper RST_PIN if required.
-#define RST_PIN -1
-
-#define DEBOUNCE_TIME 200 //in milliseconds
+#define DEBOUNCE_TIME 200 //in milliseconds. Keep below 255
 
 
-SSD1306AsciiAvrI2c oled;
 volatile uint8_t inputsByte = 0x00;
-volatile int interruptCountA = 0;
-volatile int interruptCountB = 0;
+
+
+
+
 
 
 //------------------------------------------------------------------------------
@@ -51,11 +49,9 @@ void setup() {
     attachPCINT(digitalPinToPCINT(pin), []{ \
       if(getPinChangeInterruptTrigger(digitalPinToPCINT(pin))==RISING){ \
         inputsByte = (inputsByte | (0x01<<(pin-D1))); \
-        interruptCountA += 1; \
       } \
       else{ \
         inputsByte = inputsByte & (~(0x01<<(pin-D1))); \
-        interruptCountB += 1; \
       } \
     }, CHANGE); \
 
@@ -87,63 +83,69 @@ uint8_t readInputsImmediate(){
 }
 
 
-void printByteToOled(uint8_t inbyte){
-  uint8_t mask = 0x80;
-  for(int i = 0; i<=7;i++){
-    if((mask & inbyte) != 0x00){
-      oled.print("1");
-    }
-    else{
-      oled.print("0");
-    }
-    mask >>= 1;
-  }
-  oled.println();
-}
-
 
 
 
 //------------------------------------------------------------------------------
 void loop() {
+  uint8_t risingByte = 0x00;
+  uint8_t fallingByte = 0x00;
 
-    oled.clear();
-    oled.println();
-    int x = 1;
+  uint8_t risingByteWaiting = 0x00;
+  uint8_t fallingByteWaiting = 0x00;
+  
+  uint8_t debounceTimers[7] = {0}; //only one set of timers needed, since the same bit can never be high on both risingByte and fallingByte
+
+  unsigned long lastMillis = millis();
+
+  funWrapper nextFunWrapper = {prog_clockFace};
+
+  oled.clear();
 
   while(1){
+    UPDATE_EDGES(inputsByte, risingByte, fallingByte);
 
-    oled.clear();
+    unsigned long thisMillis = millis();
+    uint8_t diffMillis;
 
-  /*
-    uint8_t risingEdges;
-    uint8_t fallingEdges;
-    UPDATE_EDGES(inputsByte, risingEdges, fallingEdges);
-
-    if(BUTT_LEFT(risingEdges)){
-      x = x+1;
+    if(thisMillis<lastMillis){
+      lastMillis = 0; //overflow
     }
 
-    if(BUTT_LEFT(fallingEdges)){
-      x = x-1;
-    }
-
-*/
+    diffMillis = (thisMillis - lastMillis <= 255) ? thisMillis - lastMillis : 255;
     
+    uint8_t debouncedRisingByte = 0x00;
+    uint8_t debouncedFallingByte = 0x00;
 
-    oled.println();
-    printByteToOled(inputsByte);
-    //printByteToOled(risingEdges);
-    //printByteToOled(fallingEdges);
-    oled.println(x);
-    oled.print("  ");
-    oled.print(interruptCountA);
-    oled.print(":");
-    oled.print(interruptCountB);
+    uint8_t mask = 0x01;
+
+    for(int i = 0; i<=6; i++){
+
+      if( ((risingByteWaiting&mask) && (inputsByte&mask)) || ((fallingByteWaiting&mask) && !(inputsByte&mask))  ){
+        if(debounceTimers[i] + diffMillis >= DEBOUNCE_TIME){
+          debouncedRisingByte |= (risingByteWaiting&mask);
+          debouncedFallingByte |= (fallingByteWaiting&mask);
+          risingByteWaiting &= (~mask);
+          fallingByteWaiting &= (~mask);
+          debounceTimers[i] = 0;
+        }
+        else{
+          debounceTimers[i] += diffMillis;
+        }
+      }
+      mask <<= 1;
+    }
+
+    risingByteWaiting |= risingByte;
+    fallingByteWaiting |= fallingByte;
+
+    nextFunWrapper = nextFunWrapper.fun(debouncedRisingByte, debouncedFallingByte);
+
+
+
 
 
   }
-
 }
 
 

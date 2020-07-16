@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 
 #define mask_butt_left 0x20
