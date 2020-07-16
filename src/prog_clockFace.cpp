@@ -18,15 +18,7 @@ struct funWrapper prog_clockFace(uint8_t risingByte, uint8_t fallingByte){
     minutes = minutes % 60;
     seconds = seconds % 60;
 
-    static uint64_t memspam = millis();
-
-    memspam += digitalRead(D1);
-
-    if(memspam>60000){
-        minutes++;
-    }
     
-
     static uint8_t lastSeconds = 0;
     
     if(seconds != lastSeconds){
@@ -42,8 +34,6 @@ struct funWrapper prog_clockFace(uint8_t risingByte, uint8_t fallingByte){
         oled.set1X();
         lastSeconds = seconds;
     }
-
-    oled.println("xXxX|xXxX|xXxX|xXxX|xXxX|xXxX|");
 
     
 
