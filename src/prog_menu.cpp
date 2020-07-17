@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include "prog_clockFace.h"
 #include "inputs.h"
+#include "snake.h"
 
 
 
@@ -22,7 +23,7 @@ struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
         "Help!", "Nothing", "Snake", "Clock", "Nope", "Nah", "NEIN", "Void", "Don't think so", "Last one"};
     
     funWrapper (* funPointers[menuElements])(uint8_t,uint8_t) = {
-        prog_menu, prog_menu, prog_menu, prog_clockFace, prog_menu, prog_menu, prog_menu, prog_menu, prog_menu, prog_menu};
+        prog_menu, prog_menu, snake_init, prog_clockFace, prog_menu, prog_menu, prog_menu, prog_menu, prog_menu, prog_menu};
 
     
 

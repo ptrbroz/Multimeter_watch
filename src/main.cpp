@@ -11,6 +11,7 @@
 #include "funWrapper.h"
 #include "display.h"
 #include "prog_clockFace.h"
+#include "Adafruit5x7_full.h"
 
 
 
