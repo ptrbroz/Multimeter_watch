@@ -16,7 +16,6 @@ void printByteToOled(uint8_t inbyte){
     }
     mask >>= 1;
   }
-  oled.println();
 }
 
 

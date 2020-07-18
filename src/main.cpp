@@ -12,6 +12,7 @@
 #include "display.h"
 #include "prog_clockFace.h"
 #include "Adafruit5x7_full.h"
+#include "snake.h"
 
 
 
@@ -101,7 +102,7 @@ void loop() {
 
   unsigned long lastMillis = millis();
 
-  funWrapper nextFunWrapper = {prog_clockFace};
+  funWrapper nextFunWrapper = {snake_init};
 
   oled.clear();
 

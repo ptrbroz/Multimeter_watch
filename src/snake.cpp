@@ -13,6 +13,8 @@ static uint8_t headIndex = 0;
 static uint8_t snakeLen = 0;
 static uint8_t headX = 0; //todo to one byte with headY?
 static uint8_t headY = 0;
+static uint8_t foodX = 0;
+static uint8_t foodY = 0;
 
 #define XSIZE 31
 #define YSIZE 6
@@ -27,151 +29,169 @@ static uint8_t headY = 0;
 #define s_up 2
 #define s_down 3
 
-void writeAtIndex(uint8_t value){
-    uint8_t byte = *(snakeBuffer+(headIndex/4));
+void writeToSnake(uint8_t index, uint8_t value){
+    uint8_t byte = *(snakeBuffer+(index/4));
     value = value & 0x03; //just to be sure
-    value <<= ((headIndex%4)*2);
+    value <<= ((index%4)*2);
+    byte &= ~(0x03 << (index%4)*2);
     byte |= value;
-    oled.setCursor(0,2);
+
+/*
+    oled.setCursor(0,1);
     oled.print("W:");
     printByteToOled(byte);
-    *(snakeBuffer+(headIndex/4)) = byte;
+    oled.setCursor(100,1);
+    oled.print("!");
+    oled.setCursor(100,1);
+    oled.print(" ");
+    */
+
+    *(snakeBuffer+(index/4)) = byte;
 }
 
-uint8_t readAtIndex(){
-    uint8_t byte = *(snakeBuffer+(headIndex/4));
-    uint8_t mask = 0x03 << ((headIndex%4)*2);
-    return (byte & mask) >> ((headIndex%4)*2);
+uint8_t readFromSnake(uint8_t index){
+    uint8_t byte = *(snakeBuffer+(index/4));
+    uint8_t mask = 0x03 << ((index%4)*2);
+    return (byte & mask) >> ((index%4)*2);
+}
+
+void printCharToGameDisplay(char c, uint8_t x, uint8_t y){
+    oled.setCursor(XSTART + x*XSTEP,YSTART + y);
+    oled.print(c);
 }
 
 const uint8_t maxIndex = XSIZE*YSIZE;
-#define INCREMENT() headIndex = (headIndex==maxIndex) ? (0) : headIndex + 1
-#define DECREMENT() headIndex = (headIndex==0) ? (maxIndex) : headIndex - 1
+#define INCREMENT(i) i = (i==maxIndex) ? (0) : i + 1
+#define DECREMENT(i) i = (i==0) ? (maxIndex) : i - 1
+
+#define XY_STEPBACK(X,Y,DIR){ \
+    switch (DIR){  \
+    case s_up: Y++;break;   \
+    case s_down: Y--;break; \
+    case s_left: X++;break; \
+    case s_right: X--;break; \
+    }\
+}\
+
+#define XY_STEPFORWARD(X,Y,DIR){ \
+    switch (DIR){  \
+    case s_up: Y--;break;   \
+    case s_down: Y++;break; \
+    case s_left: X--;break; \
+    case s_right: X++;break; \
+    }\
+}\
+
 
 struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte);
 
+uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte);
 
 struct funWrapper snake_init(uint8_t risingByte, uint8_t fallingByte){
     const int area = XSIZE*YSIZE;
     const int bytes = (area*2)/8 + 1;
 
-    snakeBuffer = (uint8_t*) malloc(bytes);
-    headX = 5;
+    
+    snakeBuffer = (uint8_t*) calloc(bytes, 1); //todo sepcify space for extra variables
+    headX = 8;
     headY = 3;
 
-    headIndex = 0;
-    uint8_t originalHeadIndex = headIndex;
     snakeLen = 4;
-
-    uint8_t cursorX = XSTEP*headX + XSTART;
-    uint8_t cursorY = headY + YSTART;
-    oled.clear();
-
-    for(int i = 0;i<snakeLen;i++){
-        writeAtIndex(s_left);
-        oled.setCursor(cursorX,cursorY);
-        oled.print("#");
-        cursorX -= XSTEP;
-        DECREMENT();
+    headIndex = 0;
+    
+    for(int i = 0; i<snakeLen;i++){
+        INCREMENT(headIndex);
+        writeToSnake(headIndex, s_right);
+        if(i==2){
+            writeToSnake(headIndex,s_up);
+        }
     }
 
-    headIndex = originalHeadIndex;
+    uint8_t bodyIndex = headIndex;
+    uint8_t bodyX = headX;
+    uint8_t bodyY = headY;
+    for(int i = 0; i<snakeLen;i++){
+        delay(200);
+        printCharToGameDisplay('#',bodyX,bodyY);
+        uint8_t dir = readFromSnake(bodyIndex);
+        XY_STEPBACK(bodyX, bodyY, dir);
+        DECREMENT(bodyIndex);
+    }
 
-    //todo spawn food
-
+    oled.clear();
     funWrapper ret  = {snake_loop};
     return ret;
 }
 
 struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
-    static int loopcount = 0;
-    static unsigned long lastMillis = millis(); //todo pass time elapsed by argument instead?
-    unsigned long timeElapsed = (millis() - lastMillis);
-
-    funWrapper ret = {snake_loop};
-
-    if(BUTT_LEFT(risingByte)){
-        ret.fun = prog_menu;
-        return ret;
-    }
-
-    uint8_t lastDirection = readAtIndex();
-
-    //todo forbit U-turn on the spot
-
-    //prepare next step of head
-    INCREMENT();
-    if(JOY_UP(risingByte)){
-        writeAtIndex(s_down);
-    }
-    else if(JOY_DOWN(risingByte)){
-        writeAtIndex(s_up);
-    }
-    else if(JOY_LEFT(risingByte)){
-        writeAtIndex(s_right);
-    }else if(JOY_RIGHT(risingByte)){
-        writeAtIndex(s_left);
-    }
-    else{
-        writeAtIndex(lastDirection);
-    }
-    DECREMENT();
-
-    
-
-    if(timeElapsed < 1000){
-        return ret;
-    }
-    
-    lastMillis = millis();
-
-    //move snake one step ahead
-    INCREMENT();
-
-    lastDirection = readAtIndex();
-
-    switch(lastDirection){
-        case s_up:
-            headY++;
-            break;
-        case s_down:
-            headY--;
-            break;
-        case s_left:
-            headX++;
-            break;
-        case s_right:
-            headX--;
-            break;
-    }
-
-    //todo check for head out of bounds
-
-    //print new head
-    uint8_t cursorX = XSTEP*headX + XSTART; //todo write fun or define for this
-    uint8_t cursorY = headY + YSTART;
-    oled.setCursor(cursorX, cursorY);
-
-    oled.print("@"); //todo head direction with <>v^ ?
-
-    //todo handle eating
-
-    
-    uint8_t originalHeadIndex = headIndex;
-    uint8_t bodyX = headX;
-    uint8_t bodyY = bodyY;
-
-    
-    loopcount++;
+    funWrapper ret  = {snake_loop};
     oled.setCursor(0,0);
-    oled.print(loopcount);
-    oled.print(" xy=[");
-    oled.print(headX);
-    oled.print(",");
-    oled.print(headY);
-    oled.print("] hi=");
+    printByteToOled(snakeBuffer[0]);
+    oled.print(" ");
+    printByteToOled(snakeBuffer[1]);
+    oled.setCursor(0,1);
+    printByteToOled(snakeBuffer[2]);
+    oled.print(" ");
+    printByteToOled(snakeBuffer[3]);
+
+    oled.setCursor(0,2);
+    oled.print("Hi:");
     oled.print(headIndex);
-    
+
+
+    oled.setCursor(0,4);
+    uint8_t headDirection = readFromSnake(headIndex);
+
+    uint8_t nextDirection = getNextDirection(headDirection, risingByte);
+
+    uint8_t aheadIndex = headIndex;
+    INCREMENT(aheadIndex);
+    writeToSnake(aheadIndex, nextDirection);
+
+    oled.setCursor(60,2);
+    for(int i = 0; i<=5;i++){
+        oled.setCursor(60,2+i);
+        oled.print(i);
+        oled.print(":");
+        oled.print(readFromSnake(i));
+    }
+
+    static int dones = 0;
+
+    static unsigned long lastMillis = millis();
+    unsigned long thisMillis = millis();
+
+    if(!BUTT_RIGHT(risingByte)){
+        return ret;
+    }
+
+    INCREMENT(headIndex);
+
+
 
     return ret;
+}
+
+
+uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte){
+    
+    uint8_t nextDir = currentDirection;
+    if(currentDirection == s_up || currentDirection == s_down){
+        if(JOY_LEFT(inputByte)){
+            nextDir = s_left;
+        }
+        else if(JOY_RIGHT(inputByte)){
+            nextDir = s_right;
+        }
+    }
+    else{
+        if(JOY_UP(inputByte)){
+            nextDir = s_up;
+        }
+        else if(JOY_DOWN(inputByte)){
+            nextDir = s_down;
+        }
+
+    }
+    return nextDir;
 }
