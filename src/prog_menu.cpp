@@ -7,6 +7,16 @@
 #include "snake.h"
 
 
+const uint8_t menuElements = 10;
+const uint8_t visibleElements = 6;
+
+const uint8_t scrollLen = visibleElements;
+const uint8_t scrollStartRow = 2;
+const uint8_t scrollX = 120;    
+const uint8_t menuStepsPerScrollStep = (menuElements-2) / (scrollLen-2);
+
+void drawScrollbar(uint8_t menuCursor);
+
 
 //scrolling-capable main menu, supports up to 32 elements
 struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
@@ -16,8 +26,6 @@ struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
     uint8_t menuCursor = menuState & 0x1F;
     uint8_t cursorPosOnScreen = (menuState & 0xE0) >> 5;
     
-    const uint8_t menuElements = 10;
-    const uint8_t visibleElements = 6;
 
     const char *labels[menuElements] = {
         "Help!", "Nothing", "Snake", "Clock", "Nope", "Nah", "NEIN", "Void", "Don't think so", "Last one"};
@@ -37,7 +45,7 @@ struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
     //oled.println(menuCursor);
     oled.set1X();
 
-
+    const uint8_t padToLen = 19;
     //generate menu elements
     for(int i = firstElement; i <= firstElement + visibleElements - 1; i++){
         if(i == menuCursor){
@@ -46,16 +54,54 @@ struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
         else{
             oled.print(" ");
         }
-        oled.println(labels[i]);
-    }
+        oled.print(labels[i]);
+        if(strlen(labels[i]) < padToLen){
+            uint8_t missingSpaces = padToLen - strlen(labels[i]); 
+            for(int i = 0; i<missingSpaces;i++){
+                oled.print(" ");
+            }
+        }
+        oled.println();
+     }
 
 
     //scrolling graphics
-    const uint8_t scrollLen = visibleElements;
-    const uint8_t scrollStartRow = 2;
-    const uint8_t scrollX = 110;
+    drawScrollbar(menuCursor);
+
+    //handle movement
+    if(JOY_DOWN(risingByte) && menuCursor != menuElements-1){
+        if(cursorPosOnScreen != visibleElements-1){
+            cursorPosOnScreen++;
+        }
+        menuCursor++;
+    }
+    else if(JOY_UP(risingByte) && menuCursor != 0){
+        if(cursorPosOnScreen != 0){
+            cursorPosOnScreen--;
+        }
+        menuCursor--;
+    }
+
+
+    funWrapper retWrapper = {prog_menu};
+
+    if(JOY_PRESS(risingByte)){
+        oled.clear();
+        retWrapper.fun = funPointers[menuCursor];
+    }
+
+
     
-    const uint8_t menuStepsPerScrollStep = (menuElements-2) / (scrollLen-2);
+    menuState = 0x00;
+    menuState |= menuCursor;
+    menuState |= (cursorPosOnScreen<<5);
+
+
+    return retWrapper;
+}
+
+
+void drawScrollbar(uint8_t menuCursor){
     int8_t scrollHandlePos = 0;
 
     //edge cases - cursor on first or last element - scroll handle at edge
@@ -92,49 +138,7 @@ struct funWrapper prog_menu(uint8_t risingByte, uint8_t fallingByte){
          }
 
     }
-
-
-
-    //handle movement
-    if(JOY_DOWN(risingByte) && menuCursor != menuElements-1){
-        if(cursorPosOnScreen != visibleElements-1){
-            cursorPosOnScreen++;
-        }
-        else{
-            oled.clear(); //clear if scrolling is happening
-        }
-        menuCursor++;
-    }
-    else if(JOY_UP(risingByte) && menuCursor != 0){
-        if(cursorPosOnScreen != 0){
-            cursorPosOnScreen--;
-        }
-        else{
-            oled.clear();
-        }
-        menuCursor--;
-    }
-
-
-    funWrapper retWrapper = {prog_menu};
-
-    if(JOY_PRESS(risingByte)){
-        oled.clear();
-        retWrapper.fun = funPointers[menuCursor];
-    }
-
-
-    
-    menuState = 0x00;
-    menuState |= menuCursor;
-    menuState |= (cursorPosOnScreen<<5);
-
-
-    return retWrapper;
 }
-
-
-
 
 
 
