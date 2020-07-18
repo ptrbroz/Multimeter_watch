@@ -29,6 +29,8 @@ volatile uint8_t inputsByte = 0x00;
 //------------------------------------------------------------------------------
 void setup() {
 
+  delay(400);
+
   #if RST_PIN >= 0
   oled.begin(&Adafruit128x64, I2C_ADDRESS, RST_PIN);
   #else // RST_PIN >= 0
@@ -36,8 +38,8 @@ void setup() {
   #endif // RST_PIN >= 0
   // Call oled.setI2cClock(frequency) to change from the default frequency.
 
-  for(int i = D1; i<= D7; i++){
-    pinMode(i, INPUT);
+  for(int i = D2; i<= D8; i++){
+    pinMode(i, INPUT_PULLUP);
   }
 
   //Dunno why this is broken! Only the rising interrupt happens.
@@ -48,21 +50,21 @@ void setup() {
 
   #define ATTACH_LAMBDAS(pin) \
     attachPCINT(digitalPinToPCINT(pin), []{ \
-      if(getPinChangeInterruptTrigger(digitalPinToPCINT(pin))==RISING){ \
-        inputsByte = (inputsByte | (0x01<<(pin-D1))); \
+      if(getPinChangeInterruptTrigger(digitalPinToPCINT(pin))==FALLING){ \ 
+        inputsByte = (inputsByte | (0x01<<(pin-D2))); \
       } \
       else{ \
-        inputsByte = inputsByte & (~(0x01<<(pin-D1))); \
+        inputsByte = inputsByte & (~(0x01<<(pin-D2))); \
       } \
     }, CHANGE); \
 
-  ATTACH_LAMBDAS(D1);
   ATTACH_LAMBDAS(D2);
   ATTACH_LAMBDAS(D3);
   ATTACH_LAMBDAS(D4);
   ATTACH_LAMBDAS(D5);
   ATTACH_LAMBDAS(D6);
   ATTACH_LAMBDAS(D7);
+  ATTACH_LAMBDAS(D8);
 
   oled.setFont(Adafruit5x7);
 }
@@ -142,7 +144,7 @@ void loop() {
 
     nextFunWrapper = nextFunWrapper.fun(debouncedRisingByte, debouncedFallingByte);
 
-
+    
 
 
 
