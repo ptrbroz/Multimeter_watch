@@ -136,6 +136,14 @@ void loop() {
           debounceTimers[i] += diffMillis;
         }
       }
+      else{ //if condition for incrementing timer is not met, clear waiting bit
+        risingByteWaiting &= (~mask);
+        fallingByteWaiting &= (~mask);
+      }
+      
+      {
+
+      }
       mask <<= 1;
     }
 
