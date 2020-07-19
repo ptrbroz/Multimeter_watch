@@ -182,7 +182,8 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
     static unsigned long lastMillis = millis();
     unsigned long thisMillis = millis();
 
-    if(thisMillis-lastMillis < 300){
+
+    if((thisMillis-lastMillis < 300) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
     //if(!BUTT_RIGHT(risingByte)){
         return ret;
     }
