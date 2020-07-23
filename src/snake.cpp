@@ -7,16 +7,22 @@
 
 static uint8_t *snakeBuffer;
 
-//todo append to snakeBuffer to get rid of static vars?
-static uint8_t headIndex = 0;
-static uint8_t snakeLen = 0;
-static uint8_t headX = 0; //todo to one byte with headY?
-static uint8_t headY = 0;
-static uint8_t foodX = 0;
-static uint8_t foodY = 0;
-
 #define XSIZE 25
 #define YSIZE 6
+#define MAXINDEX XSIZE*YSIZE
+#define MAXSNAKEBYTE (MAXINDEX*2)/8 + 1
+
+
+#define PSEUDOSTATIC_BYTES 6 + sizeof(unsigned long)//one for each converted static uint8_t variable, one for lastMillis()
+
+//pseudostatic variables
+#define headIndex   (*(snakeBuffer+MAXSNAKEBYTE+0))
+#define snakeLen    (*(snakeBuffer+MAXSNAKEBYTE+1))
+#define headX       (*(snakeBuffer+MAXSNAKEBYTE+2))
+#define headY       (*(snakeBuffer+MAXSNAKEBYTE+3))
+#define foodX       (*(snakeBuffer+MAXSNAKEBYTE+4))
+#define foodY       (*(snakeBuffer+MAXSNAKEBYTE+5))
+#define lastMillis  (*( (unsigned long *)  (snakeBuffer+MAXSNAKEBYTE+6))  )
 
 #define YSTART 2
 #define XSTART 0
@@ -63,9 +69,8 @@ void printCharToGameDisplay(char c, uint8_t x, uint8_t y){
     oled.print(c);
 }
 
-const uint8_t maxIndex = XSIZE*YSIZE;
-#define INCREMENT(i) i = (i==maxIndex) ? (0) : i + 1
-#define DECREMENT(i) i = (i==0) ? (maxIndex) : i - 1
+#define INCREMENT(i) i = (i==MAXINDEX) ? (0) : i + 1
+#define DECREMENT(i) i = (i==0) ? (MAXINDEX) : i - 1
 
 #define XY_STEPBACK(X,Y,DIR){ \
     switch (DIR){  \
@@ -99,8 +104,7 @@ funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte){
 }
 
 funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
-    const int area = XSIZE*YSIZE;
-    const int bytes = (area*2)/8 + 1;
+    const int bytes = MAXSNAKEBYTE + PSEUDOSTATIC_BYTES;
 
     oled.setCursor(0,0);
     oled.set2X();
@@ -118,6 +122,7 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
 
     snakeLen = INITIALSNAKELEN;
     headIndex = 0;
+    lastMillis = millis();
 
     foodX = rand()%5 + headX + 1;
     foodY = rand()%YSIZE;
@@ -162,7 +167,6 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
 
     writeToSnake(aheadIndex, nextDirection);
 
-    static unsigned long lastMillis = millis();
     unsigned long thisMillis = millis();
 
 
@@ -198,7 +202,7 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
         oled.setCursor(SCOREX + (3+offset)*5,SCOREY);
         oled.print((snakeLen - INITIALSNAKELEN)*10);
 
-        if(snakeLen >= maxIndex - 5){
+        if(snakeLen >= MAXINDEX - 5){
             setLoopFun(snake_win);
             return CONTINUE_LOOP;
         }
