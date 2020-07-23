@@ -1,12 +1,10 @@
 
 #include "display.h"
 #include <Arduino.h>
-//#include "clockFace.h"
+#include "clockFace.h"
 #include "inputs.h"
 #include "snake.h"
 #include "program.h"
-
-const program prog_snake = {snake_init, snake_loop, snake_deinit, "Snake"};
 
 
 
@@ -33,8 +31,8 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte){
     uint8_t cursorPosOnScreen = (menuState & 0xE0) >> 5;
     
     
-    program programArray[menuElements] = {prog_snake, 
-                                        prog_placeHolder,
+    program programArray[menuElements] = {prog_clockFace,
+                                        prog_snake, 
                                         prog_placeHolder,
                                         prog_placeHolder,
                                         prog_placeHolder,

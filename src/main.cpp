@@ -9,7 +9,6 @@
 
 #include "inputs.h"
 #include "display.h"
-#include "clockFace.h"
 #include "Adafruit5x7_full.h"
 #include "snake.h"
 #include "program.h"

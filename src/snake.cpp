@@ -93,7 +93,12 @@ funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte);
 
 uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte, uint8_t defaultDirection);
 
-funRetVal snake_init(){
+funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte){
+    free(snakeBuffer);
+    return CONTINUE_LOOP;
+}
+
+funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
     const int area = XSIZE*YSIZE;
     const int bytes = (area*2)/8 + 1;
 
@@ -337,3 +342,6 @@ uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte, uint8_t de
     }
     return nextDir;
 }
+
+
+

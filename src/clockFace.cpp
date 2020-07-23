@@ -4,18 +4,18 @@
 #include <Arduino.h>
 #include "program.h"
 
-funRetVal clockFace_init(){
+funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte){
     return CONTINUE_LOOP;
 }
 
-funRetVal clockFace_deinit(){
+funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte){
     return CONTINUE_LOOP;
 }
 
 funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte){
-    
+
     //temporary for testing, later via timer interrupt?
-    const unsigned long OFFSET = 7000000;
+    static unsigned long OFFSET = rand();
     unsigned long thisMillis = millis() + OFFSET;
     int seconds = thisMillis / 1000;
     int minutes = seconds / 60;
