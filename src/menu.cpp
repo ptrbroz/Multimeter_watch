@@ -5,6 +5,7 @@
 #include "inputs.h"
 #include "snake.h"
 #include "program.h"
+#include "stopwatch.h"
 
 
 
@@ -31,7 +32,9 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte){
     uint8_t cursorPosOnScreen = (menuState & 0xE0) >> 5;
     
     
-    program programArray[menuElements] = {prog_clockFace,
+    program programArray[menuElements] = {
+                                        prog_stopWatch,
+                                        prog_clockFace,
                                         prog_snake, 
                                         prog_placeHolder,
                                         prog_placeHolder,
@@ -39,8 +42,8 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte){
                                         prog_placeHolder,
                                         prog_placeHolder,
                                         prog_placeHolder,
-                                        prog_placeHolder,
-                                        prog_placeHolder};
+                                        prog_placeHolder
+                                        };
 
 
     
@@ -93,7 +96,7 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte){
 
     funRetVal ret = CONTINUE_LOOP;
 
-    if(JOY_PRESS(risingByte)){
+    if(BUTT_RIGHT(risingByte)){
         oled.clear();
         setProgram(programArray[menuCursor]);
         ret = PROGRAM_START;        

@@ -17,7 +17,7 @@
 
 
 
-#define DEBOUNCE_TIME 100 //in milliseconds. Keep below 255
+#define DEBOUNCE_TIME 200 //in milliseconds. Keep below 255
 
 
 volatile uint8_t inputsByte = 0x00;

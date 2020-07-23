@@ -12,6 +12,8 @@ static uint8_t *snakeBuffer;
 #define MAXINDEX XSIZE*YSIZE
 #define MAXSNAKEBYTE (MAXINDEX*2)/8 + 1
 
+#define SNAKETIME 400 //miliseconds between forced moves
+
 
 #define PSEUDOSTATIC_BYTES 6 + sizeof(unsigned long)//one for each converted static uint8_t variable, one for lastMillis()
 
@@ -116,7 +118,7 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
     oled.print(0);
 
 
-    snakeBuffer = (uint8_t*) calloc(bytes, 1); //todo sepcify space for extra variables
+    snakeBuffer = (uint8_t*) calloc(bytes, 1);
     headX = 5;
     headY = 3;
 
@@ -170,7 +172,7 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
     unsigned long thisMillis = millis();
 
 
-    if((thisMillis-lastMillis < 300) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
+    if((thisMillis-lastMillis < SNAKETIME) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
     //if(!BUTT_RIGHT(risingByte)){
         return CONTINUE_LOOP;
     }
