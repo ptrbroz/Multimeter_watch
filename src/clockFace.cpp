@@ -1,13 +1,18 @@
 
 
 #include "display.h"
-#include "funWrapper.h"
 #include <Arduino.h>
-#include "prog_menu.h"
+#include "program.h"
 
+funRetVal clockFace_init(){
+    return CONTINUE_LOOP;
+}
 
+funRetVal clockFace_deinit(){
+    return CONTINUE_LOOP;
+}
 
-struct funWrapper prog_clockFace(uint8_t risingByte, uint8_t fallingByte){
+funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte){
     
     //temporary for testing, later via timer interrupt?
     const unsigned long OFFSET = 7000000;
@@ -35,15 +40,13 @@ struct funWrapper prog_clockFace(uint8_t risingByte, uint8_t fallingByte){
         lastSeconds = seconds;
     }
 
-
-    funWrapper retWrapper = {prog_clockFace};
     
     if(risingByte){
-        retWrapper.fun = prog_menu;
         oled.clear();
+        return PROGRAM_END;
     }
 
-    return retWrapper;
+    return CONTINUE_LOOP;
 }
 
 

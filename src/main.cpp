@@ -8,11 +8,12 @@
 #include <PinChangeInterrupt.h>
 
 #include "inputs.h"
-#include "funWrapper.h"
 #include "display.h"
-#include "prog_clockFace.h"
+#include "clockFace.h"
 #include "Adafruit5x7_full.h"
 #include "snake.h"
+#include "program.h"
+#include "menu.h"
 
 
 
@@ -102,7 +103,7 @@ void loop() {
 
   unsigned long lastMillis = millis();
 
-  funWrapper nextFunWrapper = {snake_init};
+   funPtr nextFun = NULL;
 
   oled.clear();
 
@@ -151,11 +152,36 @@ void loop() {
     risingByteWaiting |= risingByte;
     fallingByteWaiting |= fallingByte;
 
-    nextFunWrapper = nextFunWrapper.fun(debouncedRisingByte, debouncedFallingByte);
+    if(nextFun == NULL){
+      nextFun = getLoopFun();
+
+      if(nextFun == NULL){ //no program running
+          nextFun = menu;
+      }
+    }
+    //else: a function is left over from previous loop (init or deinit)
+
+    funRetVal ret = nextFun(debouncedRisingByte, debouncedFallingByte);
+
+    nextFun = NULL;
+
+    switch (ret){
+    case CONTINUE_LOOP:
+        //do nothing
+      break;
+
+    case PROGRAM_START:
+      setLoopFun(getProgram().loop);
+      nextFun = getProgram().init;
+      break;
+
+    case PROGRAM_END:
+      setLoopFun(NULL);
+      nextFun = getProgram().deinit;
+      break;
+    }
 
     
-
-
 
   }
 }

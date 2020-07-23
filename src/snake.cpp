@@ -1,10 +1,9 @@
 
 
 #include "display.h"
-#include "funWrapper.h"
 #include <Arduino.h>
-#include "prog_menu.h"
 #include "inputs.h"
+#include "program.h"
 
 static uint8_t *snakeBuffer;
 
@@ -24,7 +23,7 @@ static uint8_t foodY = 0;
 
 #define XSTEP 5 // font width
 
-#define SCOREX 70
+#define SCOREX 90
 #define SCOREY 1
 #define INITIALSNAKELEN 4
 
@@ -87,14 +86,14 @@ const uint8_t maxIndex = XSIZE*YSIZE;
 }\
 
 
-struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte);
-struct funWrapper snake_gameover(uint8_t risingByte, uint8_t fallingByte);
-struct funWrapper snake_win(uint8_t risingByte, uint8_t fallingByte);
+funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte);
+funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte);
+funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte);
 
 
 uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte, uint8_t defaultDirection);
 
-struct funWrapper snake_init(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_init(){
     const int area = XSIZE*YSIZE;
     const int bytes = (area*2)/8 + 1;
 
@@ -141,31 +140,10 @@ struct funWrapper snake_init(uint8_t risingByte, uint8_t fallingByte){
         DECREMENT(bodyIndex);
     }
 
-    funWrapper ret  = {snake_loop};
-    return ret;
+    return CONTINUE_LOOP;
 }
 
-struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
-    funWrapper ret  = {snake_loop};
-    /*
-    oled.setCursor(0,0);
-    printByteToOled(snakeBuffer[0]);
-    oled.print(" ");
-    printByteToOled(snakeBuffer[1]);
-    oled.setCursor(0,1);
-    printByteToOled(snakeBuffer[2]);
-    oled.print(" ");
-    printByteToOled(snakeBuffer[3]);
-
-    oled.setCursor(0,2);
-    oled.print("Hi:");
-    oled.print(headIndex);
-    oled.print(" Hxy:[");
-    oled.print(headX);
-    oled.print(":");
-    oled.print(headY);
-    oled.print("]");
-    */
+funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
 
     printCharToGameDisplay('*', foodX, foodY);
 
@@ -185,7 +163,7 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
 
     if((thisMillis-lastMillis < 300) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
     //if(!BUTT_RIGHT(risingByte)){
-        return ret;
+        return CONTINUE_LOOP;
     }
     lastMillis = thisMillis;
 
@@ -196,8 +174,8 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
     XY_STEPFORWARD(headX,headY,nextDirection);
 
     if(headX>=XSIZE || headY >=YSIZE){
-        ret.fun = snake_gameover;
-        return ret;
+        setLoopFun(snake_gameover);
+        return CONTINUE_LOOP;
     }
 
     printCharToGameDisplay('#', headX,headY);
@@ -216,8 +194,8 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
         oled.print((snakeLen - INITIALSNAKELEN)*10);
 
         if(snakeLen >= maxIndex - 5){
-            ret.fun = snake_win;
-            return ret;
+            setLoopFun(snake_win);
+            return CONTINUE_LOOP;
         }
 
     }
@@ -225,7 +203,6 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
     uint8_t tailX = headX;
     uint8_t tailY = headY;
     uint8_t tailIndex = headIndex;
-    uint8_t bittenSelf = 0;
 
     for(int pass = 0; pass<10; pass++){
         tailX = headX;
@@ -238,6 +215,7 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
             foodReady = 1;
         }
 
+        //backiterate through snake
         for(int i = 0; i<snakeLen;i++){
             uint8_t dir = readFromSnake(tailIndex);
             DECREMENT(tailIndex);
@@ -252,8 +230,7 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
             
             if(pass==0){ //don't check for self biting on repeated foodgen attempts
                 if(tailX==headX && tailY==headY && (i!=snakeLen-1)){ //exclude edge case (when last tail element moves out of way at the moment biting would occur)
-                    bittenSelf = 1;
-                    ret.fun = snake_gameover;
+                    setLoopFun(snake_gameover);
                     break;
                 }
             }
@@ -278,11 +255,11 @@ struct funWrapper snake_loop(uint8_t risingByte, uint8_t fallingByte){
     
 
 
-    return ret;
+    return CONTINUE_LOOP;
 }
 
 
-struct funWrapper snake_gameover(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte){
 
     delay(500);
 
@@ -314,12 +291,10 @@ struct funWrapper snake_gameover(uint8_t risingByte, uint8_t fallingByte){
 
 
     
-
-    funWrapper ret = {prog_menu};
-    return ret;
+    return PROGRAM_END;
 }
 
-struct funWrapper snake_win(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte){
 
     delay(700);
     oled.setCursor(10,3);
@@ -330,10 +305,10 @@ struct funWrapper snake_win(uint8_t risingByte, uint8_t fallingByte){
     oled.print("YOU  ");
     delay(1000);
     oled.print("WON!");
-    delay(3000);
+    delay(4000);
 
-    funWrapper ret = {prog_menu};
-    return ret;
+
+    return PROGRAM_END;
 }
 
 
