@@ -5,27 +5,37 @@
 #include <limits.h>
 
 
-static uint8_t *dataBuffer;
+//static uint8_t *dataBuffer;
 
-#define exitMenuPos          (*(dataBuffer+0))
-#define running              (*(dataBuffer+1))
-#define scrollPos            (*(dataBuffer+2))
-#define measureIndex         (*(dataBuffer+3))
-#define offsetMillis         (*( (unsigned long *)  (dataBuffer + 4 + 0*sizeof(unsigned long)))  )
-#define lastMillis           (*( (unsigned long *)  (dataBuffer + 4 + 1*sizeof(unsigned long)))  )
-#define warningStart         (*( (unsigned long *)  (dataBuffer + 4 + 2*sizeof(unsigned long)))  )
-#define measureStart         (*( (unsigned long *)  (dataBuffer + 4 + 3*sizeof(unsigned long)))  )
-#define measuresArray        ( ( (unsigned long *)  (dataBuffer + 4 + 4*sizeof(unsigned long)))  )
+#define exitMenuPos          (*(memPtr+0))
+#define running              (*(memPtr+1))
+#define scrollPos            (*(memPtr+2))
+#define measureIndex         (*(memPtr+3))
+#define offsetMillis         (*( (unsigned long *)  (memPtr + 4 + 0*sizeof(unsigned long)))  )
+#define lastMillis           (*( (unsigned long *)  (memPtr + 4 + 1*sizeof(unsigned long)))  )
+#define warningStart         (*( (unsigned long *)  (memPtr + 4 + 2*sizeof(unsigned long)))  )
+#define measureStart         (*( (unsigned long *)  (memPtr + 4 + 3*sizeof(unsigned long)))  )
+#define measuresArray        ( ( (unsigned long *)  (memPtr + 4 + 4*sizeof(unsigned long)))  )
 
 #define maxMeasureCount 30
 
 #define showWarningTime 5000 //milliseconds
 
+
+
 void printDiffToHeader(unsigned long startMillis, unsigned long endMillis);
+funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
 
 
-funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte){
-    dataBuffer = (uint8_t*) calloc(4 + (4 + maxMeasureCount)*sizeof(unsigned long), 1); 
+extern const program prog_stopWatch = {stopWatch_init, stopWatch_beforeExit, stopWatch_deinit, "Stopwatch", 4 + (4 + maxMeasureCount)*sizeof(unsigned long)};
+
+
+
+funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+    //dataBuffer = (uint8_t*) calloc(4 + (4 + maxMeasureCount)*sizeof(unsigned long), 1); 
     oled.clear();
     //preprint separation in header manually (when printed at const. width, it won't fit)
     oled.set2X();
@@ -41,8 +51,8 @@ funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte){
     return CONTINUE_LOOP;
 }
 
-funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte){
-    free(dataBuffer);
+funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+    //free(dataBuffer);
     return CONTINUE_LOOP;
 }
 
@@ -76,11 +86,11 @@ void printDiffToHeader(unsigned long startMillis, unsigned long endMillis){
 
 }
 
-void printSavedMeasures(){
+void printSavedMeasures(uint8_t *memPtr){
     oled.set1X();
     oled.setCursor(0,2);
     
-    char string[25];
+    char string[40];
 
     for(int i = scrollPos, j = 0; i<maxMeasureCount && j<6; i++,j++){
         if(measuresArray[i]==0){
@@ -114,10 +124,9 @@ void printWarning(){
     oled.println("#-------------------#  ");
 }
 
-funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte);
 
 
-funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte){
+funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
     oled.set1X();
     oled.setCursor(0,2);
     oled.println("Which action to take?");
@@ -172,7 +181,7 @@ funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte){
     return CONTINUE_LOOP;
 }
 
-funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte){
+funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
 
     unsigned long thisMillis = millis();
 
@@ -189,7 +198,7 @@ funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte){
     }
 
     if(!warningStart){
-        printSavedMeasures();
+        printSavedMeasures(memPtr);
     }
     
 
@@ -232,6 +241,7 @@ funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte){
             scrollPos = 0;
         }
     }
+
 
     return CONTINUE_LOOP;
 }

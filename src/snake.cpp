@@ -5,7 +5,11 @@
 #include "inputs.h"
 #include "program.h"
 
-static uint8_t *snakeBuffer;
+funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
+funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
+funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
+funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
+funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
 
 #define XSIZE 25
 #define YSIZE 6
@@ -14,8 +18,9 @@ static uint8_t *snakeBuffer;
 
 #define SNAKETIME 400 //miliseconds between forced moves
 
-
 #define PSEUDOSTATIC_BYTES 6 + sizeof(unsigned long)//one for each converted static uint8_t variable, one for lastMillis()
+
+extern const program prog_snake = {snake_init, snake_loop, snake_deinit, "Snake", MAXSNAKEBYTE+PSEUDOSTATIC_BYTES};
 
 //pseudostatic variables
 #define headIndex   (*(snakeBuffer+MAXSNAKEBYTE+0))
@@ -40,27 +45,16 @@ static uint8_t *snakeBuffer;
 #define s_up 2
 #define s_down 3
 
-void writeToSnake(uint8_t index, uint8_t value){
+void writeToSnake(uint8_t index, uint8_t value, uint8_t *snakeBuffer){
     uint8_t byte = *(snakeBuffer+(index/4));
     value = value & 0x03; //just to be sure
     value <<= ((index%4)*2);
     byte &= ~(0x03 << (index%4)*2);
     byte |= value;
-
-/*
-    oled.setCursor(0,1);
-    oled.print("W:");
-    printByteToOled(byte);
-    oled.setCursor(100,1);
-    oled.print("!");
-    oled.setCursor(100,1);
-    oled.print(" ");
-    */
-
     *(snakeBuffer+(index/4)) = byte;
 }
 
-uint8_t readFromSnake(uint8_t index){
+uint8_t readFromSnake(uint8_t index, uint8_t *snakeBuffer){
     uint8_t byte = *(snakeBuffer+(index/4));
     uint8_t mask = 0x03 << ((index%4)*2);
     return (byte & mask) >> ((index%4)*2);
@@ -93,21 +87,15 @@ void printCharToGameDisplay(char c, uint8_t x, uint8_t y){
 }\
 
 
-funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte);
-funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte);
-funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte);
 
 
 uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte, uint8_t defaultDirection);
 
-funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte){
-    free(snakeBuffer);
+funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
     return CONTINUE_LOOP;
 }
 
-funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
-    const int bytes = MAXSNAKEBYTE + PSEUDOSTATIC_BYTES;
-
+funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
     oled.setCursor(0,0);
     oled.set2X();
     oled.print("SNAKE!");
@@ -117,8 +105,6 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
     oled.setCursor(SCOREX + 6*5, SCOREY);
     oled.print(0);
 
-
-    snakeBuffer = (uint8_t*) calloc(bytes, 1);
     headX = 5;
     headY = 3;
 
@@ -133,12 +119,12 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
 
     for(int i = snakeLen-1; i>=0;i--){
         INCREMENT(headIndex);
-        writeToSnake(headIndex, snakeInit[i]);
+        writeToSnake(headIndex, snakeInit[i], snakeBuffer);
     }
 
-    uint8_t lastDir = readFromSnake(headIndex);
+    uint8_t lastDir = readFromSnake(headIndex, snakeBuffer);
     INCREMENT(headIndex);
-    writeToSnake(headIndex, lastDir);
+    writeToSnake(headIndex, lastDir, snakeBuffer);
     DECREMENT(headIndex);
 
     uint8_t bodyIndex = headIndex;
@@ -147,7 +133,7 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
     for(int i = 0; i<snakeLen;i++){
         delay(50);
         printCharToGameDisplay('#',bodyX,bodyY);
-        uint8_t dir = readFromSnake(bodyIndex);
+        uint8_t dir = readFromSnake(bodyIndex, snakeBuffer);
         XY_STEPBACK(bodyX, bodyY, dir);
         DECREMENT(bodyIndex);
     }
@@ -155,32 +141,31 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte){
     return CONTINUE_LOOP;
 }
 
-funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
 
     printCharToGameDisplay('*', foodX, foodY);
 
-    uint8_t headDirection = readFromSnake(headIndex);
+    uint8_t headDirection = readFromSnake(headIndex, snakeBuffer);
 
     uint8_t aheadIndex = headIndex;
     INCREMENT(aheadIndex);
-    uint8_t defaultDirection = readFromSnake(aheadIndex);
+    uint8_t defaultDirection = readFromSnake(aheadIndex, snakeBuffer);
 
     uint8_t nextDirection = getNextDirection(headDirection, risingByte,defaultDirection);
 
-    writeToSnake(aheadIndex, nextDirection);
+    writeToSnake(aheadIndex, nextDirection, snakeBuffer);
 
     unsigned long thisMillis = millis();
 
 
     if((thisMillis-lastMillis < SNAKETIME) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
-    //if(!BUTT_RIGHT(risingByte)){
         return CONTINUE_LOOP;
     }
     lastMillis = thisMillis;
 
     INCREMENT(headIndex);
     INCREMENT(headIndex);
-    writeToSnake(headIndex,nextDirection);
+    writeToSnake(headIndex,nextDirection, snakeBuffer);
     DECREMENT(headIndex);
     XY_STEPFORWARD(headX,headY,nextDirection);
 
@@ -228,7 +213,7 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
 
         //backiterate through snake
         for(int i = 0; i<snakeLen;i++){
-            uint8_t dir = readFromSnake(tailIndex);
+            uint8_t dir = readFromSnake(tailIndex,snakeBuffer);
             DECREMENT(tailIndex);
 
             if(eaten){
@@ -270,7 +255,7 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte){
 }
 
 
-funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
 
     delay(500);
 
@@ -285,7 +270,7 @@ funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte){
         delay(waitTime);
         for(int j = 0; j<=snakeLen;j++){
             printCharToGameDisplay(charsToPrint[i%2],bodyX,bodyY);
-            uint8_t dir = readFromSnake(bodyIndex);
+            uint8_t dir = readFromSnake(bodyIndex,snakeBuffer);
             DECREMENT(bodyIndex);
             XY_STEPBACK(bodyX, bodyY, dir);
         }
@@ -305,7 +290,7 @@ funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte){
     return PROGRAM_END;
 }
 
-funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte){
+funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
 
     delay(700);
     oled.setCursor(10,3);

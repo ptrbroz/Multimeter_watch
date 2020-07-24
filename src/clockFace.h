@@ -1,8 +1,8 @@
 #pragma once
 #include "program.h"
 
-funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte);
-funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte);
-funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte);
+funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
 
-program prog_clockFace = {clockFace_init, clockFace_loop,clockFace_deinit, "Clockface"};
+extern const program prog_clockFace;

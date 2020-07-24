@@ -2,10 +2,9 @@
 #include "program.h"
 
 
-funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte);
-funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte);
-funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte);
+funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
 
-const program prog_stopWatch = {stopWatch_init, stopWatch_loop, stopWatch_deinit, "Stopwatch"};
-
+extern const program prog_stopWatch;
 

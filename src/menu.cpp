@@ -19,14 +19,11 @@ const uint8_t menuStepsPerScrollStep = (menuElements-2) / (scrollLen-2);
 
 void drawScrollbar(uint8_t menuCursor);
 
-program prog_placeHolder = {NULL, NULL, NULL, "Placeholder"};
-
+program prog_placeHolder = {NULL, NULL, NULL, "Placeholder", 0};
 
 //scrolling-capable main menu, supports up to 32 elements
-funRetVal menu(uint8_t risingByte, uint8_t fallingByte){
+funRetVal menu(uint8_t risingByte, uint8_t fallingByte, uint8_t *unusedMemoryPointer){ //null memory pointer passed to menu to keep signature same as program funs 
     
-
-
     static uint8_t menuState = 0x00;
     uint8_t menuCursor = menuState & 0x1F;
     uint8_t cursorPosOnScreen = (menuState & 0xE0) >> 5;

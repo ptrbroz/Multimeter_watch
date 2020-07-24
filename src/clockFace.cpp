@@ -4,15 +4,20 @@
 #include <Arduino.h>
 #include "program.h"
 
-funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte){
+
+funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
     return CONTINUE_LOOP;
 }
 
-funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte){
+funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
     return CONTINUE_LOOP;
 }
 
-funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte){
+funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+
+extern const program prog_clockFace = {clockFace_init, clockFace_loop,clockFace_deinit, "Clockface", 0};
+
+funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
 
     //temporary for testing, later via timer interrupt?
     static unsigned long OFFSET = rand();

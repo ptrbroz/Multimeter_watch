@@ -102,12 +102,16 @@ void loop() {
 
   unsigned long lastMillis = millis();
 
-   funPtr nextFun = NULL;
+  funPtr nextFun = NULL;
+  uint8_t *programMemPtr = NULL;
+;
 
   oled.clear();
 
+
   while(1){
     UPDATE_EDGES(inputsByte, risingByte, fallingByte);
+
 
     unsigned long thisMillis = millis();
     uint8_t diffMillis;
@@ -141,14 +145,10 @@ void loop() {
         risingByteWaiting &= (~mask);
         fallingByteWaiting &= (~mask);
       }
-      
-      {
-
-      }
       mask <<= 1;
     }
 
-    risingByteWaiting |= risingByte;
+    risingByteWaiting  |= risingByte;
     fallingByteWaiting |= fallingByte;
 
     if(nextFun == NULL){
@@ -158,25 +158,33 @@ void loop() {
           nextFun = menu;
       }
     }
-    //else: a function is left over from previous loop (init or deinit)
+    //else: a function is left over from previous loop (probably init or deinit)
 
-    funRetVal ret = nextFun(debouncedRisingByte, debouncedFallingByte);
+    funRetVal ret = nextFun(debouncedRisingByte, debouncedFallingByte, programMemPtr);
 
     nextFun = NULL;
+
+    program p = getProgram();
 
     switch (ret){
     case CONTINUE_LOOP:
         //do nothing
       break;
-
     case PROGRAM_START:
-      setLoopFun(getProgram().loop);
-      nextFun = getProgram().init;
+      setLoopFun(p.loop);
+      if(p.requiredRam>0){
+        programMemPtr = (uint8_t*)calloc(p.requiredRam, 1);  //might need to handle running out of memory here in the future
+      }
+      else{
+        programMemPtr = NULL;
+      }
+      nextFun = p.init;
       break;
-
     case PROGRAM_END:
       setLoopFun(NULL);
-      nextFun = getProgram().deinit;
+      free(programMemPtr);
+      programMemPtr = NULL;
+      nextFun = p.deinit;
       break;
     }
 
