@@ -117,14 +117,12 @@ Wire Wire Line
 Connection ~ 2350 1050
 Wire Wire Line
 	2350 1050 2400 1050
-Text Label 1300 1400 0    47   ~ 0
+Text Label 1550 1400 0    47   ~ 0
 PD3
-Text Label 1700 1400 0    47   ~ 0
+Text Label 1950 1400 0    47   ~ 0
 PD2
-Text Label 2100 1400 0    47   ~ 0
+Text Label 2350 1400 0    47   ~ 0
 ADC11
-Text Label 900  1400 0    47   ~ 0
-ADC10
 Text Label 2600 2100 0    47   ~ 0
 ADC2
 Text Label 3000 2100 0    47   ~ 0
@@ -279,23 +277,23 @@ Wire Notes Line
 $Comp
 L Device:Crystal Y1
 U 1 1 5F21906D
-P 5100 1250
-F 0 "Y1" V 5054 1381 50  0000 L CNN
-F 1 "32kHz" V 5145 1381 50  0000 L CNN
-F 2 "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" H 5100 1250 50  0001 C CNN
-F 3 "~" H 5100 1250 50  0001 C CNN
-	1    5100 1250
-	0    1    1    0   
+P 4700 850
+F 0 "Y1" H 4700 1118 50  0000 C CNN
+F 1 "32kHz" H 4700 1027 50  0000 C CNN
+F 2 "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" H 4700 850 50  0001 C CNN
+F 3 "~" H 4700 850 50  0001 C CNN
+	1    4700 850 
+	1    0    0    -1  
 $EndComp
 $Comp
 L Multimeter_Watch_Custom_Symbols:PCF85163-SO08 U1
 U 1 1 5F21CC1C
-P 6250 1300
-F 0 "U1" H 6250 1659 47  0000 C CNN
-F 1 "PCF85163-SO08" H 6250 1572 47  0000 C CNN
-F 2 "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm" H 6150 1250 47  0001 C CNN
-F 3 "" H 6150 1250 47  0001 C CNN
-	1    6250 1300
+P 5400 1250
+F 0 "U1" H 5400 1609 47  0000 C CNN
+F 1 "PCF85163-SO08" H 5400 1522 47  0000 C CNN
+F 2 "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm" H 5300 1200 47  0001 C CNN
+F 3 "" H 5300 1200 47  0001 C CNN
+	1    5400 1250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -304,7 +302,7 @@ U 1 1 5F2246FE
 P 2800 2200
 F 0 "R6" V 2593 2200 50  0000 C CNN
 F 1 "R_shunt" V 2684 2200 50  0000 C CNN
-F 2 "" V 2730 2200 50  0001 C CNN
+F 2 "Resistor_SMD:R_2512_6332Metric_Pad1.52x3.35mm_HandSolder" V 2730 2200 50  0001 C CNN
 F 3 "~" H 2800 2200 50  0001 C CNN
 	1    2800 2200
 	0    1    1    0   
@@ -321,4 +319,114 @@ Wire Wire Line
 Wire Wire Line
 	2600 2200 2600 2100
 Connection ~ 2600 2200
+Wire Wire Line
+	4950 1100 4850 1100
+Wire Wire Line
+	4850 1100 4850 850 
+Wire Wire Line
+	4550 850  4550 1200
+Wire Wire Line
+	4550 1200 4950 1200
+Wire Wire Line
+	4950 1300 4550 1300
+Text Label 4550 1300 0    47   ~ 0
+Nk
+Text Label 900  1400 0    47   ~ 0
+ADC10
+Wire Wire Line
+	5850 1200 6000 1200
+Text Label 6000 1200 0    47   ~ 0
+NC
+Wire Wire Line
+	5850 1100 6300 1100
+$Comp
+L Device:R R11
+U 1 1 5F234AFA
+P 6300 1250
+F 0 "R11" H 6370 1296 50  0000 L CNN
+F 1 "R" H 6370 1205 50  0000 L CNN
+F 2 "" V 6230 1250 50  0001 C CNN
+F 3 "~" H 6300 1250 50  0001 C CNN
+	1    6300 1250
+	1    0    0    -1  
+$EndComp
+Connection ~ 6300 1100
+Wire Wire Line
+	6300 1100 6550 1100
+$Comp
+L Device:R R12
+U 1 1 5F2353C3
+P 6550 1250
+F 0 "R12" H 6620 1296 50  0000 L CNN
+F 1 "R" H 6620 1205 50  0000 L CNN
+F 2 "" V 6480 1250 50  0001 C CNN
+F 3 "~" H 6550 1250 50  0001 C CNN
+	1    6550 1250
+	1    0    0    -1  
+$EndComp
+Connection ~ 6550 1100
+Wire Wire Line
+	5850 1300 6150 1300
+Wire Wire Line
+	6150 1300 6150 1500
+Wire Wire Line
+	6150 1500 6300 1500
+Wire Wire Line
+	6550 1100 6800 1100
+Wire Wire Line
+	5850 1400 6050 1400
+Wire Wire Line
+	6050 1400 6050 1600
+Wire Wire Line
+	6050 1600 6550 1600
+Wire Wire Line
+	6300 1400 6300 1500
+Connection ~ 6300 1500
+Wire Wire Line
+	6300 1500 6800 1500
+Wire Wire Line
+	6550 1400 6550 1600
+Connection ~ 6550 1600
+Wire Wire Line
+	6550 1600 6800 1600
+Text Label 6800 1500 0    47   ~ 0
+SCL
+Text Label 6800 1600 0    47   ~ 0
+SDA
+Text Label 6800 1100 0    47   ~ 0
+VCC
+Wire Wire Line
+	7000 3450 7000 3200
+Wire Wire Line
+	7000 3200 6800 3200
+Wire Wire Line
+	7100 3450 7100 3100
+Wire Wire Line
+	7100 3100 6800 3100
+Wire Wire Line
+	7200 3450 7200 3000
+Wire Wire Line
+	7200 3000 6800 3000
+Wire Wire Line
+	7600 3450 7600 3300
+Wire Wire Line
+	7600 3300 7700 3300
+Wire Wire Line
+	7500 3450 7500 3200
+Wire Wire Line
+	7500 3200 7700 3200
+Wire Wire Line
+	7400 3450 7400 3100
+Wire Wire Line
+	7400 3100 7700 3100
+Wire Wire Line
+	7300 3450 7300 3000
+Wire Wire Line
+	7300 3000 7700 3000
+Text Label 7700 3100 0    47   ~ 0
+SCL
+Text Label 7700 3000 0    47   ~ 0
+SDA
+Text Notes 5400 750  0    118  ~ 0
+I2C/RTC\n
 $EndSCHEMATC
