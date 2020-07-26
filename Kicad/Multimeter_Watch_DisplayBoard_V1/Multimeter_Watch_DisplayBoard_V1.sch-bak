@@ -1,0 +1,272 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	5000 3500 5000 3700
+Connection ~ 5700 2900
+Wire Wire Line
+	5700 2900 5700 2800
+Text Label 5000 3700 0    47   ~ 0
+PB0_TODO
+Connection ~ 5700 3800
+Wire Wire Line
+	5700 3800 5350 3800
+Wire Wire Line
+	5700 3700 5700 3800
+Connection ~ 5350 3500
+Wire Wire Line
+	5350 3500 5400 3500
+Wire Wire Line
+	5300 3500 5350 3500
+$Comp
+L Device:R R18
+U 1 1 5F2B66F9
+P 5350 3650
+F 0 "R18" H 5420 3696 50  0000 L CNN
+F 1 "100K" H 5420 3605 50  0000 L CNN
+F 2 "" V 5280 3650 50  0001 C CNN
+F 3 "~" H 5350 3650 50  0001 C CNN
+	1    5350 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R17
+U 1 1 5F2B529D
+P 5150 3500
+F 0 "R17" V 4943 3500 50  0000 C CNN
+F 1 "10K" V 5034 3500 50  0000 C CNN
+F 2 "" V 5080 3500 50  0001 C CNN
+F 3 "~" H 5150 3500 50  0001 C CNN
+	1    5150 3500
+	0    1    1    0   
+$EndComp
+Connection ~ 5700 3200
+Wire Wire Line
+	5700 3200 5700 3300
+$Comp
+L Transistor_FET:2N7002E Q1
+U 1 1 5F2AB4F3
+P 5600 3500
+F 0 "Q1" H 5805 3546 50  0000 L CNN
+F 1 "A03400A N-MOS" H 5805 3455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5800 3425 50  0001 L CIN
+F 3 "http://www.diodes.com/assets/Datasheets/ds30376.pdf" H 5600 3500 50  0001 L CNN
+	1    5600 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky D1
+U 1 1 5F29BCA9
+P 5400 3050
+F 0 "D1" V 5350 2900 50  0000 L CNN
+F 1 "D_Schottky" V 5450 2600 50  0000 L CNN
+F 2 "" H 5400 3050 50  0001 C CNN
+F 3 "~" H 5400 3050 50  0001 C CNN
+	1    5400 3050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5700 2900 5400 2900
+Wire Wire Line
+	5700 3200 5400 3200
+Wire Wire Line
+	5700 3150 5700 3200
+Wire Wire Line
+	5700 2950 5700 2900
+$Comp
+L Device:Buzzer B1
+U 1 1 5F28AB82
+P 5800 3050
+F 0 "B1" H 5952 3079 50  0000 L CNN
+F 1 "CMT-0502-75-SMT-TR" H 5952 2988 50  0000 L CNN
+F 2 "" V 5775 3150 50  0001 C CNN
+F 3 "~" V 5775 3150 50  0001 C CNN
+	1    5800 3050
+	1    0    0    -1  
+$EndComp
+Text Notes 5500 2650 0    118  ~ 0
+Buzzer\n
+Wire Wire Line
+	5700 2800 6150 2800
+Wire Wire Line
+	6150 2800 6150 3250
+$Comp
+L Device:C_Small C1
+U 1 1 5F258A5E
+P 6150 3350
+F 0 "C1" H 6242 3396 50  0000 L CNN
+F 1 "100n" H 6242 3305 50  0000 L CNN
+F 2 "" H 6150 3350 50  0001 C CNN
+F 3 "~" H 6150 3350 50  0001 C CNN
+	1    6150 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 3450 6150 3800
+Wire Wire Line
+	5700 3800 6150 3800
+Text Label 6150 3800 0    50   ~ 0
+GND
+Wire Notes Line style dotted
+	4650 6500 4350 6500
+Wire Notes Line style dotted
+	4650 5800 4650 6500
+Wire Notes Line style dotted
+	4350 5800 4650 5800
+Wire Notes Line style dotted
+	4350 6500 4350 5800
+Text Label 2300 5700 0    50   ~ 0
+TODO_GND
+Text Label 2300 6100 0    50   ~ 0
+SCL
+Text Label 2300 6200 0    50   ~ 0
+SDA
+Wire Wire Line
+	2300 5700 2200 5700
+Wire Wire Line
+	2300 5800 2200 5800
+Wire Wire Line
+	2300 5900 2200 5900
+Wire Wire Line
+	2300 6000 2200 6000
+Wire Wire Line
+	2300 6100 2200 6100
+Wire Wire Line
+	2300 6200 2200 6200
+Wire Wire Line
+	2300 6300 2200 6300
+Wire Wire Line
+	2300 6400 2200 6400
+Wire Wire Line
+	2300 6500 2200 6500
+Text Label 4000 6800 2    50   ~ 0
+PB0
+Wire Wire Line
+	2300 6600 2200 6600
+Connection ~ 4200 5800
+Wire Wire Line
+	4200 5800 4200 5700
+Wire Wire Line
+	4200 5900 4200 5800
+Connection ~ 4200 5900
+Wire Wire Line
+	4200 5900 4200 6000
+Wire Wire Line
+	4100 5900 4200 5900
+Connection ~ 4200 6500
+Wire Wire Line
+	4200 6500 4200 6600
+Wire Wire Line
+	4200 6400 4200 6500
+Wire Wire Line
+	4200 6300 4200 6400
+Connection ~ 4200 6400
+Wire Wire Line
+	4100 6400 4200 6400
+Wire Wire Line
+	4100 6200 4200 6200
+Wire Wire Line
+	4100 6100 4200 6100
+Text Label 2300 6600 0    50   ~ 0
+RESET
+Text Label 2300 6300 0    50   ~ 0
+VCC_HALF
+Text Label 2300 6000 0    50   ~ 0
+DACout
+Text Label 2300 6400 0    50   ~ 0
+SWC
+Text Label 2300 6500 0    50   ~ 0
+SWD
+Text Label 2300 5800 0    50   ~ 0
+ADC7
+Text Label 2300 5900 0    50   ~ 0
+ADC6
+Text Label 4100 6200 2    50   ~ 0
+D1
+Text Label 4100 6100 2    50   ~ 0
+D0
+Text Label 4100 6400 2    50   ~ 0
+GND
+Text Label 4100 5900 2    50   ~ 0
+VCC
+Wire Wire Line
+	2200 5600 2400 5600
+Text Label 2400 6900 0    50   ~ 0
+VCC
+Wire Wire Line
+	4200 5600 4000 5600
+Text Label 4000 6900 2    50   ~ 0
+GND
+Wire Wire Line
+	4200 5500 4000 5500
+Wire Wire Line
+	4200 5400 4000 5400
+Wire Wire Line
+	2200 5500 2400 5500
+Wire Wire Line
+	2400 5400 2200 5400
+Wire Wire Line
+	2400 6700 2200 6700
+Wire Wire Line
+	2200 6800 2400 6800
+Wire Wire Line
+	2400 6900 2200 6900
+Wire Wire Line
+	4200 6900 4000 6900
+Wire Wire Line
+	4000 6800 4200 6800
+Wire Wire Line
+	4200 6700 4000 6700
+Text Label 2400 6800 0    50   ~ 0
+PE4
+Text Label 2400 5400 0    50   ~ 0
+SCL
+Text Label 4000 5400 2    50   ~ 0
+SDA
+Text Label 4000 6700 2    50   ~ 0
+BUTT6
+Text Label 4000 5600 2    50   ~ 0
+BUTT5
+Text Label 4000 5500 2    50   ~ 0
+BUTT4
+Text Label 2400 6700 0    50   ~ 0
+BUTT3
+Text Label 2400 5600 0    50   ~ 0
+BUTT2
+Text Label 2400 5500 0    50   ~ 0
+BUTT1
+$Comp
+L Connector:Conn_01x16_Female J4
+U 1 1 5F46892E
+P 2000 6100
+F 0 "J4" H 2450 6100 50  0000 C CNN
+F 1 "Conn_01x16_Female" H 2400 5950 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 2000 6100 50  0001 C CNN
+F 3 "~" H 2000 6100 50  0001 C CNN
+	1    2000 6100
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x16_Female J5
+U 1 1 5F44F8AA
+P 4400 6100
+F 0 "J5" H 4428 6076 50  0000 L CNN
+F 1 "Conn_01x16_Female" H 4428 5985 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 4400 6100 50  0001 C CNN
+F 3 "~" H 4400 6100 50  0001 C CNN
+	1    4400 6100
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
