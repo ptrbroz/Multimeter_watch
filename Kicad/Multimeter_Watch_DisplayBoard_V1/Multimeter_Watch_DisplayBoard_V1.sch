@@ -119,220 +119,70 @@ Wire Wire Line
 	1400 1850 1850 1850
 Text Label 1850 1850 0    50   ~ 0
 GND
-Wire Notes Line style dotted
-	4650 6500 4350 6500
-Wire Notes Line style dotted
-	4650 5800 4650 6500
-Wire Notes Line style dotted
-	4350 5800 4650 5800
-Wire Notes Line style dotted
-	4350 6500 4350 5800
-Text Label 2300 5700 0    50   ~ 0
-TODO_GND
-Text Label 2300 6100 0    50   ~ 0
-SCL
-Text Label 2300 6200 0    50   ~ 0
-SDA
-Wire Wire Line
-	2300 5700 2200 5700
-Wire Wire Line
-	2300 5800 2200 5800
-Wire Wire Line
-	2300 5900 2200 5900
-Wire Wire Line
-	2300 6000 2200 6000
-Wire Wire Line
-	2300 6100 2200 6100
-Wire Wire Line
-	2300 6200 2200 6200
-Wire Wire Line
-	2300 6300 2200 6300
-Wire Wire Line
-	2300 6400 2200 6400
-Wire Wire Line
-	2300 6500 2200 6500
-Text Label 4000 6800 2    50   ~ 0
-PB0
-Wire Wire Line
-	2300 6600 2200 6600
-Connection ~ 4200 5800
-Wire Wire Line
-	4200 5800 4200 5700
-Wire Wire Line
-	4200 5900 4200 5800
-Connection ~ 4200 5900
-Wire Wire Line
-	4200 5900 4200 6000
-Wire Wire Line
-	4100 5900 4200 5900
-Connection ~ 4200 6500
-Wire Wire Line
-	4200 6500 4200 6600
-Wire Wire Line
-	4200 6400 4200 6500
-Wire Wire Line
-	4200 6300 4200 6400
-Connection ~ 4200 6400
-Wire Wire Line
-	4100 6400 4200 6400
-Wire Wire Line
-	4100 6200 4200 6200
-Wire Wire Line
-	4100 6100 4200 6100
-Text Label 2300 6600 0    50   ~ 0
-RESET
-Text Label 2300 6300 0    50   ~ 0
-VCC_HALF
-Text Label 2300 6000 0    50   ~ 0
-DACout
-Text Label 2300 6400 0    50   ~ 0
-SWC
-Text Label 2300 6500 0    50   ~ 0
-SWD
-Text Label 2300 5800 0    50   ~ 0
-ADC7
-Text Label 2300 5900 0    50   ~ 0
-ADC6
-Text Label 4100 6200 2    50   ~ 0
-D1
-Text Label 4100 6100 2    50   ~ 0
-D0
-Text Label 4100 6400 2    50   ~ 0
-GND
-Text Label 4100 5900 2    50   ~ 0
-VCC
-Wire Wire Line
-	2200 5600 2400 5600
-Text Label 2400 6900 0    50   ~ 0
-VCC
-Wire Wire Line
-	4200 5600 4000 5600
-Text Label 4000 6900 2    50   ~ 0
-GND
-Wire Wire Line
-	4200 5500 4000 5500
-Wire Wire Line
-	4200 5400 4000 5400
-Wire Wire Line
-	2200 5500 2400 5500
-Wire Wire Line
-	2400 5400 2200 5400
-Wire Wire Line
-	2400 6700 2200 6700
-Wire Wire Line
-	2200 6800 2400 6800
-Wire Wire Line
-	2400 6900 2200 6900
-Wire Wire Line
-	4200 6900 4000 6900
-Wire Wire Line
-	4000 6800 4200 6800
-Wire Wire Line
-	4200 6700 4000 6700
-Text Label 2400 6800 0    50   ~ 0
-PE4
-Text Label 2400 5400 0    50   ~ 0
-SCL
-Text Label 4000 5400 2    50   ~ 0
-SDA
-Text Label 4000 6700 2    50   ~ 0
-BUTT6
-Text Label 4000 5600 2    50   ~ 0
-BUTT5
-Text Label 4000 5500 2    50   ~ 0
-BUTT4
-Text Label 2400 6700 0    50   ~ 0
-BUTT3
-Text Label 2400 5600 0    50   ~ 0
-BUTT2
-Text Label 2400 5500 0    50   ~ 0
-BUTT1
 $Comp
-L Connector:Conn_01x16_Female J4
-U 1 1 5F46892E
-P 2000 6100
-F 0 "J4" H 2450 6100 50  0000 C CNN
-F 1 "Conn_01x16_Female" H 2400 5950 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 2000 6100 50  0001 C CNN
-F 3 "~" H 2000 6100 50  0001 C CNN
-	1    2000 6100
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x16_Female J5
-U 1 1 5F44F8AA
-P 4400 6100
-F 0 "J5" H 4428 6076 50  0000 L CNN
-F 1 "Conn_01x16_Female" H 4428 5985 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 4400 6100 50  0001 C CNN
-F 3 "~" H 4400 6100 50  0001 C CNN
-	1    4400 6100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW4
 U 1 1 5F212C00
-P 4650 1300
-F 0 "SW?" V 4604 1448 50  0000 L CNN
-F 1 "SW_Push" V 4695 1448 50  0000 L CNN
-F 2 "" H 4650 1500 50  0001 C CNN
-F 3 "~" H 4650 1500 50  0001 C CNN
-	1    4650 1300
+P 3200 3100
+F 0 "SW4" V 3154 3248 50  0000 L CNN
+F 1 "SW_Push" V 3245 3248 50  0000 L CNN
+F 2 "" H 3200 3300 50  0001 C CNN
+F 3 "~" H 3200 3300 50  0001 C CNN
+	1    3200 3100
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW5
 U 1 1 5F213BA8
-P 5150 1300
-F 0 "SW?" V 5104 1448 50  0000 L CNN
-F 1 "SW_Push" V 5195 1448 50  0000 L CNN
-F 2 "" H 5150 1500 50  0001 C CNN
-F 3 "~" H 5150 1500 50  0001 C CNN
-	1    5150 1300
+P 3700 3100
+F 0 "SW5" V 3654 3248 50  0000 L CNN
+F 1 "SW_Push" V 3745 3248 50  0000 L CNN
+F 2 "" H 3700 3300 50  0001 C CNN
+F 3 "~" H 3700 3300 50  0001 C CNN
+	1    3700 3100
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW3
 U 1 1 5F214996
-P 4150 1300
-F 0 "SW?" V 4104 1448 50  0000 L CNN
-F 1 "SW_Push" V 4195 1448 50  0000 L CNN
-F 2 "" H 4150 1500 50  0001 C CNN
-F 3 "~" H 4150 1500 50  0001 C CNN
-	1    4150 1300
+P 2700 3100
+F 0 "SW3" V 2654 3248 50  0000 L CNN
+F 1 "SW_Push" V 2745 3248 50  0000 L CNN
+F 2 "" H 2700 3300 50  0001 C CNN
+F 3 "~" H 2700 3300 50  0001 C CNN
+	1    2700 3100
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW2
 U 1 1 5F2149A0
-P 3650 1300
-F 0 "SW?" V 3604 1448 50  0000 L CNN
-F 1 "SW_Push" V 3695 1448 50  0000 L CNN
-F 2 "" H 3650 1500 50  0001 C CNN
-F 3 "~" H 3650 1500 50  0001 C CNN
-	1    3650 1300
+P 2200 3100
+F 0 "SW2" V 2154 3248 50  0000 L CNN
+F 1 "SW_Push" V 2245 3248 50  0000 L CNN
+F 2 "" H 2200 3300 50  0001 C CNN
+F 3 "~" H 2200 3300 50  0001 C CNN
+	1    2200 3100
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW6
 U 1 1 5F215E9C
-P 5650 1300
-F 0 "SW?" V 5604 1448 50  0000 L CNN
-F 1 "SW_Push" V 5695 1448 50  0000 L CNN
-F 2 "" H 5650 1500 50  0001 C CNN
-F 3 "~" H 5650 1500 50  0001 C CNN
-	1    5650 1300
+P 4200 3100
+F 0 "SW6" V 4154 3248 50  0000 L CNN
+F 1 "SW_Push" V 4245 3248 50  0000 L CNN
+F 2 "" H 4200 3300 50  0001 C CNN
+F 3 "~" H 4200 3300 50  0001 C CNN
+	1    4200 3100
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW?
+L Switch:SW_Push SW1
 U 1 1 5F215EA6
-P 3150 1300
-F 0 "SW?" V 3104 1448 50  0000 L CNN
-F 1 "SW_Push" V 3195 1448 50  0000 L CNN
-F 2 "" H 3150 1500 50  0001 C CNN
-F 3 "~" H 3150 1500 50  0001 C CNN
-	1    3150 1300
+P 1700 3100
+F 0 "SW1" V 1654 3248 50  0000 L CNN
+F 1 "SW_Push" V 1745 3248 50  0000 L CNN
+F 2 "" H 1700 3300 50  0001 C CNN
+F 3 "~" H 1700 3300 50  0001 C CNN
+	1    1700 3100
 	0    1    1    0   
 $EndComp
 Wire Notes Line
@@ -344,17 +194,83 @@ Wire Notes Line
 Wire Notes Line
 	500  500  2700 500 
 Wire Wire Line
-	3150 1500 3650 1500
-Connection ~ 3650 1500
+	1700 3300 2200 3300
+Connection ~ 2200 3300
 Wire Wire Line
-	3650 1500 4150 1500
-Connection ~ 4150 1500
+	2200 3300 2700 3300
+Connection ~ 2700 3300
 Wire Wire Line
-	4150 1500 4650 1500
-Connection ~ 4650 1500
+	2700 3300 3200 3300
+Connection ~ 3200 3300
 Wire Wire Line
-	4650 1500 5150 1500
-Connection ~ 5150 1500
+	3200 3300 3700 3300
+Connection ~ 3700 3300
 Wire Wire Line
-	5150 1500 5650 1500
+	3700 3300 4200 3300
+$Comp
+L Connector:Conn_01x16_Female J_placeholder2
+U 1 1 5F206CC2
+P 8000 3650
+F 0 "J_placeholder2" H 8028 3626 50  0000 L CNN
+F 1 "Conn_01x16_Female" H 8028 3535 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 8000 3650 50  0001 C CNN
+F 3 "~" H 8000 3650 50  0001 C CNN
+	1    8000 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x16_Female J_placeholder1
+U 1 1 5F2097DB
+P 6700 3650
+F 0 "J_placeholder1" H 6728 3626 50  0000 L CNN
+F 1 "Conn_01x16_Female" H 6728 3535 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 6700 3650 50  0001 C CNN
+F 3 "~" H 6700 3650 50  0001 C CNN
+	1    6700 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J4
+U 1 1 5F20B695
+P 5250 4350
+F 0 "J4" H 5358 4631 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 5358 4540 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 5250 4350 50  0001 C CNN
+F 3 "~" H 5250 4350 50  0001 C CNN
+	1    5250 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J3
+U 1 1 5F20C0E1
+P 4600 4350
+F 0 "J3" H 4708 4631 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 4708 4540 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 4600 4350 50  0001 C CNN
+F 3 "~" H 4600 4350 50  0001 C CNN
+	1    4600 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J2
+U 1 1 5F20C473
+P 3950 4350
+F 0 "J2" H 4058 4631 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 4058 4540 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 3950 4350 50  0001 C CNN
+F 3 "~" H 3950 4350 50  0001 C CNN
+	1    3950 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J1
+U 1 1 5F20C730
+P 3200 4300
+F 0 "J1" H 3308 4581 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 3308 4490 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 3200 4300 50  0001 C CNN
+F 3 "~" H 3200 4300 50  0001 C CNN
+	1    3200 4300
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
