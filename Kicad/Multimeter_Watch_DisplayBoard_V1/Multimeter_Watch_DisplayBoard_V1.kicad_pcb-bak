@@ -1779,7 +1779,7 @@
   (via (at 134 73) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2))
   (via (at 131.5 75) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2))
   (via (at 137.5 82.5) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2))
-  (via (at 129.5 86.5) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 38))
+  (via (at 129.5 86.5) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2))
   (via (at 109 99) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2))
   (via (at 118 58) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 2) (tstamp 5F20DEDB))
   (segment (start 154 62.525) (end 154.025 62.5) (width 0.5) (layer B.Cu) (net 3))
