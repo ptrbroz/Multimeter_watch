@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 30 0
+LIBS:Multimeter_Watch_Board_V1-cache
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -448,12 +449,12 @@ $EndComp
 $Comp
 L Device:Battery_Cell BT1
 U 1 1 5F40C910
-P 5250 3600
-F 0 "BT1" H 5368 3696 50  0000 L CNN
-F 1 "Some Li-Po?" H 5368 3605 50  0000 L CNN
-F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" V 5250 3660 50  0001 C CNN
-F 3 "~" V 5250 3660 50  0001 C CNN
-	1    5250 3600
+P 5400 3600
+F 0 "BT1" H 5518 3696 50  0000 L CNN
+F 1 "Some Li-Po?" H 5518 3605 50  0000 L CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53047-0210_1x02_P1.25mm_Vertical" V 5400 3660 50  0001 C CNN
+F 3 "~" V 5400 3660 50  0001 C CNN
+	1    5400 3600
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
@@ -461,17 +462,17 @@ Wire Notes Line
 Text Notes 5200 3050 0    118  ~ 0
 Battery
 Wire Wire Line
-	5250 3400 5250 3300
+	5400 3400 5400 3300
 Wire Wire Line
-	5250 3300 5500 3300
+	5400 3300 5650 3300
 Wire Wire Line
-	5250 3800 5500 3800
-Text Label 5500 3800 0    50   ~ 0
+	5400 3800 5650 3800
+Text Label 5650 3800 0    50   ~ 0
 GND
-Text Label 5500 3300 0    50   ~ 0
+Text Label 5650 3300 0    50   ~ 0
 VCC
 Wire Wire Line
-	5250 3700 5250 3800
+	5400 3700 5400 3800
 $Comp
 L Multimeter_Watch_Custom_Symbols:AudioJack3_Ground_renamedPins J1
 U 1 1 5F1E7FCE
@@ -610,7 +611,7 @@ Wire Wire Line
 	9700 5900 9900 5900
 Wire Wire Line
 	9900 6000 9700 6000
-Text Label 9900 6000 0    50   ~ 0
+Text Label 9900 5900 0    50   ~ 0
 SCL
 Text Label 9900 5800 0    50   ~ 0
 PE5
@@ -632,11 +633,7 @@ $EndComp
 Text Notes 7900 4700 3    50   Italic 0
 Charger/Comm shield outline
 Wire Notes Line style dotted
-	7950 4900 8250 4900
-Wire Notes Line style dotted
 	7950 5600 7950 4900
-Wire Notes Line style dotted
-	8250 5600 7950 5600
 Connection ~ 8500 4900
 Wire Wire Line
 	8500 4900 8500 4800
@@ -681,7 +678,7 @@ Wire Wire Line
 	8300 5900 8500 5900
 Wire Wire Line
 	8500 5800 8300 5800
-Text Label 9900 5900 0    50   ~ 0
+Text Label 9900 6000 0    50   ~ 0
 SDA
 Text Label 5950 1300 0    50   ~ 0
 PD7
@@ -701,11 +698,7 @@ F 3 "~" H 8700 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
-	8250 4900 8750 4900
-Wire Notes Line
 	8750 4900 8750 5600
-Wire Notes Line
-	8750 5600 8250 5600
 Wire Wire Line
 	7550 2150 7500 2150
 Wire Wire Line
@@ -731,57 +724,57 @@ Text Notes 2200 6800 1    31   ~ 0
 voltage\n
 Text Notes 3800 5450 0    50   ~ 0
 voltage\n
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5300 4150 5300
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	4150 6850 4150 5300
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	2100 6850 4150 6850
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	2100 6450 2100 6850
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	2300 6450 2100 6450
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	2300 6800 2300 6450
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3950 6800 2300 6800
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3950 5550 3950 6800
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5550 3950 5550
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5500 3450 5550
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3550 5500 3450 5500
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3550 5400 3550 5500
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5400 3550 5400
-Wire Notes Line rgb(194, 0, 184)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5300 3450 5400
 Text Notes 3450 6350 0    50   ~ 0
 RLC\n
 Text Notes 3600 5050 0    50   ~ 0
 current\n
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5800 3450 6150
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3100 6150 3450 6150
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3100 6700 3100 6150
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3750 6700 3100 6700
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3750 5600 3750 6700
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5600 3750 5600
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5700 3450 5600
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3650 5700 3450 5700
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3650 5800 3650 5700
-Wire Notes Line rgb(194, 0, 10)
+Wire Notes Line rgb(194, 0, 0)
 	3450 5800 3650 5800
 Wire Notes Line
 	3450 4950 3450 5250
@@ -791,13 +784,9 @@ Wire Notes Line
 	4000 5250 4000 4950
 Wire Notes Line
 	3450 5250 4000 5250
-Wire Wire Line
-	1350 5700 1050 5700
 Connection ~ 1350 5700
 Wire Wire Line
 	1350 5600 1350 5700
-Wire Wire Line
-	1350 5300 1050 5300
 Connection ~ 1350 5300
 Wire Wire Line
 	1350 5400 1350 5300
@@ -835,11 +824,11 @@ Wire Wire Line
 Text Label 1900 5150 2    47   ~ 0
 PD3
 Wire Wire Line
-	2450 4850 2450 4600
+	2450 4850 2450 4800
 Wire Wire Line
 	2450 4600 2250 4600
 Wire Wire Line
-	2550 4850 2550 4500
+	2550 4850 2550 4800
 Wire Wire Line
 	2550 4500 2250 4500
 Wire Wire Line
@@ -977,9 +966,9 @@ Text Label 3150 4600 0    50   ~ 0
 ADC3
 Text Label 3150 4700 0    50   ~ 0
 ADC2
-Text Label 1050 5700 2    50   ~ 0
+Text Label 850  5700 2    50   ~ 0
 GND
-Text Label 1050 5300 2    50   ~ 0
+Text Label 850  5300 2    50   ~ 0
 VCC
 Text Label 3500 5450 0    50   ~ 0
 SWD
@@ -1157,4 +1146,78 @@ Wire Wire Line
 	5900 4650 6050 4650
 Text Label 6200 4500 0    50   ~ 0
 PD3
+Wire Notes Line style dotted
+	7950 4900 8750 4900
+Wire Notes Line style dotted
+	7950 5600 8750 5600
+$Comp
+L Device:C_Small C6
+U 1 1 5F2226E5
+P 1100 5500
+F 0 "C6" V 900 5500 50  0000 C CNN
+F 1 "10n" V 1000 5500 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 1100 5500 50  0001 C CNN
+F 3 "~" H 1100 5500 50  0001 C CNN
+	1    1100 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  5300 1100 5300
+Wire Wire Line
+	850  5700 1100 5700
+Wire Wire Line
+	1100 5600 1100 5700
+Connection ~ 1100 5700
+Wire Wire Line
+	1100 5700 1350 5700
+Wire Wire Line
+	1100 5400 1100 5300
+Connection ~ 1100 5300
+Wire Wire Line
+	1100 5300 1350 5300
+$Comp
+L Device:C_Small C7
+U 1 1 5F25514C
+P 5200 3550
+F 0 "C7" V 5000 3550 50  0000 C CNN
+F 1 "10u" V 5100 3550 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5200 3550 50  0001 C CNN
+F 3 "~" H 5200 3550 50  0001 C CNN
+	1    5200 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 3450 5200 3300
+Wire Wire Line
+	5200 3300 5400 3300
+Connection ~ 5400 3300
+Wire Wire Line
+	5400 3800 5200 3800
+Wire Wire Line
+	5200 3800 5200 3650
+Connection ~ 5400 3800
+$Comp
+L Device:R_Small R20
+U 1 1 5F27D06D
+P 2550 4700
+F 0 "R20" V 2600 4700 50  0000 C CNN
+F 1 "1k" V 2550 4550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2550 4700 50  0001 C CNN
+F 3 "~" H 2550 4700 50  0001 C CNN
+	1    2550 4700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2550 4600 2550 4500
+$Comp
+L Device:R_Small R19
+U 1 1 5F27D209
+P 2450 4700
+F 0 "R19" V 2500 4700 50  0000 C CNN
+F 1 "1k" V 2450 4550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2450 4700 50  0001 C CNN
+F 3 "~" H 2450 4700 50  0001 C CNN
+	1    2450 4700
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
