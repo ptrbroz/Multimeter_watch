@@ -582,11 +582,11 @@ Wire Wire Line
 	9800 5600 9700 5600
 Wire Wire Line
 	9800 5700 9700 5700
-Text Label 9800 5100 0    50   ~ 0
-RESET
 Text Label 9800 4900 0    50   ~ 0
-VCC_HALF
+RESET
 Text Label 9800 5000 0    50   ~ 0
+VCC_HALF
+Text Label 9800 5100 0    50   ~ 0
 DACout
 Text Label 9800 5700 0    50   ~ 0
 SWC
@@ -1102,7 +1102,7 @@ Wire Wire Line
 	7650 3800 8400 3800
 Wire Wire Line
 	7550 3300 8400 3300
-Text Notes 7850 3500 0    31   ~ 0
+Text Notes 7850 3500 0    31   Italic 0
 I2C pullups moved to enable
 Text Label 5500 5050 2    50   ~ 0
 SCL
@@ -1224,10 +1224,10 @@ RESET
 Wire Wire Line
 	5850 6300 5850 6500
 $Comp
-L Device:R R?
+L Device:R R21
 U 1 1 5F23EEDA
 P 5850 6150
-F 0 "R?" H 5920 6196 50  0000 L CNN
+F 0 "R21" H 5920 6196 50  0000 L CNN
 F 1 "R" H 5920 6105 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 5780 6150 50  0001 C CNN
 F 3 "~" H 5850 6150 50  0001 C CNN
