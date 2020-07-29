@@ -120,17 +120,6 @@ Wire Wire Line
 Text Label 1850 1850 0    50   ~ 0
 GND
 $Comp
-L Switch:SW_Push SW4
-U 1 1 5F212C00
-P 2900 2850
-F 0 "SW4" V 2854 2998 50  0000 L CNN
-F 1 "SW_Push" V 2945 2998 50  0000 L CNN
-F 2 "Multimeter_Watch_custom_footprints:TVCM04N" H 2900 3050 50  0001 C CNN
-F 3 "~" H 2900 3050 50  0001 C CNN
-	1    2900 2850
-	0    1    1    0   
-$EndComp
-$Comp
 L Switch:SW_Push SW5
 U 1 1 5F213BA8
 P 2400 2850
@@ -196,11 +185,6 @@ Connection ~ 1900 3050
 Wire Wire Line
 	1900 3050 2100 3050
 Connection ~ 2400 3050
-Wire Wire Line
-	2400 3050 2900 3050
-Connection ~ 2900 3050
-Wire Wire Line
-	2900 3050 3400 3050
 $Comp
 L Connector:Conn_01x03_Male J4
 U 1 1 5F20B695
@@ -303,8 +287,6 @@ Text Label 1400 2650 1    50   ~ 0
 BUTT2
 Text Label 1900 2650 1    50   ~ 0
 BUTT3
-Text Label 2900 2650 1    50   ~ 0
-BUTT4
 Text Label 2400 2650 1    50   ~ 0
 BUTT5
 Text Label 3400 2650 1    50   ~ 0
@@ -329,4 +311,22 @@ Wire Notes Line
 	500  3600 6000 3600
 Text Label 1850 850  0    50   ~ 0
 VCC
+Connection ~ 2900 3050
+Wire Wire Line
+	2900 3050 3400 3050
+Wire Wire Line
+	2400 3050 2900 3050
+Text Label 2900 2650 1    50   ~ 0
+BUTT4
+$Comp
+L Switch:SW_Push SW4
+U 1 1 5F212C00
+P 2900 2850
+F 0 "SW4" V 2854 2998 50  0000 L CNN
+F 1 "SW_Push" V 2945 2998 50  0000 L CNN
+F 2 "Multimeter_Watch_custom_footprints:TVCM04N" H 2900 3050 50  0001 C CNN
+F 3 "~" H 2900 3050 50  0001 C CNN
+	1    2900 2850
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
