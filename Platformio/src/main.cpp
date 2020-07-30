@@ -15,6 +15,7 @@
 #include "menu.h"
 
 
+#include "sleepUtils.h"
 
 
 #define DEBOUNCE_TIME 200 //in milliseconds. Keep below 255
@@ -30,14 +31,17 @@ volatile uint8_t inputsByte = 0x00;
 //------------------------------------------------------------------------------
 void setup() {
 
+  pinMode(12,OUTPUT);
+  digitalWrite(12,HIGH);
   delay(400);
 
   #if RST_PIN >= 0
   oled.begin(&Adafruit128x64, I2C_ADDRESS, RST_PIN);
-  #else // RST_PIN >= 0
+  #else // RST_PIN >= t
   oled.begin(&Adafruit128x64, I2C_ADDRESS);
   #endif // RST_PIN >= 0
   // Call oled.setI2cClock(frequency) to change from the default frequency.
+  oled.displayRemap(true);
 
   for(int i = D2; i<= D8; i++){
     pinMode(i, INPUT_PULLUP);
@@ -189,7 +193,8 @@ void loop() {
     }
 
     
-
+  //delay(1000);
+  //sleep_sleepTillWakeup();
   }
 }
 
