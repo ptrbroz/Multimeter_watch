@@ -80,17 +80,20 @@ funRetVal linearPS_loop( uint8_t *memPtr)
     if(ccMode)
     {
         int32_t err = (int32_t)dacCurrent- iSetting;
-        dacOut -= (err * 150) / 100;
+        dacOut -= (err * 100) / 100;
+        //Serial.println("cc");
     }
     else
     {
         int32_t err = (int32_t)outputVolts - vSetting;
         dacOut -= (err * 150) / 100;
+        //Serial.println("cv");
     }
 
     dacOut = dacOut > 255 ? 255 : dacOut;
     dacOut = dacOut < 0 ? 0 : dacOut;
     dac_output = dacOut;
+    Serial.println(dacOut);
 
    return CONTINUE_LOOP;
 }

@@ -107,8 +107,8 @@ uint16_t adc_measureBatteryVoltage()
     adc_getBatteryVoltageMeasurementSettings(tempSettings);
     adc_applySettings(tempSettings);
     uint32_t retVal=adc_readADCFixOffset();//TODO: filtering?
-    Serial.println("kdak");
-    Serial.println(retVal);
+    //Serial.println("kdak");
+    //Serial.println(retVal);
     retVal=(REFERENCE_2V048_EXACT*4095UL)/retVal;
     adc_applySettings(backupSettings);
     return (uint16_t)retVal;
