@@ -57,7 +57,7 @@ void setup() {
   // Call oled.setI2cClock(frequency) to change from the default frequency.
 
   oled.setFont(Adafruit5x7);
-  //tone(2,4000,1000);
+  tone(2,4000,100);
 }
 
 
