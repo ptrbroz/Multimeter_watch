@@ -1,6 +1,6 @@
 #include "display.h"
 #include <Arduino.h>
-#include "inputs.h"
+#include "buttons.h"
 #include "program.h"
 #include <limits.h>
 
@@ -24,17 +24,17 @@
 
 
 void printDiffToHeader(unsigned long startMillis, unsigned long endMillis);
-funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
-funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
-funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
-funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal stopWatch_init( uint8_t *memPtr);
+funRetVal stopWatch_loop( uint8_t *memPtr);
+funRetVal stopWatch_deinit( uint8_t *memPtr);
+funRetVal stopWatch_beforeExit( uint8_t *memPtr);
 
 
 extern const program prog_stopWatch = {stopWatch_init, stopWatch_beforeExit, stopWatch_deinit, "Stopwatch", 4 + (4 + maxMeasureCount)*sizeof(unsigned long)};
 
 
 
-funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal stopWatch_init( uint8_t *memPtr){
     //dataBuffer = (uint8_t*) calloc(4 + (4 + maxMeasureCount)*sizeof(unsigned long), 1); 
     oled.clear();
     //preprint separation in header manually (when printed at const. width, it won't fit)
@@ -51,7 +51,7 @@ funRetVal stopWatch_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPt
     return CONTINUE_LOOP;
 }
 
-funRetVal stopWatch_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal stopWatch_deinit( uint8_t *memPtr){
     //free(dataBuffer);
     return CONTINUE_LOOP;
 }
@@ -126,7 +126,7 @@ void printWarning(){
 
 
 
-funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal stopWatch_beforeExit( uint8_t *memPtr){
     oled.set1X();
     oled.setCursor(0,2);
     oled.println("Which action to take?");
@@ -145,14 +145,14 @@ funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t 
         oled.println(menuItems[i]);
     }
 
-    if(JOY_DOWN(risingByte)){
+    if(JOY_DOWN(justPressedButtons)){
         exitMenuPos = (exitMenuPos<4) ? exitMenuPos + 1 : 0;
     }
-    else if(JOY_UP(risingByte)){
+    else if(JOY_UP(justPressedButtons)){
         exitMenuPos = (exitMenuPos>0) ? exitMenuPos - 1 : 4;
     }
 
-    if(BUTT_RIGHT(risingByte)){
+    if(BUTT_RIGHT(justPressedButtons)){
         switch (exitMenuPos){
         
         case 1:
@@ -181,7 +181,7 @@ funRetVal stopWatch_beforeExit(uint8_t risingByte, uint8_t fallingByte, uint8_t 
     return CONTINUE_LOOP;
 }
 
-funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal stopWatch_loop( uint8_t *memPtr){
 
     unsigned long thisMillis = millis();
 
@@ -203,17 +203,17 @@ funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPt
     
 
     if(!running){
-        if(BUTT_RIGHT(risingByte)){
+        if(BUTT_RIGHT(justPressedButtons)){
             running = 1;
             measureStart = thisMillis;
         }
-        else if(BUTT_LEFT(risingByte)){
+        else if(BUTT_LEFT(justPressedButtons)){
             exitMenuPos = 0;
             setLoopFun(stopWatch_beforeExit);            
         }
     }
     else{//running
-        if(BUTT_RIGHT(risingByte)){
+        if(BUTT_RIGHT(justPressedButtons)){
             //save
             measuresArray[measureIndex] = thisMillis + offsetMillis - measureStart;
             measureIndex++;
@@ -224,19 +224,19 @@ funRetVal stopWatch_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPt
                 warningStart = thisMillis; //yea, this'll fail once in a million years when thisMillis happens to be zero at the moment of running out of memory slots, but who cares
             }
         }
-        else if(BUTT_LEFT(risingByte)){
+        else if(BUTT_LEFT(justPressedButtons)){
             running = 0;
             offsetMillis += thisMillis - measureStart; //todo worry about overflow?
         }
     }
 
-    if(JOY_DOWN(risingByte)){
+    if(JOY_DOWN(justPressedButtons)){
         if(++scrollPos >= maxMeasureCount-5){
             scrollPos--;
         }
     }
 
-    if(JOY_UP(risingByte)){
+    if(JOY_UP(justPressedButtons)){
         if(scrollPos-- == 0){
             scrollPos = 0;
         }

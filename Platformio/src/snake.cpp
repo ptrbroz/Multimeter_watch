@@ -2,14 +2,14 @@
 
 #include "display.h"
 #include <Arduino.h>
-#include "inputs.h"
+#include "buttons.h"
 #include "program.h"
 
-funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
-funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
-funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
-funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
-funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer);
+funRetVal snake_loop( uint8_t *snakeBuffer);
+funRetVal snake_gameover( uint8_t *snakeBuffer);
+funRetVal snake_win( uint8_t *snakeBuffer);
+funRetVal snake_init( uint8_t *snakeBuffer);
+funRetVal snake_deinit( uint8_t *snakeBuffer);
 
 #define XSIZE 25
 #define YSIZE 6
@@ -91,11 +91,11 @@ void printCharToGameDisplay(char c, uint8_t x, uint8_t y){
 
 uint8_t getNextDirection(uint8_t currentDirection, uint8_t inputByte, uint8_t defaultDirection);
 
-funRetVal snake_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
+funRetVal snake_deinit( uint8_t *snakeBuffer){
     return CONTINUE_LOOP;
 }
 
-funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
+funRetVal snake_init( uint8_t *snakeBuffer){
     oled.setCursor(0,0);
     oled.set2X();
     oled.print("SNAKE!");
@@ -141,7 +141,7 @@ funRetVal snake_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuff
     return CONTINUE_LOOP;
 }
 
-funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
+funRetVal snake_loop( uint8_t *snakeBuffer){
 
     printCharToGameDisplay('*', foodX, foodY);
 
@@ -151,14 +151,14 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuff
     INCREMENT(aheadIndex);
     uint8_t defaultDirection = readFromSnake(aheadIndex, snakeBuffer);
 
-    uint8_t nextDirection = getNextDirection(headDirection, risingByte,defaultDirection);
+    uint8_t nextDirection = getNextDirection(headDirection, justPressedButtons, defaultDirection);
 
     writeToSnake(aheadIndex, nextDirection, snakeBuffer);
 
     unsigned long thisMillis = millis();
 
 
-    if((thisMillis-lastMillis < SNAKETIME) && (risingByte==0)){ //don't wait if there is input - hopefully to make controls more responsive
+    if((thisMillis-lastMillis < SNAKETIME) && (justPressedButtons==0)){ //don't wait if there is input - hopefully to make controls more responsive
         return CONTINUE_LOOP;
     }
     lastMillis = thisMillis;
@@ -255,7 +255,7 @@ funRetVal snake_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuff
 }
 
 
-funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
+funRetVal snake_gameover(uint8_t *snakeBuffer){
 
     delay(500);
 
@@ -290,7 +290,7 @@ funRetVal snake_gameover(uint8_t risingByte, uint8_t fallingByte, uint8_t *snake
     return PROGRAM_END;
 }
 
-funRetVal snake_win(uint8_t risingByte, uint8_t fallingByte, uint8_t *snakeBuffer){
+funRetVal snake_win(uint8_t *snakeBuffer){
 
     delay(700);
     oled.setCursor(10,3);

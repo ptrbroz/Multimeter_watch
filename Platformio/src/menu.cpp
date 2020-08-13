@@ -2,10 +2,13 @@
 #include "display.h"
 #include <Arduino.h>
 #include "clockFace.h"
-#include "inputs.h"
+#include "buttons.h"
 #include "snake.h"
 #include "program.h"
 #include "stopwatch.h"
+#include "clockSettings.h"
+#include "keyboardTest.h"
+#include "linearPowerSupply.h"
 
 
 
@@ -22,7 +25,11 @@ void drawScrollbar(uint8_t menuCursor);
 program prog_placeHolder = {NULL, NULL, NULL, "Placeholder", 0};
 
 //scrolling-capable main menu, supports up to 32 elements
-funRetVal menu(uint8_t risingByte, uint8_t fallingByte, uint8_t *unusedMemoryPointer){ //null memory pointer passed to menu to keep signature same as program funs 
+funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to menu to keep signature same as program funs 
+    if(justPressedButtons==0&&justReleasedButtons==0&&autoRepeatPressedButtons==0)
+    {
+        return CONTINUE_LOOP;
+    }
     
     static uint8_t menuState = 0x00;
     uint8_t menuCursor = menuState & 0x1F;
@@ -32,10 +39,10 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte, uint8_t *unusedMemoryPoi
     program programArray[menuElements] = {
                                         prog_stopWatch,
                                         prog_clockFace,
+                                        prog_clockSettings,
                                         prog_snake, 
-                                        prog_placeHolder,
-                                        prog_placeHolder,
-                                        prog_placeHolder,
+                                        prog_KeyboardTest,
+                                        prog_linearPowerSupply,
                                         prog_placeHolder,
                                         prog_placeHolder,
                                         prog_placeHolder,
@@ -78,13 +85,13 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte, uint8_t *unusedMemoryPoi
     drawScrollbar(menuCursor);
 
     //handle movement
-    if(JOY_DOWN(risingByte) && menuCursor != menuElements-1){
+    if(JOY_DOWN(justPressedButtons|autoRepeatPressedButtons) && menuCursor != menuElements-1){
         if(cursorPosOnScreen != visibleElements-1){
             cursorPosOnScreen++;
         }
         menuCursor++;
     }
-    else if(JOY_UP(risingByte) && menuCursor != 0){
+    else if(JOY_UP(justPressedButtons|autoRepeatPressedButtons) && menuCursor != 0){
         if(cursorPosOnScreen != 0){
             cursorPosOnScreen--;
         }
@@ -93,7 +100,7 @@ funRetVal menu(uint8_t risingByte, uint8_t fallingByte, uint8_t *unusedMemoryPoi
 
     funRetVal ret = CONTINUE_LOOP;
 
-    if(BUTT_RIGHT(risingByte)){
+    if(BUTT_RIGHT(justPressedButtons)){
         oled.clear();
         setProgram(programArray[menuCursor]);
         ret = PROGRAM_START;        

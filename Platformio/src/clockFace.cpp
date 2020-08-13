@@ -3,50 +3,40 @@
 #include "display.h"
 #include <Arduino.h>
 #include "program.h"
+#include "rtcUtils.h"
+#include "time.h"
+#include "buttons.h"
 
 
-funRetVal clockFace_init(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal clockFace_init( uint8_t *memPtr){
     return CONTINUE_LOOP;
 }
 
-funRetVal clockFace_deinit(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal clockFace_deinit( uint8_t *memPtr){
     return CONTINUE_LOOP;
 }
 
-funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr);
+funRetVal clockFace_loop( uint8_t *memPtr);
 
 extern const program prog_clockFace = {clockFace_init, clockFace_loop,clockFace_deinit, "Clockface", 0};
 
-funRetVal clockFace_loop(uint8_t risingByte, uint8_t fallingByte, uint8_t *memPtr){
+funRetVal clockFace_loop( uint8_t *memPtr){
 
-    //temporary for testing, later via timer interrupt?
-    static unsigned long OFFSET = rand();
-    unsigned long thisMillis = millis() + OFFSET;
-    int seconds = thisMillis / 1000;
-    int minutes = seconds / 60;
-    int hours = minutes / 60;
-    minutes = minutes % 60;
-    seconds = seconds % 60;
+    struct tm ts = rtc_getTimeStruct();
 
-    
-    static uint8_t lastSeconds = 0;
-    
-    if(seconds != lastSeconds){
-        oled.set2X();
-        oled.setCursor(10, 3);
-        char string[9];
-        sprintf(string, "%02d", hours);
-        sprintf(string + 3, "%02d", minutes);
-        sprintf(string + 6, "%02d", seconds);
-        string[2] = ':';
-        string[5] = ':';
-        oled.print(string);
-        oled.set1X();
-        lastSeconds = seconds;
-    }
+    oled.set2X();
+    oled.setCursor(10, 3);
+    char str[9];
+    sprintf(str, "%02d", ts.tm_hour);
+    sprintf(str + 3, "%02d", ts.tm_min);
+    sprintf(str + 6, "%02d", ts.tm_sec);
+    str[2] = ':';
+    str[5] = ':';
+    oled.print(str);
+    oled.set1X();
 
-    
-    if(risingByte){
+    if (justPressedButtons)
+    {
         oled.clear();
         return PROGRAM_END;
     }

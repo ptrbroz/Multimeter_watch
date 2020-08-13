@@ -22,7 +22,7 @@ Then, program.deinit function will be called.
 */
 
 
-typedef funRetVal (*funPtr)(uint8_t, uint8_t, uint8_t *);
+typedef funRetVal (*funPtr)(uint8_t *);
 
 struct program {
     funPtr init;

@@ -17,7 +17,7 @@ uint8_t intToBcd(int _int)
   return ((tens << 4) & 0b11110000) | units;
 }
 
-struct tm rtc_setTimeStruct(struct tm _timeStruct)
+void rtc_setTimeStruct(struct tm _timeStruct)
 {
   Wire.beginTransmission(PCF85163T_I2C_ADDR);
   Wire.write(2);
@@ -30,7 +30,12 @@ struct tm rtc_setTimeStruct(struct tm _timeStruct)
 
 struct tm rtc_getTimeStruct()
 {
-  struct tm retVal = {0};
+  static struct tm retVal = {0};
+  static unsigned long lastMillis=0;
+  if(millis()-lastMillis<1000)
+  {
+    return retVal;//simply return the last reading when we are asking too frequently...
+  }
   Wire.beginTransmission(PCF85163T_I2C_ADDR);
   Wire.write(2);
   Wire.endTransmission(false);
