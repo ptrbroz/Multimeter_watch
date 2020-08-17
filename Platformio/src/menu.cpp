@@ -9,6 +9,7 @@
 #include "clockSettings.h"
 #include "keyboardTest.h"
 #include "linearPowerSupply.h"
+#include "voltmeter.h"
 
 
 
@@ -43,7 +44,7 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_snake, 
                                         prog_KeyboardTest,
                                         prog_linearPowerSupply,
-                                        prog_placeHolder,
+                                        prog_voltmeter,
                                         prog_placeHolder,
                                         prog_placeHolder,
                                         prog_placeHolder

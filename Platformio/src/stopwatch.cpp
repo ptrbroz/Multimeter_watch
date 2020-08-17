@@ -3,6 +3,7 @@
 #include "buttons.h"
 #include "program.h"
 #include <limits.h>
+#include "main.h"
 
 
 //static uint8_t *dataBuffer;
@@ -48,11 +49,14 @@ funRetVal stopWatch_init( uint8_t *memPtr){
     oled.set1X();
     oled.setCursor(0, 6);
     printDiffToHeader(0,0);
+    setTimeTillSleep(-1);//do not sleep
     return CONTINUE_LOOP;
 }
 
 funRetVal stopWatch_deinit( uint8_t *memPtr){
     //free(dataBuffer);
+
+    setTimeTillSleep(10000);//do not sleep
     return CONTINUE_LOOP;
 }
 

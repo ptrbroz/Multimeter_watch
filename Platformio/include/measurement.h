@@ -36,3 +36,4 @@ void adc_getBatteryVoltageMeasurementSettings(struct adcSettings& _settings);
 void printBin(uint8_t var);
 void adc_printSettings(struct adcSettings& _settings);
 uint16_t adc_measureBatteryVoltage();
+uint16_t adc_readADCFiltered(uint32_t _timeWindow);

@@ -19,6 +19,7 @@ uint16_t dac_getRawAdcBeforeShunt()
     adc_getDefaultSettings(adcs);
     adc_adjustReference(adcs,ref_avcc);
     adc_adjustMuxSource(adcs, muxSource_A2);
+    adc_applySettings(adcs);
     return adc_readADCFixOffset();
 }
 

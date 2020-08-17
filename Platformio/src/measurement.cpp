@@ -106,13 +106,12 @@ uint16_t adc_measureBatteryVoltage()
     struct adcSettings tempSettings;
     adc_getBatteryVoltageMeasurementSettings(tempSettings);
     adc_applySettings(tempSettings);
-    uint32_t retVal=adc_readADCFixOffset();//TODO: filtering?
+    uint32_t retVal=adc_readADCFixOffset();
     //Serial.println("kdak");
     //Serial.println(retVal);
     retVal=(REFERENCE_2V048_EXACT*4095UL)/retVal;
     adc_applySettings(backupSettings);
     return (uint16_t)retVal;
-
 }
 
 uint16_t adc_readADC()
@@ -140,6 +139,19 @@ uint16_t adc_readADCFixOffset()
   pVal = adc_readADC();
   pVal = (pVal + nVal) >> 1;
   return pVal;
+}
+
+uint16_t adc_readADCFiltered(uint32_t _timeWindow)
+{
+    uint32_t startMillis=millis();
+    uint32_t sum=0;
+    uint32_t measCount=0;
+    while(millis()-startMillis<_timeWindow)
+    {
+        sum+=adc_readADCFixOffset();
+        measCount++;
+    }
+    return sum/measCount;
 }
 
 void adc_printSettings(struct adcSettings& _settings)

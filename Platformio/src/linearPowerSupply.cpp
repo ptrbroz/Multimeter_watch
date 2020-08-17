@@ -11,21 +11,24 @@
 
 
 void adjustVoltage(menuCBData data, uint8_t len);
+void exitApp(menuCBData data, uint8_t len);
 
-#define ccMode (*(programMemPtr+0))
-#define vSetting (*(programMemPtr+1))
-#define iSetting (*(programMemPtr+2))
-#define dacOut (*((int32_t*)(programMemPtr+3)))
+#define exitFlag (*(programMemPtr+0))
+#define ccMode (*(programMemPtr+1))
+#define vSetting (*(programMemPtr+2))
+#define iSetting (*(programMemPtr+3))
+#define dacOut (*((int32_t*)(programMemPtr+4)))
 
 
 
+MENU_ITEM_CMD(menuItemExit,"Exit",exitApp,-1,0,0,0);
 MENU_ITEM_CMD(menuItemVminus,"Voltage -",adjustVoltage,-1,0,0,0);
 MENU_ITEM_CMD(menuItemVplus,"Voltage +",adjustVoltage,1,0,0,0);
 MENU_ITEM_CMD(menuItemIminus,"Current -",adjustCurrent,-1,0,0,0);
 MENU_ITEM_CMD(menuItemIplus,"Current +",adjustCurrent,1,0,0,0);
 
 
-MENU(mainMenu,"linearPSMenu",0,&menuItemIminus,&menuItemVminus,&menuItemVplus,&menuItemIplus);
+MENU(mainMenu,"linearPSMenu",&menuItemExit,&menuItemIminus,&menuItemVminus,&menuItemVplus,&menuItemIplus);
 
 
 const program prog_linearPowerSupply= {linearPS_init, linearPS_loop, linearPS_deinit, "Linear power supply", 8};
@@ -36,6 +39,7 @@ funRetVal linearPS_init(uint8_t *memPtr)
     vSetting=0;
     iSetting=0;
     dacOut=0;
+    exitFlag=0;
     setCurrentMenu(&mainMenu);
     setTimeTillSleep(-1);//do not sleep
     dac_init();
@@ -44,6 +48,10 @@ funRetVal linearPS_init(uint8_t *memPtr)
 
 funRetVal linearPS_loop( uint8_t *memPtr)
 {
+    if(exitFlag)
+    {
+        return PROGRAM_END;
+    }
     static unsigned long lastCCEventMillis=0;//TODO: switch to pseudostatic
     if(justPressedButtons!=0||autoRepeatPressedButtons!=0)
     {
@@ -93,7 +101,7 @@ funRetVal linearPS_loop( uint8_t *memPtr)
     dacOut = dacOut > 255 ? 255 : dacOut;
     dacOut = dacOut < 0 ? 0 : dacOut;
     dac_output = dacOut;
-    Serial.println(dacOut);
+    Serial.println(dac_output);
 
    return CONTINUE_LOOP;
 }
@@ -139,4 +147,10 @@ void adjustCurrent(menuCBData data, uint8_t len)
         iSetting++;
         }
     }
+}
+
+
+void exitApp(menuCBData data, uint8_t len)
+{
+    exitFlag=true;
 }

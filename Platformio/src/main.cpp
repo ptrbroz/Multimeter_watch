@@ -20,6 +20,7 @@
 #include "sleepUtils.h"
 #include "measurement.h"
 #include "dacUtils.h"
+#include "ohmMeter.h"
 
 int32_t timeTillSleep=10000;
 uint8_t *programMemPtr;
@@ -31,6 +32,7 @@ timeTillSleep=_t;
 
 //------------------------------------------------------------------------------
 void setup() {
+
 
   pinMode(D3,OUTPUT);
   digitalWrite(D3,HIGH);
@@ -58,6 +60,11 @@ void setup() {
 
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
+  /*while(true)
+  {
+    Serial.println(ohmmeter_getRawADCLowRange());
+  }
+  */
 }
 
 

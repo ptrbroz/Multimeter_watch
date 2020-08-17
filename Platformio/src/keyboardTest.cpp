@@ -9,9 +9,14 @@
 
 
 void typeKey(menuCBData data, uint8_t len);
+void exitKbrd(menuCBData data, uint8_t len);
+void deleteKey(menuCBData data, uint8_t len);
 
-#define hourSetting (*(memPtr+0))
-#define minSetting (*(memPtr+1))
+MENU_ITEM_CMD(menuItemExit,"Exit",exitKbrd,-1,0,0,0);
+
+#define exitFlag (*(programMemPtr+0))
+#define textIndex (*(programMemPtr+1))
+#define text (char*)(programMemPtr+2)
 
 
 
@@ -42,12 +47,13 @@ MENU_ITEM_CMD(menuItemX,"X",typeKey,(int)'x',0,0,0);
 MENU_ITEM_CMD(menuItemY,"Y",typeKey,(int)'y',0,0,0);
 MENU_ITEM_CMD(menuItemZ,"Z",typeKey,(int)'z',0,0,0);
 MENU_ITEM_CMD(menuItemSpace,"(space)",typeKey,(int)' ',0,0,0);
+MENU_ITEM_CMD(menuItemBackspace,"(backspace)",deleteKey,(int)' ',0,0,0);
 
 MENU(menuABCDEF,"abcdef",&menuItemA,&menuItemB,&menuItemC,&menuItemD,&menuItemE,&menuItemF);
 MENU(menuGHIJKL,"ghijkl",&menuItemG,&menuItemH,&menuItemI,&menuItemJ,&menuItemK,&menuItemL);
 MENU(menuMNOPQR,"mnopqr",&menuItemM,&menuItemN,&menuItemO,&menuItemP,&menuItemQ,&menuItemR);
 MENU(menuSTUVWX,"stuvwx",&menuItemS,&menuItemT,&menuItemU,&menuItemV,&menuItemW,&menuItemX);
-MENU(menuYZ,"yz",&menuItemY,&menuItemZ,&menuItemSpace);
+MENU(menuYZ,"yz",&menuItemY,&menuItemZ,&menuItemSpace,&menuItemBackspace);
 
 
 MENU_ITEM_TRANS(menuItemABCDEF,"abcdef",menuABCDEF);
@@ -56,9 +62,9 @@ MENU_ITEM_TRANS(menuItemMNOPQR,"mnopqr",menuMNOPQR);
 MENU_ITEM_TRANS(menuItemSTUVWX,"stuvwx",menuSTUVWX);
 MENU_ITEM_TRANS(menuItemYZ,"yz...",menuYZ);
 
-MENU(menuAlphabet,"alphabet",&menuItemABCDEF,&menuItemGHIJKL,&menuItemMNOPQR,&menuItemSTUVWX,&menuItemYZ);
+MENU(menuAlphabet,"alphabet",&menuItemExit,&menuItemABCDEF,&menuItemGHIJKL,&menuItemMNOPQR,&menuItemSTUVWX,&menuItemYZ);
 
-const program prog_KeyboardTest= {keyboardTest_init, keyboardTest_loop, keyboardTest_deinit, "Keyboard test", 0};
+const program prog_KeyboardTest= {keyboardTest_init, keyboardTest_loop, keyboardTest_deinit, "Keyboard test", 50};
 
 funRetVal keyboardTest_init(uint8_t *memPtr)
 {
@@ -70,6 +76,10 @@ funRetVal keyboardTest_init(uint8_t *memPtr)
 
 funRetVal keyboardTest_loop( uint8_t *memPtr)
 {
+    if(exitFlag)
+    {
+        return PROGRAM_END;
+    }
     if(justPressedButtons!=0)
     {
         int index=buttonByteToMenuIndex(justPressedButtons);
@@ -87,6 +97,29 @@ funRetVal keyboardTest_deinit(uint8_t *memPtr)
 
 void typeKey(menuCBData data, uint8_t len)
 {
-    Serial.write(data.ints[0]);
+    *(text+textIndex)=data.ints[0];
+    textIndex++;
     setCurrentMenu(&menuAlphabet);
+    oled.setCursor(0,0);
+    oled.print(text);
+}
+
+void deleteKey(menuCBData data, uint8_t len)
+{
+
+    if (textIndex == 0)
+    {
+        return;
+    }
+
+    textIndex--;
+    *(text + textIndex) = data.ints[0];
+    setCurrentMenu(&menuAlphabet);
+    oled.setCursor(0, 0);
+    oled.print(text);
+}
+
+void exitKbrd(menuCBData data, uint8_t len)
+{
+    exitFlag=true;
 }
