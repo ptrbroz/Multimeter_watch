@@ -23,35 +23,19 @@ funRetVal clockSettings_loop( uint8_t *memPtr)
 {
     if (JOY_UP(justPressedButtons|autoRepeatPressedButtons))
     {
-        hourSetting++;
+        hourSetting = (hourSetting == 23 ? 0 : hourSetting + 1);
     }
     if (JOY_DOWN(justPressedButtons|autoRepeatPressedButtons))
     {
-        hourSetting--;
+        hourSetting = (hourSetting == 0 ? 23 : hourSetting - 1);
     }
     if (JOY_RIGHT(justPressedButtons|autoRepeatPressedButtons))
     {
-        minSetting++;
+        minSetting = (minSetting == 59 ? 0 : minSetting + 1);
     }
     if (JOY_LEFT(justPressedButtons|autoRepeatPressedButtons))
     {
-        minSetting--;
-    }
-    if (minSetting < 0)
-    {
-        minSetting = 59;
-    }
-    if (minSetting > 59)
-    {
-        minSetting = 0;
-    }
-    if (hourSetting > 23)
-    {
-        hourSetting = 0;
-    }
-    if (hourSetting < 0)
-    {
-        hourSetting = 23;
+        minSetting = (minSetting == 0 ? 59 : minSetting - 1);
     }
     if (BUTT_RIGHT(justPressedButtons))
     {
