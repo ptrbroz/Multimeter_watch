@@ -585,7 +585,7 @@ U 1 1 5F46892E
 P 3000 1550
 F 0 "J4" H 2800 550 50  0000 C CNN
 F 1 "Conn_01x16_Female" H 2800 650 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 3000 1550 50  0001 C CNN
+F 2 "" H 3000 1550 50  0001 C CNN
 F 3 "~" H 3000 1550 50  0001 C CNN
 	1    3000 1550
 	-1   0    0    -1  
@@ -652,7 +652,7 @@ U 1 1 5F44F8AA
 P 2200 1550
 F 0 "J5" H 2050 550 50  0000 L CNN
 F 1 "Conn_01x16_Female" H 1700 650 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 2200 1550 50  0001 C CNN
+F 2 "" H 2200 1550 50  0001 C CNN
 F 3 "~" H 2200 1550 50  0001 C CNN
 	1    2200 1550
 	1    0    0    -1  
