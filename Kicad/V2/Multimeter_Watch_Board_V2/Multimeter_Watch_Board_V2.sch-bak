@@ -1350,23 +1350,23 @@ Wire Wire Line
 Wire Notes Line
 	4900 500  4900 5400
 $Comp
-L Connector:Conn_01x11_Female J7
+L Connector:Conn_01x11_Female J?
 U 1 1 5F85C19E
 P 2200 3300
-F 0 "J7" H 2050 2600 50  0000 L CNN
+F 0 "J?" H 2050 2600 50  0000 L CNN
 F 1 "Conn_01x11_Female" H 1650 2700 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 2200 3300 50  0001 C CNN
+F 2 "" H 2200 3300 50  0001 C CNN
 F 3 "~" H 2200 3300 50  0001 C CNN
 	1    2200 3300
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x11_Female J8
+L Connector:Conn_01x11_Female J?
 U 1 1 5F85E8C6
 P 2800 3300
-F 0 "J8" H 2700 2600 50  0000 C CNN
+F 0 "J?" H 2700 2600 50  0000 C CNN
 F 1 "Conn_01x11_Female" H 2700 2700 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 2800 3300 50  0001 C CNN
+F 2 "" H 2800 3300 50  0001 C CNN
 F 3 "~" H 2800 3300 50  0001 C CNN
 	1    2800 3300
 	-1   0    0    -1  
