@@ -387,8 +387,6 @@ Text Notes 9800 700  0    118  ~ 0
 DAC
 Wire Notes Line
 	4900 2800 11200 2800
-Wire Notes Line
-	4900 4050 11200 4050
 Wire Wire Line
 	6550 3600 6500 3600
 Wire Wire Line
@@ -468,10 +466,6 @@ Wire Wire Line
 Wire Wire Line
 	9600 650  9600 700 
 Wire Notes Line
-	8600 350  8600 4050
-Wire Notes Line
-	7000 6500 11200 6500
-Wire Notes Line
 	11200 500  11200 6500
 $Comp
 L Device:C_Small C2
@@ -511,17 +505,17 @@ Wire Wire Line
 Connection ~ 10900 1150
 Wire Wire Line
 	10900 1150 11000 1150
-Text Label 3000 2800 0    50   ~ 0
+Text Label 8750 4950 0    50   ~ 0
 GND
-Text Label 3000 2900 0    50   ~ 0
+Text Label 8750 5050 0    50   ~ 0
 VCC_HALF
-Text Label 3000 3000 0    50   ~ 0
+Text Label 8750 5150 0    50   ~ 0
 DACout
-Text Label 3000 3500 0    50   ~ 0
+Text Label 8750 5650 0    50   ~ 0
 SWD
-Text Label 3000 3200 0    50   ~ 0
+Text Label 8750 5350 0    50   ~ 0
 ADC6
-Text Label 3000 3100 0    50   ~ 0
+Text Label 8750 5250 0    50   ~ 0
 ADC3
 Text Label 5950 1300 0    50   ~ 0
 PD7
@@ -540,265 +534,265 @@ Wire Wire Line
 	5200 1050 7350 1050
 Wire Wire Line
 	7350 950  7100 950 
-Text Notes 2300 7550 1    31   ~ 0
+Text Notes 2250 3750 1    31   ~ 0
 voltage\n
-Text Notes 3900 6200 0    50   ~ 0
+Text Notes 3850 2400 0    50   ~ 0
 voltage\n
 Wire Notes Line rgb(194, 0, 0)
-	3550 6050 4250 6050
+	3500 2250 4200 2250
 Wire Notes Line rgb(194, 0, 0)
-	4250 7600 4250 6050
+	4200 3800 4200 2250
 Wire Notes Line rgb(194, 0, 0)
-	2200 7600 4250 7600
+	2150 3800 4200 3800
 Wire Notes Line rgb(194, 0, 0)
-	2200 7200 2200 7600
+	2150 3400 2150 3800
 Wire Notes Line rgb(194, 0, 0)
-	2400 7200 2200 7200
+	2350 3400 2150 3400
 Wire Notes Line rgb(194, 0, 0)
-	2400 7550 2400 7200
+	2350 3750 2350 3400
 Wire Notes Line rgb(194, 0, 0)
-	4050 7550 2400 7550
+	4000 3750 2350 3750
 Wire Notes Line rgb(194, 0, 0)
-	4050 6300 4050 7550
+	4000 2500 4000 3750
 Wire Notes Line rgb(194, 0, 0)
-	3550 6300 4050 6300
+	3500 2500 4000 2500
 Wire Notes Line rgb(194, 0, 0)
-	3550 6250 3550 6300
+	3500 2450 3500 2500
 Wire Notes Line rgb(194, 0, 0)
-	3650 6250 3550 6250
+	3600 2450 3500 2450
 Wire Notes Line rgb(194, 0, 0)
-	3650 6150 3650 6250
+	3600 2350 3600 2450
 Wire Notes Line rgb(194, 0, 0)
-	3550 6150 3650 6150
+	3500 2350 3600 2350
 Wire Notes Line rgb(194, 0, 0)
-	3550 6050 3550 6150
-Text Notes 3550 7100 0    50   ~ 0
+	3500 2250 3500 2350
+Text Notes 3500 3300 0    50   ~ 0
 RLC\n
-Text Notes 3700 5800 0    50   ~ 0
+Text Notes 3650 2000 0    50   ~ 0
 current\n
 Wire Notes Line rgb(194, 0, 0)
-	3550 6550 3550 6900
+	3500 2750 3500 3100
 Wire Notes Line rgb(194, 0, 0)
-	3200 6900 3550 6900
+	3150 3100 3500 3100
 Wire Notes Line rgb(194, 0, 0)
-	3200 7450 3200 6900
+	3150 3650 3150 3100
 Wire Notes Line rgb(194, 0, 0)
-	3850 7450 3200 7450
+	3800 3650 3150 3650
 Wire Notes Line rgb(194, 0, 0)
-	3850 6350 3850 7450
+	3800 2550 3800 3650
 Wire Notes Line rgb(194, 0, 0)
-	3550 6350 3850 6350
+	3500 2550 3800 2550
 Wire Notes Line rgb(194, 0, 0)
-	3550 6450 3550 6350
+	3500 2650 3500 2550
 Wire Notes Line rgb(194, 0, 0)
-	3750 6450 3550 6450
+	3700 2650 3500 2650
 Wire Notes Line rgb(194, 0, 0)
-	3750 6550 3750 6450
+	3700 2750 3700 2650
 Wire Notes Line rgb(194, 0, 0)
-	3550 6550 3750 6550
+	3500 2750 3700 2750
 Wire Notes Line
-	3550 5700 3550 6000
+	3500 1900 3500 2200
 Wire Notes Line
-	4100 5700 3550 5700
+	4050 1900 3500 1900
 Wire Notes Line
-	4100 6000 4100 5700
+	4050 2200 4050 1900
 Wire Notes Line
-	3550 6000 4100 6000
-Connection ~ 1450 6450
+	3500 2200 4050 2200
+Connection ~ 1400 2650
 Wire Wire Line
-	1450 6350 1450 6450
-Connection ~ 1450 6050
+	1400 2550 1400 2650
+Connection ~ 1400 2250
 Wire Wire Line
-	1450 6150 1450 6050
+	1400 2350 1400 2250
 $Comp
 L Device:C_Small C3
 U 1 1 5F284FFC
-P 1450 6250
-F 0 "C3" V 1250 6250 50  0000 C CNN
-F 1 "100n" V 1350 6250 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1450 6250 50  0001 C CNN
-F 3 "~" H 1450 6250 50  0001 C CNN
-	1    1450 6250
+P 1400 2450
+F 0 "C3" V 1200 2450 50  0000 C CNN
+F 1 "100n" V 1300 2450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1400 2450 50  0001 C CNN
+F 3 "~" H 1400 2450 50  0001 C CNN
+	1    1400 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1600 6300 2150 6300
+	1550 2500 2100 2500
 Wire Wire Line
-	1600 6450 1450 6450
+	1550 2650 1400 2650
 Wire Wire Line
-	1600 6300 1600 6450
+	1550 2500 1550 2650
 Wire Wire Line
-	1600 6200 2150 6200
+	1550 2400 2100 2400
 Wire Wire Line
-	1600 6050 1450 6050
+	1550 2250 1400 2250
 Wire Wire Line
-	1600 6200 1600 6050
+	1550 2400 1550 2250
 Wire Wire Line
-	2450 5600 2450 5450
+	2400 1800 2400 1650
 Wire Wire Line
-	2450 5450 2350 5450
-Text Label 2350 5450 2    47   ~ 0
+	2400 1650 2300 1650
+Text Label 2300 1650 2    47   ~ 0
 PD2
 Wire Wire Line
-	2150 5900 2000 5900
-Text Label 2000 5900 2    47   ~ 0
+	2100 2100 1950 2100
+Text Label 1950 2100 2    47   ~ 0
 PD3
 Wire Wire Line
-	2550 5600 2550 5550
+	2500 1800 2500 1750
 Wire Wire Line
-	2550 5350 2350 5350
+	2500 1550 2300 1550
 Wire Wire Line
-	2650 5600 2650 5550
+	2600 1800 2600 1750
 Wire Wire Line
-	2650 5250 2350 5250
+	2600 1450 2300 1450
 Wire Wire Line
-	2750 5600 2750 5150
+	2700 1800 2700 1350
 Wire Wire Line
-	2750 5150 2350 5150
+	2700 1350 2300 1350
 Wire Wire Line
-	3150 5600 3150 5450
+	3100 1800 3100 1650
 Wire Wire Line
-	3150 5450 3250 5450
+	3100 1650 3200 1650
 Wire Wire Line
-	3050 5600 3050 5350
+	3000 1800 3000 1550
 Wire Wire Line
-	3050 5350 3250 5350
+	3000 1550 3200 1550
 Wire Wire Line
-	2950 5600 2950 5250
+	2900 1800 2900 1450
 Wire Wire Line
-	2950 5250 3250 5250
+	2900 1450 3200 1450
 Wire Wire Line
-	2850 5600 2850 5150
+	2800 1800 2800 1350
 Wire Wire Line
-	2850 5150 3250 5150
-Text Label 3250 5150 0    47   ~ 0
+	2800 1350 3200 1350
+Text Label 3200 1350 0    47   ~ 0
 SCL
-Text Label 3250 5250 0    47   ~ 0
+Text Label 3200 1450 0    47   ~ 0
 SDA
 Wire Wire Line
-	3150 6900 3150 7050
+	3100 3100 3100 3250
 Wire Wire Line
-	3150 7050 3250 7050
+	3100 3250 3200 3250
 Wire Wire Line
-	3050 6900 3050 7150
+	3000 3100 3000 3350
 Wire Wire Line
-	3050 7150 3250 7150
+	3000 3350 3200 3350
 Wire Wire Line
-	2950 6900 2950 7250
+	2900 3100 2900 3450
 Wire Wire Line
-	2950 7250 3250 7250
+	2900 3450 3200 3450
 Wire Wire Line
-	2850 6900 2850 7350
+	2800 3100 2800 3550
 Wire Wire Line
-	2850 7350 3250 7350
+	2800 3550 3200 3550
 Wire Wire Line
-	2450 6900 2450 7050
+	2400 3100 2400 3250
 Wire Wire Line
-	2450 7050 2350 7050
+	2400 3250 2300 3250
 Wire Wire Line
-	2550 6900 2550 7150
+	2500 3100 2500 3350
 Wire Wire Line
-	2550 7150 2350 7150
+	2500 3350 2300 3350
 Wire Wire Line
-	2650 6900 2650 7250
+	2600 3100 2600 3450
 Wire Wire Line
-	2650 7250 2350 7250
+	2600 3450 2300 3450
 Wire Wire Line
-	2750 6900 2750 7350
+	2700 3100 2700 3550
 Wire Wire Line
-	2750 7350 2350 7350
-Text Label 3250 7150 0    50   ~ 0
+	2700 3550 2300 3550
+Text Label 3200 3350 0    50   ~ 0
 PB3
-Text Label 3250 7050 0    50   ~ 0
+Text Label 3200 3250 0    50   ~ 0
 PB4
-Text Label 3250 7250 0    50   ~ 0
+Text Label 3200 3450 0    50   ~ 0
 PB2
-Text Label 3250 7350 0    50   ~ 0
+Text Label 3200 3550 0    50   ~ 0
 PB1
-Text Label 3600 6400 0    50   ~ 0
+Text Label 3550 2600 0    50   ~ 0
 ADC6
 $Comp
 L Multimeter_Watch_Custom_Symbols:LGT8F328P-QFP32L CPU1
 U 1 1 5F1CAE43
-P 2800 6250
-F 0 "CPU1" H 3350 5750 50  0000 L CNN
-F 1 "LGT8F328P-QFP32L" H 3350 5650 50  0000 L CNN
-F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 2850 6200 50  0001 C CNN
-F 3 "" H 2900 6200 50  0001 C CNN
-	1    2800 6250
+P 2750 2450
+F 0 "CPU1" H 3300 1950 50  0000 L CNN
+F 1 "LGT8F328P-QFP32L" H 3300 1850 50  0000 L CNN
+F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 2800 2400 50  0001 C CNN
+F 3 "" H 2850 2400 50  0001 C CNN
+	1    2750 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3450 6400 3600 6400
+	3400 2600 3550 2600
 Wire Wire Line
-	3450 6500 3600 6500
+	3400 2700 3550 2700
 Wire Wire Line
-	3450 6600 3600 6600
+	3400 2800 3550 2800
 Wire Wire Line
-	3450 6100 3600 6100
+	3400 2300 3550 2300
 Wire Wire Line
-	3450 6200 3600 6200
+	3400 2400 3550 2400
 Wire Wire Line
-	3450 6300 3600 6300
+	3400 2500 3550 2500
 Wire Wire Line
-	3450 5900 3600 5900
+	3400 2100 3550 2100
 Wire Wire Line
-	3450 6000 3600 6000
+	3400 2200 3550 2200
 Wire Wire Line
-	2150 6100 2000 6100
+	2100 2300 1950 2300
 Wire Wire Line
-	2150 6000 2000 6000
+	2100 2200 1950 2200
 Wire Wire Line
-	2150 6500 2000 6500
+	2100 2700 1950 2700
 Wire Wire Line
-	2150 6400 2000 6400
+	2100 2600 1950 2600
 Wire Wire Line
-	2150 6600 2000 6600
-Text Label 3600 6100 0    50   ~ 0
+	2100 2800 1950 2800
+Text Label 3550 2300 0    50   ~ 0
 ADC7
-Text Label 3600 6300 0    50   ~ 0
+Text Label 3550 2500 0    50   ~ 0
 ADC10
-Text Label 3600 6600 0    50   ~ 0
+Text Label 3550 2800 0    50   ~ 0
 ADC11
-Text Label 3600 6000 0    50   ~ 0
+Text Label 3550 2200 0    50   ~ 0
 ADC0
-Text Label 3600 5900 0    50   ~ 0
+Text Label 3550 2100 0    50   ~ 0
 ADC1
-Text Label 2350 7350 2    50   ~ 0
+Text Label 2300 3550 2    50   ~ 0
 PB0
-Text Label 2000 6100 2    50   ~ 0
+Text Label 1950 2300 2    50   ~ 0
 PE4
-Text Label 2000 6000 2    50   ~ 0
+Text Label 1950 2200 2    50   ~ 0
 PD4
-Text Label 2000 6400 2    50   ~ 0
+Text Label 1950 2600 2    50   ~ 0
 PE5
-Text Label 2000 6500 2    50   ~ 0
+Text Label 1950 2700 2    50   ~ 0
 PB6
-Text Label 2000 6600 2    50   ~ 0
+Text Label 1950 2800 2    50   ~ 0
 PB7
-Text Label 2350 7050 2    50   ~ 0
+Text Label 2300 3250 2    50   ~ 0
 PD5
-Text Label 2350 7150 2    50   ~ 0
+Text Label 2300 3350 2    50   ~ 0
 PD6
-Text Label 2350 7250 2    50   ~ 0
+Text Label 2300 3450 2    50   ~ 0
 PD7
-Text Label 3250 5350 0    50   ~ 0
+Text Label 3200 1550 0    50   ~ 0
 ADC3
-Text Label 3250 5450 0    50   ~ 0
+Text Label 3200 1650 0    50   ~ 0
 ADC2
-Text Label 950  6450 2    50   ~ 0
+Text Label 900  2650 2    50   ~ 0
 GND
-Text Label 950  6050 2    50   ~ 0
+Text Label 900  2250 2    50   ~ 0
 VCC
-Text Label 3600 6200 0    50   ~ 0
+Text Label 3550 2400 0    50   ~ 0
 SWD
-Text Label 3600 6500 0    50   ~ 0
+Text Label 3550 2700 0    50   ~ 0
 SWC
-Text Label 2350 5150 2    50   ~ 0
+Text Label 2300 1350 2    50   ~ 0
 RESET
-Text Label 2350 5250 2    50   ~ 0
+Text Label 2300 1450 2    50   ~ 0
 D0
-Text Label 2350 5350 2    50   ~ 0
+Text Label 2300 1550 2    50   ~ 0
 D1
 Wire Wire Line
 	10100 1150 10150 1150
@@ -864,60 +858,60 @@ Wire Wire Line
 	10150 2550 9600 2550
 Connection ~ 9600 2550
 Wire Notes Line
-	3200 5300 3200 5500
+	3150 1500 3150 1700
 Wire Notes Line
-	3200 5500 3550 5500
+	3150 1700 3500 1700
 Wire Notes Line
-	3550 5500 3550 5300
+	3500 1700 3500 1500
 Wire Notes Line
-	3550 5300 3200 5300
-Text Notes 3600 5400 0    50   ~ 0
+	3500 1500 3150 1500
+Text Notes 3550 1600 0    50   ~ 0
 dacout\n
 Wire Notes Line
-	2050 5850 2050 6050
+	2000 2050 2000 2250
 Wire Notes Line
-	2050 6050 1750 6050
+	2000 2250 1700 2250
 Wire Notes Line
-	1750 6050 1750 5850
+	1700 2250 1700 2050
 Wire Notes Line
-	1750 5850 2050 5850
-Text Notes 1500 6000 0    50   ~ 0
+	1700 2050 2000 2050
+Text Notes 1450 2200 0    50   ~ 0
 dacout
 Wire Notes Line
-	2400 7150 2100 7150
+	2350 3350 2050 3350
 Wire Notes Line
-	2100 7150 2100 6950
+	2050 3350 2050 3150
 Wire Notes Line
-	2100 6950 2400 6950
+	2050 3150 2350 3150
 Wire Notes Line
-	2400 6950 2400 7150
+	2350 3150 2350 3350
 Wire Notes Line
-	1800 6100 1800 6650
+	1750 2300 1750 2850
 Wire Notes Line
-	1800 6650 2100 6650
+	1750 2850 2050 2850
 Wire Notes Line
-	2100 6650 2100 6100
+	2050 2850 2050 2300
 Wire Notes Line
-	1800 6100 2100 6100
+	1750 2300 2050 2300
 Wire Notes Line
-	2000 6650 2000 7050
+	1950 2850 1950 3250
 Wire Notes Line
-	2000 7050 2100 7050
+	1950 3250 2050 3250
 Wire Notes Line
-	2100 7000 2050 7000
+	2050 3200 2000 3200
 Wire Notes Line
-	2050 7000 2050 6650
-Text Notes 1700 6900 0    50   ~ 0
+	2000 3200 2000 2850
+Text Notes 1650 3100 0    50   ~ 0
 buttons\n
 Wire Notes Line
-	2400 5400 2400 5500
+	2350 1600 2350 1700
 Wire Notes Line
-	2400 5500 2050 5500
+	2350 1700 2000 1700
 Wire Notes Line
-	2050 5500 2050 5400
+	2000 1700 2000 1600
 Wire Notes Line
-	2050 5400 2400 5400
-Text Notes 1850 5400 0    50   ~ 0
+	2000 1600 2350 1600
+Text Notes 1800 1600 0    50   ~ 0
 buzzer
 Wire Wire Line
 	7750 3700 8400 3700
@@ -963,28 +957,28 @@ Wire Wire Line
 $Comp
 L Device:C_Small C6
 U 1 1 5F2226E5
-P 1200 6250
-F 0 "C6" V 1000 6250 50  0000 C CNN
-F 1 "10n" V 1100 6250 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1200 6250 50  0001 C CNN
-F 3 "~" H 1200 6250 50  0001 C CNN
-	1    1200 6250
+P 1150 2450
+F 0 "C6" V 950 2450 50  0000 C CNN
+F 1 "10n" V 1050 2450 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1150 2450 50  0001 C CNN
+F 3 "~" H 1150 2450 50  0001 C CNN
+	1    1150 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	950  6050 1200 6050
+	900  2250 1150 2250
 Wire Wire Line
-	950  6450 1200 6450
+	900  2650 1150 2650
 Wire Wire Line
-	1200 6350 1200 6450
-Connection ~ 1200 6450
+	1150 2550 1150 2650
+Connection ~ 1150 2650
 Wire Wire Line
-	1200 6450 1450 6450
+	1150 2650 1400 2650
 Wire Wire Line
-	1200 6150 1200 6050
-Connection ~ 1200 6050
+	1150 2350 1150 2250
+Connection ~ 1150 2250
 Wire Wire Line
-	1200 6050 1450 6050
+	1150 2250 1400 2250
 $Comp
 L Device:C_Small C7
 U 1 1 5F25514C
@@ -1009,25 +1003,25 @@ Connection ~ 5400 3800
 $Comp
 L Device:R_Small R20
 U 1 1 5F27D06D
-P 2650 5450
-F 0 "R20" V 2700 5450 50  0000 C CNN
-F 1 "1k" V 2650 5300 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2650 5450 50  0001 C CNN
-F 3 "~" H 2650 5450 50  0001 C CNN
-	1    2650 5450
+P 2600 1650
+F 0 "R20" V 2650 1650 50  0000 C CNN
+F 1 "1k" V 2600 1500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2600 1650 50  0001 C CNN
+F 3 "~" H 2600 1650 50  0001 C CNN
+	1    2600 1650
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2650 5350 2650 5250
+	2600 1550 2600 1450
 $Comp
 L Device:R_Small R19
 U 1 1 5F27D209
-P 2550 5450
-F 0 "R19" V 2600 5450 50  0000 C CNN
-F 1 "1k" V 2550 5300 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2550 5450 50  0001 C CNN
-F 3 "~" H 2550 5450 50  0001 C CNN
-	1    2550 5450
+P 2500 1650
+F 0 "R19" V 2550 1650 50  0000 C CNN
+F 1 "1k" V 2500 1500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2500 1650 50  0001 C CNN
+F 3 "~" H 2500 1650 50  0001 C CNN
+	1    2500 1650
 	-1   0    0    1   
 $EndComp
 Text Notes 5350 4350 0    118  ~ 0
@@ -1107,92 +1101,48 @@ ADC3
 Text Label 10800 900  1    47   ~ 0
 SWC
 $Comp
-L Mechanical:MountingHole H1
-U 1 1 5F70AA51
-P 3900 4250
-F 0 "H1" H 4000 4296 50  0000 L CNN
-F 1 "MountingHole" H 4000 4205 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.1mm" H 3900 4250 50  0001 C CNN
-F 3 "~" H 3900 4250 50  0001 C CNN
-	1    3900 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H2
-U 1 1 5F70B240
-P 3900 4500
-F 0 "H2" H 4000 4546 50  0000 L CNN
-F 1 "MountingHole" H 4000 4455 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.1mm" H 3900 4500 50  0001 C CNN
-F 3 "~" H 3900 4500 50  0001 C CNN
-	1    3900 4500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H3
-U 1 1 5F718878
-P 3900 4750
-F 0 "H3" H 4000 4796 50  0000 L CNN
-F 1 "MountingHole" H 4000 4705 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.1mm" H 3900 4750 50  0001 C CNN
-F 3 "~" H 3900 4750 50  0001 C CNN
-	1    3900 4750
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H4
-U 1 1 5F718882
-P 3900 5000
-F 0 "H4" H 4000 5046 50  0000 L CNN
-F 1 "MountingHole" H 4000 4955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.1mm" H 3900 5000 50  0001 C CNN
-F 3 "~" H 3900 5000 50  0001 C CNN
-	1    3900 5000
-	1    0    0    -1  
-$EndComp
-$Comp
 L eec:51281-1294 J6
 U 1 1 5F77100F
-P 1050 4750
-F 0 "J6" H 1750 5315 50  0000 C CNN
-F 1 "51281-1294" H 1750 5224 50  0000 C CNN
-F 2 "Multimeter_Watch_Custom_Footprints:Molex-51281-1294-Manufacturer_Recommended" H 1050 5450 50  0001 L CNN
-F 3 "http://www.molex.com/webdocs/datasheets/pdf/en-us/0512811294_FFC_FPC_CONNECTORS.pdf" H 1050 5550 50  0001 L CNN
-F 4 "12" H 1050 5650 50  0001 L CNN "Circuits Loaded"
-F 5 "Manufacturer URL" H 1050 5750 50  0001 L CNN "Component Link 1 Description"
-F 6 "http://www.molex.com/molex/index.jsp" H 1050 5850 50  0001 L CNN "Component Link 1 URL"
-F 7 "Package Specification" H 1050 5950 50  0001 L CNN "Component Link 3 Description"
-F 8 "http://www.molex.com/pdm_docs/sd/512811294_sd.pdf" H 1050 6050 50  0001 L CNN "Component Link 3 URL"
-F 9 "Dual" H 1050 6150 50  0001 L CNN "Contact Position"
-F 10 "0.5A" H 1050 6250 50  0001 L CNN "Current Max per Contact"
-F 11 "20" H 1050 6350 50  0001 L CNN "Durability mating cycles max"
-F 12 "90degrees Angle" H 1050 6450 50  0001 L CNN "Entry Angle"
-F 13 "1.20mm" H 1050 6550 50  0001 L CNN "Mated Height"
-F 14 "Phosphor Bronze" H 1050 6650 50  0001 L CNN "Material   Metal"
-F 15 "Gold" H 1050 6750 50  0001 L CNN "Material   Plating Mating"
-F 16 "Tin" H 1050 6850 50  0001 L CNN "Material   Plating Termination"
-F 17 "Surface Mount" H 1050 6950 50  0001 L CNN "Mounting Technology"
-F 18 "1" H 1050 7050 50  0001 L CNN "Number of Rows"
-F 19 "Right Angle" H 1050 7150 50  0001 L CNN "Orientation"
-F 20 "No" H 1050 7250 50  0001 L CNN "PCB Locator"
-F 21 "Yes" H 1050 7350 50  0001 L CNN "PCB Retention"
-F 22 "12-Lead FPC Connector, Pitch 0.5 mm" H 1050 7450 50  0001 L CNN "Package Description"
-F 23 "Rev. J, 10/2010" H 1050 7550 50  0001 L CNN "Package Version"
-F 24 "Tape and Reel" H 1050 7650 50  0001 L CNN "Packing"
-F 25 "0.50mm" H 1050 7750 50  0001 L CNN "Pitch   Mating Interface"
-F 26 "Yes" H 1050 7850 50  0001 L CNN "Polarized to PCB"
-F 27 "No" H 1050 7950 50  0001 L CNN "Stackable"
-F 28 "50V" H 1050 8050 50  0001 L CNN "Voltage Max"
-F 29 "Conn" H 1050 8150 50  0001 L CNN "category"
-F 30 "1130020" H 1050 8250 50  0001 L CNN "ciiva ids"
-F 31 "38ce8664f5d5bbe6" H 1050 8350 50  0001 L CNN "library id"
-F 32 "Molex" H 1050 8450 50  0001 L CNN "manufacturer"
-F 33 "51281-1294" H 1050 8550 50  0001 L CNN "package"
-F 34 "1411372361" H 1050 8650 50  0001 L CNN "release date"
-F 35 "Yes" H 1050 8750 50  0001 L CNN "rohs"
-F 36 "F2413D5A-E530-4996-972E-9EFD49FD3DF5" H 1050 8850 50  0001 L CNN "vault revision"
-F 37 "yes" H 1050 8950 50  0001 L CNN "imported"
-	1    1050 4750
+P 9450 5700
+F 0 "J6" H 10150 6265 50  0000 C CNN
+F 1 "51281-1294" H 10150 6174 50  0000 C CNN
+F 2 "Multimeter_Watch_Custom_Footprints:Molex-51281-1294-Manufacturer_Recommended" H 9450 6400 50  0001 L CNN
+F 3 "http://www.molex.com/webdocs/datasheets/pdf/en-us/0512811294_FFC_FPC_CONNECTORS.pdf" H 9450 6500 50  0001 L CNN
+F 4 "12" H 9450 6600 50  0001 L CNN "Circuits Loaded"
+F 5 "Manufacturer URL" H 9450 6700 50  0001 L CNN "Component Link 1 Description"
+F 6 "http://www.molex.com/molex/index.jsp" H 9450 6800 50  0001 L CNN "Component Link 1 URL"
+F 7 "Package Specification" H 9450 6900 50  0001 L CNN "Component Link 3 Description"
+F 8 "http://www.molex.com/pdm_docs/sd/512811294_sd.pdf" H 9450 7000 50  0001 L CNN "Component Link 3 URL"
+F 9 "Dual" H 9450 7100 50  0001 L CNN "Contact Position"
+F 10 "0.5A" H 9450 7200 50  0001 L CNN "Current Max per Contact"
+F 11 "20" H 9450 7300 50  0001 L CNN "Durability mating cycles max"
+F 12 "90degrees Angle" H 9450 7400 50  0001 L CNN "Entry Angle"
+F 13 "1.20mm" H 9450 7500 50  0001 L CNN "Mated Height"
+F 14 "Phosphor Bronze" H 9450 7600 50  0001 L CNN "Material   Metal"
+F 15 "Gold" H 9450 7700 50  0001 L CNN "Material   Plating Mating"
+F 16 "Tin" H 9450 7800 50  0001 L CNN "Material   Plating Termination"
+F 17 "Surface Mount" H 9450 7900 50  0001 L CNN "Mounting Technology"
+F 18 "1" H 9450 8000 50  0001 L CNN "Number of Rows"
+F 19 "Right Angle" H 9450 8100 50  0001 L CNN "Orientation"
+F 20 "No" H 9450 8200 50  0001 L CNN "PCB Locator"
+F 21 "Yes" H 9450 8300 50  0001 L CNN "PCB Retention"
+F 22 "12-Lead FPC Connector, Pitch 0.5 mm" H 9450 8400 50  0001 L CNN "Package Description"
+F 23 "Rev. J, 10/2010" H 9450 8500 50  0001 L CNN "Package Version"
+F 24 "Tape and Reel" H 9450 8600 50  0001 L CNN "Packing"
+F 25 "0.50mm" H 9450 8700 50  0001 L CNN "Pitch   Mating Interface"
+F 26 "Yes" H 9450 8800 50  0001 L CNN "Polarized to PCB"
+F 27 "No" H 9450 8900 50  0001 L CNN "Stackable"
+F 28 "50V" H 9450 9000 50  0001 L CNN "Voltage Max"
+F 29 "Conn" H 9450 9100 50  0001 L CNN "category"
+F 30 "1130020" H 9450 9200 50  0001 L CNN "ciiva ids"
+F 31 "38ce8664f5d5bbe6" H 9450 9300 50  0001 L CNN "library id"
+F 32 "Molex" H 9450 9400 50  0001 L CNN "manufacturer"
+F 33 "51281-1294" H 9450 9500 50  0001 L CNN "package"
+F 34 "1411372361" H 9450 9600 50  0001 L CNN "release date"
+F 35 "Yes" H 9450 9700 50  0001 L CNN "rohs"
+F 36 "F2413D5A-E530-4996-972E-9EFD49FD3DF5" H 9450 9800 50  0001 L CNN "vault revision"
+F 37 "yes" H 9450 9900 50  0001 L CNN "imported"
+	1    9450 5700
 	1    0    0    -1  
 $EndComp
 Text Label 10350 3300 0    50   ~ 0
@@ -1202,209 +1152,283 @@ Wire Wire Line
 $Comp
 L Connector:Conn_01x11_Female J7
 U 1 1 5F85C19E
-P 2200 3300
-F 0 "J7" H 2050 2600 50  0000 L CNN
-F 1 "Conn_01x11_Female" H 1650 2700 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 2200 3300 50  0001 C CNN
-F 3 "~" H 2200 3300 50  0001 C CNN
-	1    2200 3300
+P 7950 5450
+F 0 "J7" H 7800 4750 50  0000 L CNN
+F 1 "Conn_01x11_Female" H 7400 4850 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 7950 5450 50  0001 C CNN
+F 3 "~" H 7950 5450 50  0001 C CNN
+	1    7950 5450
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x11_Female J8
 U 1 1 5F85E8C6
-P 2800 3300
-F 0 "J8" H 2700 2600 50  0000 C CNN
-F 1 "Conn_01x11_Female" H 2700 2700 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 2800 3300 50  0001 C CNN
-F 3 "~" H 2800 3300 50  0001 C CNN
-	1    2800 3300
+P 8550 5450
+F 0 "J8" H 8450 4750 50  0000 C CNN
+F 1 "Conn_01x11_Female" H 8450 4850 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 8550 5450 50  0001 C CNN
+F 3 "~" H 8550 5450 50  0001 C CNN
+	1    8550 5450
 	-1   0    0    -1  
 $EndComp
-Text Label 1900 3500 2    50   ~ 0
+Text Label 7650 5650 2    50   ~ 0
 GND
-Text Label 1900 3100 2    50   ~ 0
+Text Label 7650 5250 2    50   ~ 0
 VCC
 Wire Wire Line
-	1900 3500 2000 3500
+	7650 5650 7750 5650
 Wire Wire Line
-	2000 3500 2000 3600
-Connection ~ 2000 3500
-Connection ~ 2000 3600
+	7750 5650 7750 5750
+Connection ~ 7750 5650
+Connection ~ 7750 5750
 Wire Wire Line
-	2000 3600 2000 3700
-Connection ~ 2000 3700
+	7750 5750 7750 5850
+Connection ~ 7750 5850
 Wire Wire Line
-	2000 3700 2000 3800
+	7750 5850 7750 5950
 Wire Wire Line
-	2000 3100 2000 3000
-Connection ~ 2000 2900
+	7750 5250 7750 5150
+Connection ~ 7750 5050
 Wire Wire Line
-	2000 2900 2000 2800
-Connection ~ 2000 3000
+	7750 5050 7750 4950
+Connection ~ 7750 5150
 Wire Wire Line
-	2000 3000 2000 2900
+	7750 5150 7750 5050
 Wire Wire Line
-	2000 3100 1900 3100
-Connection ~ 2000 3100
-Text Label 3000 3700 0    50   ~ 0
+	7750 5250 7650 5250
+Connection ~ 7750 5250
+Text Label 8750 5850 0    50   ~ 0
 VCC
-Text Label 3000 3800 0    50   ~ 0
+Text Label 8750 5950 0    50   ~ 0
 GND
-Text Label 1750 4650 3    50   ~ 0
+Text Label 10150 5600 3    50   ~ 0
 PD6
-Text Label 1650 4650 3    50   ~ 0
+Text Label 10050 5600 3    50   ~ 0
 PD5
-Text Label 1950 4650 3    50   ~ 0
+Text Label 10350 5600 3    50   ~ 0
 GND
-Text Label 1350 4650 3    50   ~ 0
+Text Label 9750 5600 3    50   ~ 0
 PB6
-Text Label 1450 4650 3    50   ~ 0
+Text Label 9850 5600 3    50   ~ 0
 PB7
-Text Label 1850 4650 3    50   ~ 0
+Text Label 10250 5600 3    50   ~ 0
 VCC
-Text Label 1250 4650 3    50   ~ 0
+Text Label 9650 5600 3    50   ~ 0
 PE5
-Text Label 2150 4650 3    50   ~ 0
+Text Label 10550 5600 3    50   ~ 0
 SDA
-Text Label 2050 4650 3    50   ~ 0
+Text Label 10450 5600 3    50   ~ 0
 SCL
 Wire Wire Line
-	5050 6550 5050 6750
-Connection ~ 5750 5950
+	5100 6500 5100 6700
+Connection ~ 5800 5900
 Wire Wire Line
-	5750 5950 5750 5850
-Text Label 5050 6750 0    47   ~ 0
+	5800 5900 5800 5800
+Text Label 5100 6700 0    47   ~ 0
 PD2
-Connection ~ 5750 6850
+Connection ~ 5800 6800
 Wire Wire Line
-	5750 6850 5400 6850
+	5800 6800 5450 6800
 Wire Wire Line
-	5750 6750 5750 6850
-Connection ~ 5400 6550
+	5800 6700 5800 6800
+Connection ~ 5450 6500
 Wire Wire Line
-	5400 6550 5450 6550
+	5450 6500 5500 6500
 Wire Wire Line
-	5350 6550 5400 6550
+	5400 6500 5450 6500
 $Comp
 L Device:R R23
 U 1 1 5F2B66F9
-P 5400 6700
-F 0 "R23" H 5470 6746 50  0000 L CNN
-F 1 "100K" H 5470 6655 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5330 6700 50  0001 C CNN
-F 3 "~" H 5400 6700 50  0001 C CNN
-	1    5400 6700
+P 5450 6650
+F 0 "R23" H 5520 6696 50  0000 L CNN
+F 1 "100K" H 5520 6605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5380 6650 50  0001 C CNN
+F 3 "~" H 5450 6650 50  0001 C CNN
+	1    5450 6650
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R22
 U 1 1 5F2B529D
-P 5200 6550
-F 0 "R22" V 4993 6550 50  0000 C CNN
-F 1 "10K" V 5084 6550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5130 6550 50  0001 C CNN
-F 3 "~" H 5200 6550 50  0001 C CNN
-	1    5200 6550
+P 5250 6500
+F 0 "R22" V 5043 6500 50  0000 C CNN
+F 1 "10K" V 5134 6500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5180 6500 50  0001 C CNN
+F 3 "~" H 5250 6500 50  0001 C CNN
+	1    5250 6500
 	0    1    1    0   
 $EndComp
-Connection ~ 5750 6250
+Connection ~ 5800 6200
 Wire Wire Line
-	5750 6250 5750 6350
+	5800 6200 5800 6300
 $Comp
 L Transistor_FET:2N7002E Q1
 U 1 1 5F2AB4F3
-P 5650 6550
-F 0 "Q1" H 5855 6596 50  0000 L CNN
-F 1 "A03400A N-MOS" H 5855 6505 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 5850 6475 50  0001 L CIN
-F 3 "http://www.diodes.com/assets/Datasheets/ds30376.pdf" H 5650 6550 50  0001 L CNN
-	1    5650 6550
+P 5700 6500
+F 0 "Q1" H 5905 6546 50  0000 L CNN
+F 1 "A03400A N-MOS" H 5905 6455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5900 6425 50  0001 L CIN
+F 3 "http://www.diodes.com/assets/Datasheets/ds30376.pdf" H 5700 6500 50  0001 L CNN
+	1    5700 6500
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:D_Schottky D1
 U 1 1 5F29BCA9
-P 5450 6100
-F 0 "D1" V 5400 5950 50  0000 L CNN
-F 1 "D_Schottky" V 5500 5650 50  0000 L CNN
-F 2 "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5450 6100 50  0001 C CNN
-F 3 "~" H 5450 6100 50  0001 C CNN
-	1    5450 6100
+P 5500 6050
+F 0 "D1" V 5450 5900 50  0000 L CNN
+F 1 "D_Schottky" V 5550 5600 50  0000 L CNN
+F 2 "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5500 6050 50  0001 C CNN
+F 3 "~" H 5500 6050 50  0001 C CNN
+	1    5500 6050
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5750 5950 5450 5950
+	5800 5900 5500 5900
 Wire Wire Line
-	5750 6250 5450 6250
+	5800 6200 5500 6200
 Wire Wire Line
-	5750 6200 5750 6250
+	5800 6150 5800 6200
 Wire Wire Line
-	5750 6000 5750 5950
+	5800 5950 5800 5900
 $Comp
 L Device:Buzzer B1
 U 1 1 5F28AB82
-P 5850 6100
-F 0 "B1" H 6002 6129 50  0000 L CNN
-F 1 "CMT-0502-75-SMT-TR" H 6002 6038 50  0000 L CNN
-F 2 "Multimeter_Watch_Custom_Footprints:CMT-0502-75-SMT-TR" V 5825 6200 50  0001 C CNN
-F 3 "~" V 5825 6200 50  0001 C CNN
-	1    5850 6100
+P 5900 6050
+F 0 "B1" H 6052 6079 50  0000 L CNN
+F 1 "CMT-0502-75-SMT-TR" H 6052 5988 50  0000 L CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CMT-0502-75-SMT-TR" V 5875 6150 50  0001 C CNN
+F 3 "~" V 5875 6150 50  0001 C CNN
+	1    5900 6050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 5850 6200 6300
+	6250 5800 6250 6250
 $Comp
 L Device:C_Small C8
 U 1 1 5F258A5E
-P 6200 6400
-F 0 "C8" H 6292 6446 50  0000 L CNN
-F 1 "100n" H 6292 6355 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6200 6400 50  0001 C CNN
-F 3 "~" H 6200 6400 50  0001 C CNN
-	1    6200 6400
+P 6250 6350
+F 0 "C8" H 6342 6396 50  0000 L CNN
+F 1 "100n" H 6342 6305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6250 6350 50  0001 C CNN
+F 3 "~" H 6250 6350 50  0001 C CNN
+	1    6250 6350
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 6500 6200 6850
+	6250 6450 6250 6800
 Wire Wire Line
-	5750 6850 6200 6850
+	5800 6800 6250 6800
 Text Label 5000 900  0    50   ~ 0
 VCC
 Text Label 5000 1000 0    50   ~ 0
 BUTT4
 Text Label 5000 1100 0    50   ~ 0
 BUTT5
-Wire Notes Line
-	6000 500  6000 3600
-Text Label 6200 5850 0    50   ~ 0
+Text Label 6250 5800 0    50   ~ 0
 VCC
-Text Label 2000 3300 2    50   ~ 0
+Text Label 7750 5450 2    50   ~ 0
 D0
-Text Label 2000 3400 2    50   ~ 0
+Text Label 7750 5550 2    50   ~ 0
 D1
-Text Label 2000 3200 2    50   ~ 0
+Text Label 7750 5350 2    50   ~ 0
 RESET
-Text Label 3000 3300 0    50   ~ 0
+Text Label 8750 5450 0    50   ~ 0
 SCL
-Text Label 3000 3400 0    50   ~ 0
+Text Label 8750 5550 0    50   ~ 0
 SDA
-Text Label 1150 4650 3    50   ~ 0
+Text Label 9550 5600 3    50   ~ 0
 PE4
-Text Label 1050 4650 3    47   ~ 0
+Text Label 9450 5600 3    47   ~ 0
 PD3
-Text Label 1550 4650 3    47   ~ 0
+Text Label 9950 5600 3    47   ~ 0
 ADC11
 Wire Wire Line
-	5750 5850 6200 5850
+	5800 5800 6250 5800
 Text Notes 5550 5650 0    118  ~ 0
 Buzzer
-Wire Notes Line
-	4900 7250 7000 7250
-Wire Notes Line
-	7000 4050 7000 7250
-Wire Notes Line
-	4900 500  4900 7250
-Text Label 6200 6850 0    50   ~ 0
+Text Label 6250 6800 0    50   ~ 0
 GND
+Text Notes 8600 4500 0    118  ~ 0
+Connectors
+Wire Notes Line rgb(194, 0, 191)
+	7750 5850 7450 5850
+Wire Notes Line rgb(194, 0, 184)
+	7450 5850 7450 5050
+Wire Notes Line rgb(194, 0, 194)
+	7450 5050 7750 5050
+Text Notes 7400 5750 1    50   ~ 0
+Charger outline
+Wire Notes Line
+	7000 4050 7000 6500
+Wire Notes Line
+	4900 6900 6950 6900
+Wire Notes Line
+	6950 6500 11200 6500
+Text Notes 5050 7150 0    118  ~ 0
+2.1 mm screw holes
+Wire Notes Line
+	4900 7800 6950 7800
+Wire Notes Line
+	4900 500  4900 7800
+Wire Notes Line
+	6950 6500 6950 7800
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5F718882
+P 6250 7600
+F 0 "H4" H 6350 7646 50  0000 L CNN
+F 1 "MountingHole" H 6350 7555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.1mm" H 6250 7600 50  0001 C CNN
+F 3 "~" H 6250 7600 50  0001 C CNN
+	1    6250 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5F718878
+P 5200 7600
+F 0 "H3" H 5300 7646 50  0000 L CNN
+F 1 "MountingHole" H 5300 7555 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.1mm" H 5200 7600 50  0001 C CNN
+F 3 "~" H 5200 7600 50  0001 C CNN
+	1    5200 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5F70B240
+P 6250 7300
+F 0 "H2" H 6350 7346 50  0000 L CNN
+F 1 "MountingHole" H 6350 7255 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.1mm" H 6250 7300 50  0001 C CNN
+F 3 "~" H 6250 7300 50  0001 C CNN
+	1    6250 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5F70AA51
+P 5200 7300
+F 0 "H1" H 5300 7346 50  0000 L CNN
+F 1 "MountingHole" H 5300 7255 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.1mm" H 5200 7300 50  0001 C CNN
+F 3 "~" H 5200 7300 50  0001 C CNN
+	1    5200 7300
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	8600 500  8600 2800
+Wire Notes Line
+	8900 4050 8900 2800
+Text Notes 2250 900  0    236  ~ 0
+CPU
+Text Notes 1500 1150 0    118  Italic 0
+(box markings out of date)
+Wire Notes Line
+	500  4050 500  500 
+Wire Notes Line
+	500  4050 11200 4050
+Wire Notes Line
+	500  500  11200 500 
 $EndSCHEMATC
