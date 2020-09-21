@@ -102,12 +102,6 @@ Wire Wire Line
 Connection ~ 6750 950 
 Wire Wire Line
 	6750 950  6800 950 
-Text Label 1800 2350 2    47   ~ 0
-PD3
-Text Label 1800 2250 2    47   ~ 0
-PD2
-Text Label 4750 1800 1    47   ~ 0
-ADC11
 Text Label 10500 900  1    47   ~ 0
 ADC2
 Text Label 10900 900  1    47   ~ 0
@@ -394,8 +388,6 @@ DAC
 Wire Notes Line
 	4900 2800 11200 2800
 Wire Notes Line
-	4900 500  11200 500 
-Wire Notes Line
 	4900 4050 11200 4050
 Wire Wire Line
 	6550 3600 6500 3600
@@ -521,144 +513,18 @@ Wire Wire Line
 	10900 1150 11000 1150
 Text Label 3000 2800 0    50   ~ 0
 GND
-Text Label 3000 3400 0    50   ~ 0
-SCL
-Text Label 3000 3300 0    50   ~ 0
-SDA
-Wire Wire Line
-	3300 1150 3200 1150
-Wire Wire Line
-	3300 1250 3200 1250
-Wire Wire Line
-	3300 1350 3200 1350
-Wire Wire Line
-	3300 1450 3200 1450
-Wire Wire Line
-	3300 1550 3200 1550
-Wire Wire Line
-	3300 1650 3200 1650
-Wire Wire Line
-	3300 1750 3200 1750
-Wire Wire Line
-	3300 1850 3200 1850
-Wire Wire Line
-	3300 1950 3200 1950
-Wire Wire Line
-	3300 2050 3200 2050
-Text Label 4000 3050 0    50   ~ 0
-RESET
 Text Label 3000 2900 0    50   ~ 0
 VCC_HALF
 Text Label 3000 3000 0    50   ~ 0
 DACout
-Text Label 3000 3600 0    50   ~ 0
-SWC
 Text Label 3000 3500 0    50   ~ 0
 SWD
 Text Label 3000 3200 0    50   ~ 0
 ADC6
 Text Label 3000 3100 0    50   ~ 0
 ADC3
-Wire Wire Line
-	3200 1050 3400 1050
-Wire Wire Line
-	3200 950  3400 950 
-Wire Wire Line
-	3400 850  3200 850 
-Wire Wire Line
-	3400 2150 3200 2150
-Wire Wire Line
-	3200 2250 3400 2250
-Wire Wire Line
-	3400 2350 3200 2350
-Text Label 3400 2250 0    50   ~ 0
-SCL
-Text Label 3400 2150 0    50   ~ 0
-PE5
-Text Label 3400 1050 0    50   ~ 0
-PB6
-Text Label 3400 950  0    50   ~ 0
-PB7
-$Comp
-L Connector:Conn_01x16_Female J4
-U 1 1 5F46892E
-P 3000 1550
-F 0 "J4" H 2800 550 50  0000 C CNN
-F 1 "Conn_01x16_Female" H 2800 650 50  0000 C CNN
-F 2 "" H 3000 1550 50  0001 C CNN
-F 3 "~" H 3000 1550 50  0001 C CNN
-	1    3000 1550
-	-1   0    0    -1  
-$EndComp
-Text Notes 1400 1050 3    50   Italic 0
-Charger/Comm shield outline
-Wire Notes Line style dotted
-	1450 1950 1450 1250
-Connection ~ 2000 1250
-Wire Wire Line
-	2000 1250 2000 1150
-Wire Wire Line
-	2000 1350 2000 1250
-Connection ~ 2000 1350
-Wire Wire Line
-	2000 1350 2000 1450
-Wire Wire Line
-	1900 1350 2000 1350
-Connection ~ 2000 1950
-Wire Wire Line
-	2000 1950 2000 2050
-Wire Wire Line
-	2000 1850 2000 1950
-Wire Wire Line
-	2000 1750 2000 1850
-Connection ~ 2000 1850
-Wire Wire Line
-	1900 1850 2000 1850
-Wire Wire Line
-	1900 1650 2000 1650
-Wire Wire Line
-	1900 1550 2000 1550
-Text Label 1900 1650 2    50   ~ 0
-D1
-Text Label 1900 1550 2    50   ~ 0
-D0
-Text Label 1900 1850 2    50   ~ 0
-GND
-Text Label 1900 1350 2    50   ~ 0
-VCC
-Wire Wire Line
-	2000 1050 1800 1050
-Wire Wire Line
-	2000 950  1800 950 
-Wire Wire Line
-	2000 850  1800 850 
-Wire Wire Line
-	2000 2350 1800 2350
-Wire Wire Line
-	1800 2250 2000 2250
-Wire Wire Line
-	2000 2150 1800 2150
-Text Label 3400 2350 0    50   ~ 0
-SDA
 Text Label 5950 1300 0    50   ~ 0
 PD7
-Text Label 1800 950  2    50   ~ 0
-PD6
-Text Label 1800 1050 2    50   ~ 0
-PD5
-$Comp
-L Connector:Conn_01x16_Female J5
-U 1 1 5F44F8AA
-P 2200 1550
-F 0 "J5" H 2050 550 50  0000 L CNN
-F 1 "Conn_01x16_Female" H 1700 650 50  0000 L CNN
-F 2 "" H 2200 1550 50  0001 C CNN
-F 3 "~" H 2200 1550 50  0001 C CNN
-	1    2200 1550
-	1    0    0    -1  
-$EndComp
-Wire Notes Line
-	2250 1250 2250 1950
 Wire Wire Line
 	7550 2150 7500 2150
 Wire Wire Line
@@ -668,12 +534,6 @@ Wire Wire Line
 	7500 2150 7450 2150
 Wire Wire Line
 	7100 2250 7850 2250
-Text Label 3400 850  0    50   ~ 0
-VCC
-Text Label 1800 2150 2    50   ~ 0
-PE4
-Text Label 1800 850  2    50   ~ 0
-GND
 Text Label 6350 1300 0    50   ~ 0
 PB0
 Wire Wire Line
@@ -1100,10 +960,6 @@ Wire Wire Line
 Connection ~ 9850 3350
 Wire Wire Line
 	9850 3350 10000 3350
-Wire Notes Line style dotted
-	1450 1250 2250 1250
-Wire Notes Line style dotted
-	1450 1950 2250 1950
 $Comp
 L Device:C_Small C6
 U 1 1 5F2226E5
@@ -1204,8 +1060,6 @@ Wire Wire Line
 	5900 4500 6100 4500
 Text Label 6100 4500 0    50   ~ 0
 VCC
-Wire Notes Line
-	7000 4050 7000 6700
 $Comp
 L S3B-PH-K-S_LF__SN_:S3B-PH-K-S(LF)(SN) J2
 U 1 1 5F68943A
@@ -1341,14 +1195,10 @@ F 37 "yes" H 1050 8950 50  0001 L CNN "imported"
 	1    1050 4750
 	1    0    0    -1  
 $EndComp
-Text Notes 1600 650  0    118  ~ 0
-Connectors (outdated)\n
 Text Label 10350 3300 0    50   ~ 0
 PD3
 Wire Wire Line
 	10350 3300 9850 3300
-Wire Notes Line
-	4900 500  4900 5400
 $Comp
 L Connector:Conn_01x11_Female J7
 U 1 1 5F85C19E
@@ -1371,16 +1221,10 @@ F 3 "~" H 2800 3300 50  0001 C CNN
 	1    2800 3300
 	-1   0    0    -1  
 $EndComp
-Text Label 2000 3400 2    50   ~ 0
-D1
-Text Label 2000 3300 2    50   ~ 0
-D0
 Text Label 1900 3500 2    50   ~ 0
 GND
 Text Label 1900 3100 2    50   ~ 0
 VCC
-Text Label 2000 3200 2    50   ~ 0
-RESET
 Wire Wire Line
 	1900 3500 2000 3500
 Wire Wire Line
@@ -1407,28 +1251,160 @@ Text Label 3000 3700 0    50   ~ 0
 VCC
 Text Label 3000 3800 0    50   ~ 0
 GND
-Text Label 1150 4650 3    47   ~ 0
-PD3
-Text Label 1250 4650 3    47   ~ 0
-PD2
-Text Label 1050 4650 3    50   ~ 0
-PE4
 Text Label 1750 4650 3    50   ~ 0
 PD6
 Text Label 1650 4650 3    50   ~ 0
 PD5
 Text Label 1950 4650 3    50   ~ 0
 GND
-Text Label 1450 4650 3    50   ~ 0
+Text Label 1350 4650 3    50   ~ 0
 PB6
-Text Label 1550 4650 3    50   ~ 0
+Text Label 1450 4650 3    50   ~ 0
 PB7
 Text Label 1850 4650 3    50   ~ 0
 VCC
-Text Label 1350 4650 3    50   ~ 0
+Text Label 1250 4650 3    50   ~ 0
 PE5
-Text Label 2050 4650 3    50   ~ 0
-SDA
 Text Label 2150 4650 3    50   ~ 0
+SDA
+Text Label 2050 4650 3    50   ~ 0
 SCL
+Wire Wire Line
+	5050 6550 5050 6750
+Connection ~ 5750 5950
+Wire Wire Line
+	5750 5950 5750 5850
+Text Label 5050 6750 0    47   ~ 0
+PD2
+Connection ~ 5750 6850
+Wire Wire Line
+	5750 6850 5400 6850
+Wire Wire Line
+	5750 6750 5750 6850
+Connection ~ 5400 6550
+Wire Wire Line
+	5400 6550 5450 6550
+Wire Wire Line
+	5350 6550 5400 6550
+$Comp
+L Device:R R23
+U 1 1 5F2B66F9
+P 5400 6700
+F 0 "R23" H 5470 6746 50  0000 L CNN
+F 1 "100K" H 5470 6655 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5330 6700 50  0001 C CNN
+F 3 "~" H 5400 6700 50  0001 C CNN
+	1    5400 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R22
+U 1 1 5F2B529D
+P 5200 6550
+F 0 "R22" V 4993 6550 50  0000 C CNN
+F 1 "10K" V 5084 6550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5130 6550 50  0001 C CNN
+F 3 "~" H 5200 6550 50  0001 C CNN
+	1    5200 6550
+	0    1    1    0   
+$EndComp
+Connection ~ 5750 6250
+Wire Wire Line
+	5750 6250 5750 6350
+$Comp
+L Transistor_FET:2N7002E Q1
+U 1 1 5F2AB4F3
+P 5650 6550
+F 0 "Q1" H 5855 6596 50  0000 L CNN
+F 1 "A03400A N-MOS" H 5855 6505 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 5850 6475 50  0001 L CIN
+F 3 "http://www.diodes.com/assets/Datasheets/ds30376.pdf" H 5650 6550 50  0001 L CNN
+	1    5650 6550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky D1
+U 1 1 5F29BCA9
+P 5450 6100
+F 0 "D1" V 5400 5950 50  0000 L CNN
+F 1 "D_Schottky" V 5500 5650 50  0000 L CNN
+F 2 "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5450 6100 50  0001 C CNN
+F 3 "~" H 5450 6100 50  0001 C CNN
+	1    5450 6100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5750 5950 5450 5950
+Wire Wire Line
+	5750 6250 5450 6250
+Wire Wire Line
+	5750 6200 5750 6250
+Wire Wire Line
+	5750 6000 5750 5950
+$Comp
+L Device:Buzzer B1
+U 1 1 5F28AB82
+P 5850 6100
+F 0 "B1" H 6002 6129 50  0000 L CNN
+F 1 "CMT-0502-75-SMT-TR" H 6002 6038 50  0000 L CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CMT-0502-75-SMT-TR" V 5825 6200 50  0001 C CNN
+F 3 "~" V 5825 6200 50  0001 C CNN
+	1    5850 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 5850 6200 6300
+$Comp
+L Device:C_Small C8
+U 1 1 5F258A5E
+P 6200 6400
+F 0 "C8" H 6292 6446 50  0000 L CNN
+F 1 "100n" H 6292 6355 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6200 6400 50  0001 C CNN
+F 3 "~" H 6200 6400 50  0001 C CNN
+	1    6200 6400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 6500 6200 6850
+Wire Wire Line
+	5750 6850 6200 6850
+Text Label 5000 900  0    50   ~ 0
+VCC
+Text Label 5000 1000 0    50   ~ 0
+BUTT4
+Text Label 5000 1100 0    50   ~ 0
+BUTT5
+Wire Notes Line
+	6000 500  6000 3600
+Text Label 6200 5850 0    50   ~ 0
+VCC
+Text Label 2000 3300 2    50   ~ 0
+D0
+Text Label 2000 3400 2    50   ~ 0
+D1
+Text Label 2000 3200 2    50   ~ 0
+RESET
+Text Label 3000 3300 0    50   ~ 0
+SCL
+Text Label 3000 3400 0    50   ~ 0
+SDA
+Text Label 1150 4650 3    50   ~ 0
+PE4
+Text Label 1050 4650 3    47   ~ 0
+PD3
+Text Label 1550 4650 3    47   ~ 0
+ADC11
+Wire Wire Line
+	5750 5850 6200 5850
+Text Notes 5550 5650 0    118  ~ 0
+Buzzer
+Wire Notes Line
+	4900 7250 7000 7250
+Wire Notes Line
+	7000 4050 7000 7250
+Wire Notes Line
+	4900 500  4900 7250
+Text Label 6200 6850 0    50   ~ 0
+GND
 $EndSCHEMATC
