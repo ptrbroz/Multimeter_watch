@@ -753,7 +753,7 @@ ADC7
 Text Label 3550 2500 0    50   ~ 0
 ADC10
 Text Label 3550 2800 0    50   ~ 0
-ADC11
+PB5
 Text Label 3550 2200 0    50   ~ 0
 ADC0
 Text Label 3550 2100 0    50   ~ 0
@@ -1211,8 +1211,6 @@ Text Label 9750 5600 3    50   ~ 0
 PB6
 Text Label 9850 5600 3    50   ~ 0
 PB7
-Text Label 10250 5600 3    50   ~ 0
-VCC
 Text Label 9650 5600 3    50   ~ 0
 PE5
 Text Label 10550 5600 3    50   ~ 0
@@ -1342,7 +1340,7 @@ PE4
 Text Label 9450 5600 3    47   ~ 0
 PD3
 Text Label 9950 5600 3    47   ~ 0
-ADC11
+PB5
 Wire Wire Line
 	5800 5800 6250 5800
 Text Notes 5550 5650 0    118  ~ 0
@@ -1431,4 +1429,6 @@ Wire Notes Line
 	500  4050 11200 4050
 Wire Notes Line
 	500  500  11200 500 
+Text Label 10250 5600 3    50   ~ 0
+GND
 $EndSCHEMATC
