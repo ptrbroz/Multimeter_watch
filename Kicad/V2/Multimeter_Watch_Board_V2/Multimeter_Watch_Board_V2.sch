@@ -507,11 +507,11 @@ Wire Wire Line
 	10900 1150 11000 1150
 Text Label 8750 4950 0    50   ~ 0
 GND
-Text Label 8750 5050 0    50   ~ 0
-VCC_HALF
 Text Label 8750 5150 0    50   ~ 0
+VCC_HALF
+Text Label 8750 5450 0    50   ~ 0
 DACout
-Text Label 8750 5650 0    50   ~ 0
+Text Label 8750 5550 0    50   ~ 0
 SWD
 Text Label 8750 5350 0    50   ~ 0
 ADC6
@@ -1331,9 +1331,9 @@ Text Label 7750 5550 2    50   ~ 0
 D1
 Text Label 7750 5350 2    50   ~ 0
 RESET
-Text Label 8750 5450 0    50   ~ 0
+Text Label 8750 5650 0    50   ~ 0
 SCL
-Text Label 8750 5550 0    50   ~ 0
+Text Label 8750 5750 0    50   ~ 0
 SDA
 Text Label 9550 5600 3    50   ~ 0
 PE4
@@ -1431,4 +1431,6 @@ Wire Notes Line
 	500  500  11200 500 
 Text Label 10250 5600 3    50   ~ 0
 GND
+Text Label 8750 5050 0    50   ~ 0
+VCC
 $EndSCHEMATC

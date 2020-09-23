@@ -13,17 +13,17 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 8800 4950 0    50   ~ 0
+Text Label 8750 4950 0    50   ~ 0
 GND
-Text Label 8800 5050 0    50   ~ 0
+Text Label 8750 5150 0    50   ~ 0
 VCC_HALF
-Text Label 8800 5150 0    50   ~ 0
+Text Label 8750 5450 0    50   ~ 0
 DACout
-Text Label 8800 5650 0    50   ~ 0
+Text Label 8750 5550 0    50   ~ 0
 SWD
-Text Label 8800 5350 0    50   ~ 0
+Text Label 8750 5350 0    50   ~ 0
 ADC6
-Text Label 8800 5250 0    50   ~ 0
+Text Label 8750 5250 0    50   ~ 0
 ADC3
 $Comp
 L eec:51281-1294 J1
@@ -76,42 +76,42 @@ U 1 1 5F85E8C6
 P 8550 5450
 F 0 "J3" H 8450 4750 50  0000 C CNN
 F 1 "Conn_01x11_Female" H 8450 4850 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 8550 5450 50  0001 C CNN
+F 2 "" H 8550 5450 50  0001 C CNN
 F 3 "~" H 8550 5450 50  0001 C CNN
 	1    8550 5450
 	-1   0    0    -1  
 $EndComp
-Text Label 7650 5650 2    50   ~ 0
+Text Label 7700 5650 2    50   ~ 0
 GND
-Text Label 7650 5250 2    50   ~ 0
+Text Label 7700 5250 2    50   ~ 0
 VCC
 Wire Wire Line
-	7650 5650 7750 5650
+	7700 5650 7800 5650
 Wire Wire Line
-	7750 5250 7650 5250
-Text Label 8800 5850 0    50   ~ 0
+	7800 5250 7700 5250
+Text Label 8750 5850 0    50   ~ 0
 VCC
-Text Label 8800 5950 0    50   ~ 0
+Text Label 8750 5950 0    50   ~ 0
 GND
-Text Label 7750 5450 2    50   ~ 0
+Text Label 7800 5450 2    50   ~ 0
 D0
-Text Label 7750 5550 2    50   ~ 0
+Text Label 7800 5550 2    50   ~ 0
 D1
-Text Label 7750 5350 2    50   ~ 0
+Text Label 7800 5350 2    50   ~ 0
 RESET
-Text Label 8800 5450 0    50   ~ 0
+Text Label 8750 5650 0    50   ~ 0
 SCL
-Text Label 8800 5550 0    50   ~ 0
+Text Label 8750 5750 0    50   ~ 0
 SDA
 Text Notes 4600 800  0    118  ~ 0
 Connector
 Wire Notes Line rgb(194, 0, 191)
-	7750 5850 7450 5850
+	7800 5850 7500 5850
 Wire Notes Line rgb(194, 0, 184)
-	7450 5850 7450 5050
+	7500 5850 7500 5050
 Wire Notes Line rgb(194, 0, 194)
-	7450 5050 7750 5050
-Text Notes 7400 5750 1    50   ~ 0
+	7500 5050 7800 5050
+Text Notes 7450 5750 1    50   ~ 0
 Charger outline
 Text Notes 700  800  0    118  ~ 0
 2.1 mm screw holes
@@ -355,7 +355,7 @@ U 1 1 5F85C19E
 P 8000 5450
 F 0 "J2" H 7850 4750 50  0000 L CNN
 F 1 "Conn_01x11_Female" H 7450 4850 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x11_P2.54mm_Vertical" H 8000 5450 50  0001 C CNN
+F 2 "" H 8000 5450 50  0001 C CNN
 F 3 "~" H 8000 5450 50  0001 C CNN
 	1    8000 5450
 	1    0    0    -1  
@@ -363,7 +363,23 @@ $EndComp
 Text Label 5150 1450 3    50   ~ 0
 GND
 Wire Wire Line
-	7750 5650 7750 5950
+	7800 5650 7800 5750
 Wire Wire Line
-	7750 4950 7750 5250
+	7800 4950 7800 5050
+Text Label 8750 5050 0    50   ~ 0
+VCC
+Connection ~ 7800 5050
+Wire Wire Line
+	7800 5050 7800 5150
+Connection ~ 7800 5150
+Wire Wire Line
+	7800 5150 7800 5250
+Connection ~ 7800 5250
+Connection ~ 7800 5650
+Connection ~ 7800 5750
+Wire Wire Line
+	7800 5750 7800 5850
+Connection ~ 7800 5850
+Wire Wire Line
+	7800 5850 7800 5950
 $EndSCHEMATC
