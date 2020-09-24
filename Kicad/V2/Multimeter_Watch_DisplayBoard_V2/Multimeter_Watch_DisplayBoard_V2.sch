@@ -245,8 +245,6 @@ Text Label 2550 3450 0    50   ~ 0
 GND
 Text Label 4900 2850 1    50   ~ 0
 GND
-Text Label 5000 2850 1    50   ~ 0
-PD3
 Text Label 5100 2850 1    50   ~ 0
 SCL
 Text Label 5200 2850 1    50   ~ 0
@@ -287,31 +285,7 @@ Wire Notes Line
 	2750 1950 2750 500 
 Text Notes 3250 800  0    118  ~ 0
 LED
-$Comp
-L Device:LED D1
-U 1 1 5F6D842C
-P 3400 1500
-F 0 "D1" V 3439 1382 50  0000 R CNN
-F 1 "LED" V 3348 1382 50  0000 R CNN
-F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3400 1500 50  0001 C CNN
-F 3 "~" H 3400 1500 50  0001 C CNN
-	1    3400 1500
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R1
-U 1 1 5F6D9C71
-P 3400 1200
-F 0 "R1" H 3470 1246 50  0000 L CNN
-F 1 "R" H 3470 1155 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3330 1200 50  0001 C CNN
-F 3 "~" H 3400 1200 50  0001 C CNN
-	1    3400 1200
-	1    0    0    -1  
-$EndComp
-Text Label 3400 1650 3    47   ~ 0
-GND
-Text Label 3400 1050 1    47   ~ 0
+Text Label 5000 2850 1    47   ~ 0
 PB5
 Text Label 900  2650 1    47   ~ 0
 PE4
@@ -327,8 +301,6 @@ Text Label 3400 2650 1    47   ~ 0
 PD6
 Text Label 4850 1450 3    47   ~ 0
 PB5
-Text Label 4350 1450 3    47   ~ 0
-PD3
 Text Label 4450 1450 3    50   ~ 0
 PE4
 Text Label 5350 1450 3    50   ~ 0
@@ -382,4 +354,8 @@ Wire Wire Line
 Connection ~ 7800 5850
 Wire Wire Line
 	7800 5850 7800 5950
+Text Notes 3250 1350 0    50   Italic 0
+removed
+Text Label 4350 1450 3    50   ~ 0
+VCC
 $EndSCHEMATC

@@ -1337,8 +1337,6 @@ Text Label 8750 5750 0    50   ~ 0
 SDA
 Text Label 9550 5600 3    50   ~ 0
 PE4
-Text Label 9450 5600 3    47   ~ 0
-PD3
 Text Label 9950 5600 3    47   ~ 0
 PB5
 Wire Wire Line
@@ -1432,5 +1430,7 @@ Wire Notes Line
 Text Label 10250 5600 3    50   ~ 0
 GND
 Text Label 8750 5050 0    50   ~ 0
+VCC
+Text Label 9450 5600 3    50   ~ 0
 VCC
 $EndSCHEMATC

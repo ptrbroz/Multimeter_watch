@@ -509,13 +509,13 @@ Text Label 8750 4950 0    50   ~ 0
 GND
 Text Label 8750 5150 0    50   ~ 0
 VCC_HALF
-Text Label 8750 5250 0    50   ~ 0
-DACout
-Text Label 8750 5350 0    50   ~ 0
-SWD
-Text Label 8750 5550 0    50   ~ 0
-ADC6
 Text Label 8750 5450 0    50   ~ 0
+DACout
+Text Label 8750 5550 0    50   ~ 0
+SWD
+Text Label 8750 5350 0    50   ~ 0
+ADC6
+Text Label 8750 5250 0    50   ~ 0
 ADC3
 Text Label 5950 1300 0    50   ~ 0
 PD7
