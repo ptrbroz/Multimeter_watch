@@ -1,4 +1,4 @@
-18641255087568358
+18638054255894349
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -58030,6 +58030,13 @@ Mounting 4.5mm 9774100982
 8
 1
 Multimeter_Watch_Custom_Footprints
+1408D
+
+
+0
+2
+2
+Multimeter_Watch_Custom_Footprints
 CMT-0502-75-SMT-TR
 
 
@@ -58058,20 +58065,6 @@ Molex-51281-1294-Manufacturer_Recommended
 14
 14
 Multimeter_Watch_Custom_Footprints
-StructPad
-
-
-0
-1
-1
-Multimeter_Watch_Custom_Footprints
-TVCM04N
-
-
-0
-4
-2
-Multimeter_Watch_Custom_Footprints
 github_logo
 
 
@@ -58080,13 +58073,6 @@ github_logo
 0
 Multimeter_Watch_Custom_Footprints
 nouth_signature
-
-
-0
-0
-0
-Multimeter_Watch_Custom_Footprints
-nouth_signature3_4by3_4
 
 
 0
