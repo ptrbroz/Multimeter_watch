@@ -287,17 +287,17 @@ Text Notes 3250 800  0    118  ~ 0
 LED
 Text Label 5000 2850 1    47   ~ 0
 PB5
-Text Label 900  2650 1    47   ~ 0
-PE4
-Text Label 1400 2650 1    47   ~ 0
-PE5
-Text Label 1900 2650 1    47   ~ 0
-PB6
 Text Label 2400 2650 1    47   ~ 0
-PB7
-Text Label 2900 2650 1    47   ~ 0
-PD5
+PE4
 Text Label 3400 2650 1    47   ~ 0
+PE5
+Text Label 2900 2650 1    47   ~ 0
+PB6
+Text Label 1900 2650 1    47   ~ 0
+PB7
+Text Label 1400 2650 1    47   ~ 0
+PD5
+Text Label 900  2650 1    47   ~ 0
 PD6
 Text Label 4850 1450 3    47   ~ 0
 PB5
