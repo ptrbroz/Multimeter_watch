@@ -63,6 +63,8 @@ Wire Wire Line
 	5900 950  5950 950 
 Wire Wire Line
 	6700 950  6750 950 
+Wire Wire Line
+	5200 950  5200 1050
 $Comp
 L Device:R R2
 U 1 1 5F1BCB32
@@ -104,8 +106,10 @@ Text Label 10500 900  1    47   ~ 0
 ADC2
 Text Label 10900 900  1    47   ~ 0
 ADC3
-Text Notes 6800 1650 0    118  ~ 0
+Text Notes 6800 1750 0    118  ~ 0
 R/L/C/Universal\n
+Wire Wire Line
+	5050 2000 5050 2100
 Text Label 7650 3600 3    47   ~ 0
 DACout
 $Comp
@@ -472,16 +476,16 @@ Wire Wire Line
 	10900 1150 11000 1150
 Text Label 8750 4950 0    50   ~ 0
 GND
-Text Label 8750 5050 0    50   ~ 0
+Text Label 8750 5150 0    50   ~ 0
 VCC_HALF
 Text Label 8750 5450 0    50   ~ 0
-RLC3
+DACout
 Text Label 8750 5550 0    50   ~ 0
 SWD
 Text Label 8750 5350 0    50   ~ 0
-RLC2
+ADC6
 Text Label 8750 5250 0    50   ~ 0
-RLC1
+ADC3
 Text Label 5950 1300 0    50   ~ 0
 PD7
 Wire Wire Line
@@ -491,8 +495,12 @@ Wire Wire Line
 Connection ~ 5450 2000
 Wire Wire Line
 	5450 2000 5400 2000
+Wire Wire Line
+	5050 2100 5800 2100
 Text Label 6350 1300 0    50   ~ 0
 PB0
+Wire Wire Line
+	5200 1050 7350 1050
 Wire Wire Line
 	7350 950  7100 950 
 Connection ~ 1400 2650
@@ -1213,6 +1221,8 @@ Wire Notes Line
 	500  500  11200 500 
 Text Label 10250 5200 3    50   ~ 0
 GND
+Text Label 8750 5050 0    50   ~ 0
+VCC
 Text Label 9450 5200 3    50   ~ 0
 VCC
 Wire Wire Line
@@ -1447,29 +1457,4 @@ Wire Wire Line
 	1700 1600 1800 1600
 Wire Notes Line
 	4900 5350 7000 5350
-Wire Wire Line
-	7350 1150 5200 1150
-Wire Wire Line
-	5200 950  5200 1150
-Wire Wire Line
-	5800 2200 5050 2200
-Wire Wire Line
-	5050 2000 5050 2200
-Wire Wire Line
-	7200 2100 7200 1900
-Connection ~ 7200 2100
-Wire Wire Line
-	7650 2200 7650 1900
-Connection ~ 7650 2200
-Wire Wire Line
-	6750 2000 6750 1900
-Connection ~ 6750 2000
-Text Label 7650 1900 0    47   ~ 0
-RLC3
-Text Label 8750 5150 0    50   ~ 0
-DACout
-Text Label 7200 1900 0    47   ~ 0
-RLC2
-Text Label 6750 1900 0    47   ~ 0
-RLC1
 $EndSCHEMATC
