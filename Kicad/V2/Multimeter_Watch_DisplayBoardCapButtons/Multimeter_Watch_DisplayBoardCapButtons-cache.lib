@@ -141,6 +141,23 @@ C 0 0 50 0 1 50 N
 ENDDRAW
 ENDDEF
 #
+# Multimeter_Watch_Custom_Symbols_CapButtons_Directional
+#
+DEF Multimeter_Watch_Custom_Symbols_CapButtons_Directional DIRPAD 0 40 Y Y 1 F N
+F0 "DIRPAD" 0 250 50 H V C CNN
+F1 "Multimeter_Watch_Custom_Symbols_CapButtons_Directional" 0 250 50 H V C CNN
+F2 "" 0 250 50 H I C CNN
+F3 "" 0 250 50 H I C CNN
+DRAW
+A 50 -150 206 -760 760 0 1 0 N 100 -350 100 50
+P 4 0 1 0 100 50 -100 50 -100 -350 100 -350 N
+X Left 1 -200 0 100 R 50 50 1 1 I
+X Right 2 -200 -100 100 R 50 50 1 1 I
+X Up 3 -200 -200 100 R 50 50 1 1 I
+X Down 4 -200 -300 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
 # Multimeter_Watch_Custom_Symbols_Touch_Pad
 #
 DEF Multimeter_Watch_Custom_Symbols_Touch_Pad PAD 0 40 Y Y 1 F N

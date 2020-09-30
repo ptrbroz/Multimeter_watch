@@ -291,7 +291,7 @@ U 1 1 5F752F5A
 P 1400 3050
 F 0 "R1" H 1550 3000 50  0000 R CNN
 F 1 "R" H 1500 3100 50  0000 R CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" V 1330 3050 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1330 3050 50  0001 C CNN
 F 3 "~" H 1400 3050 50  0001 C CNN
 	1    1400 3050
 	-1   0    0    1   
@@ -302,7 +302,7 @@ U 1 1 5F753CE1
 P 1500 3050
 F 0 "R2" H 1570 3096 50  0000 L CNN
 F 1 "R" H 1570 3005 50  0000 L CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" V 1430 3050 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 1430 3050 50  0001 C CNN
 F 3 "~" H 1500 3050 50  0001 C CNN
 	1    1500 3050
 	1    0    0    -1  
@@ -373,7 +373,7 @@ U 1 1 5F764747
 P 3450 3050
 F 0 "R3" V 3400 3200 20  0000 C CNN
 F 1 "R" V 3400 3150 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3050 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3050 50  0001 C CNN
 F 3 "~" H 3450 3050 50  0001 C CNN
 	1    3450 3050
 	0    1    1    0   
@@ -384,7 +384,7 @@ U 1 1 5F7684C5
 P 3450 3150
 F 0 "R4" V 3400 3300 20  0000 C CNN
 F 1 "R" V 3400 3250 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3150 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3150 50  0001 C CNN
 F 3 "~" H 3450 3150 50  0001 C CNN
 	1    3450 3150
 	0    1    1    0   
@@ -395,7 +395,7 @@ U 1 1 5F768B92
 P 3450 3250
 F 0 "R5" V 3400 3400 20  0000 C CNN
 F 1 "R" V 3400 3350 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3250 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3250 50  0001 C CNN
 F 3 "~" H 3450 3250 50  0001 C CNN
 	1    3450 3250
 	0    1    1    0   
@@ -406,7 +406,7 @@ U 1 1 5F768B9C
 P 3450 3350
 F 0 "R6" V 3400 3500 20  0000 C CNN
 F 1 "R" V 3400 3450 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3350 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3350 50  0001 C CNN
 F 3 "~" H 3450 3350 50  0001 C CNN
 	1    3450 3350
 	0    1    1    0   
@@ -417,7 +417,7 @@ U 1 1 5F769466
 P 3450 3450
 F 0 "R7" V 3400 3600 20  0000 C CNN
 F 1 "R" V 3400 3550 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3450 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3450 50  0001 C CNN
 F 3 "~" H 3450 3450 50  0001 C CNN
 	1    3450 3450
 	0    1    1    0   
@@ -428,7 +428,7 @@ U 1 1 5F769470
 P 3450 3550
 F 0 "R8" V 3400 3700 20  0000 C CNN
 F 1 "R" V 3400 3650 20  0000 C CNN
-F 2 "Resistor_SMD:R_0815_2038Metric_Pad1.53x4.00mm_HandSolder" H 3450 3550 50  0001 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3450 3550 50  0001 C CNN
 F 3 "~" H 3450 3550 50  0001 C CNN
 	1    3450 3550
 	0    1    1    0   
@@ -445,84 +445,6 @@ Wire Wire Line
 	3350 3450 3100 3450
 Wire Wire Line
 	3100 3550 3350 3550
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD1
-U 1 1 5F771E09
-P 4000 3050
-F 0 "PAD1" H 4600 3050 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3050 50  0000 L CNN
-F 2 "" H 4000 3050 50  0001 C CNN
-F 3 "" H 4000 3050 50  0001 C CNN
-	1    4000 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD2
-U 1 1 5F77251C
-P 4000 3150
-F 0 "PAD2" H 4600 3150 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3150 50  0000 L CNN
-F 2 "" H 4000 3150 50  0001 C CNN
-F 3 "" H 4000 3150 50  0001 C CNN
-	1    4000 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD3
-U 1 1 5F772D1C
-P 4000 3250
-F 0 "PAD3" H 4600 3250 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3250 50  0000 L CNN
-F 2 "" H 4000 3250 50  0001 C CNN
-F 3 "" H 4000 3250 50  0001 C CNN
-	1    4000 3250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD4
-U 1 1 5F772D26
-P 4000 3350
-F 0 "PAD4" H 4600 3350 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3350 50  0000 L CNN
-F 2 "" H 4000 3350 50  0001 C CNN
-F 3 "" H 4000 3350 50  0001 C CNN
-	1    4000 3350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD5
-U 1 1 5F773797
-P 4000 3450
-F 0 "PAD5" H 4600 3450 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3450 50  0000 L CNN
-F 2 "" H 4000 3450 50  0001 C CNN
-F 3 "" H 4000 3450 50  0001 C CNN
-	1    4000 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD6
-U 1 1 5F7737A1
-P 4000 3550
-F 0 "PAD6" H 4600 3550 50  0000 L CNN
-F 1 "Touch_Pad" H 4100 3550 50  0000 L CNN
-F 2 "" H 4000 3550 50  0001 C CNN
-F 3 "" H 4000 3550 50  0001 C CNN
-	1    4000 3550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3800 3050 3550 3050
-Wire Wire Line
-	3550 3150 3800 3150
-Wire Wire Line
-	3800 3250 3550 3250
-Wire Wire Line
-	3550 3350 3800 3350
-Wire Wire Line
-	3800 3450 3550 3450
-Wire Wire Line
-	3550 3550 3800 3550
 Text Notes 2750 2350 0    118  ~ 0
 Touch buttons
 Wire Notes Line
@@ -531,4 +453,61 @@ Wire Notes Line
 	500  500  500  4500
 Wire Notes Line
 	6000 500  6000 4500
+$Comp
+L Multimeter_Watch_Custom_Symbols:CapButtons_Directional DIRPAD1
+U 1 1 5F7511E5
+P 4350 2750
+F 0 "DIRPAD1" V 4416 2372 50  0000 R CNN
+F 1 "CapButtons_Directional" V 4325 2372 50  0000 R CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CapButtons_Directional" H 4350 3000 50  0001 C CNN
+F 3 "" H 4350 3000 50  0001 C CNN
+	1    4350 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD1
+U 1 1 5F751E9A
+P 3700 2650
+F 0 "PAD1" V 3700 2600 50  0000 R CNN
+F 1 "Touch_Pad" V 3850 2900 50  0000 R CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Left" H 3700 2650 50  0001 C CNN
+F 3 "" H 3700 2650 50  0001 C CNN
+	1    3700 2650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD2
+U 1 1 5F752AB3
+P 4000 2650
+F 0 "PAD2" V 4000 2600 50  0000 R CNN
+F 1 "Touch_Pad" V 4150 2750 50  0000 R CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Right" H 4000 2650 50  0001 C CNN
+F 3 "" H 4000 2650 50  0001 C CNN
+	1    4000 2650
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3550 3250 3700 3250
+Wire Wire Line
+	3700 3250 3700 2850
+Wire Wire Line
+	4650 3350 4650 2950
+Wire Wire Line
+	3550 3350 4650 3350
+Wire Wire Line
+	4350 3450 4350 2950
+Wire Wire Line
+	3550 3450 4350 3450
+Wire Wire Line
+	4550 3550 4550 2950
+Wire Wire Line
+	3550 3550 4550 3550
+Wire Wire Line
+	4450 3150 4450 2950
+Wire Wire Line
+	3550 3150 4450 3150
+Wire Wire Line
+	4000 2850 4000 3050
+Wire Wire Line
+	3550 3050 4000 3050
 $EndSCHEMATC

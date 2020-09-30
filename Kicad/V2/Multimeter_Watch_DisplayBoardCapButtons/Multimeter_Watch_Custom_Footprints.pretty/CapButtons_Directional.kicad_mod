@@ -1,0 +1,36 @@
+(module CapButtons_Directional (layer F.Cu) (tedit 5F74EAE1)
+  (fp_text reference REF** (at -5.8 1) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (fp_text value CapButtons_Directional (at -0.6 -7.1) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (pad 3 smd custom (at 0 -4.5) (size 1.524 1.524) (layers F.Cu)
+    (zone_connect 0)
+    (options (clearance outline) (anchor rect))
+    (primitives
+      (gr_poly (pts
+         (xy 0 4.2) (xy -9 -0.8) (xy 9 -0.8)) (width 0.1))
+    ))
+  (pad 2 smd custom (at 9 0) (size 1.524 1.524) (layers F.Cu)
+    (zone_connect 0)
+    (options (clearance outline) (anchor rect))
+    (primitives
+      (gr_poly (pts
+         (xy 0.8 5) (xy -8.2 0) (xy 0.8 -5)) (width 0.1))
+    ))
+  (pad 4 smd custom (at 0 4.5) (size 1.524 1.524) (layers F.Cu)
+    (zone_connect 0)
+    (options (clearance outline) (anchor rect))
+    (primitives
+      (gr_poly (pts
+         (xy 9 0.8) (xy -9 0.8) (xy 0 -4.2)) (width 0.1))
+    ))
+  (pad 1 smd custom (at -8.9 0) (size 1.524 1.524) (layers F.Cu)
+    (zone_connect 0)
+    (options (clearance outline) (anchor rect))
+    (primitives
+      (gr_poly (pts
+         (xy 8.1 0) (xy 0 4.4) (xy -0.9 4.4) (xy -0.9 -5)) (width 0.1))
+    ))
+)
