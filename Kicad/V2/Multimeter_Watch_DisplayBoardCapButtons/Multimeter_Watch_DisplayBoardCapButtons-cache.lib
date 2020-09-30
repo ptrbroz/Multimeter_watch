@@ -1,0 +1,271 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# Connector_Conn_01x04_Male
+#
+DEF Connector_Conn_01x04_Male J 0 40 Y N 1 F N
+F0 "J" 0 200 50 H V C CNN
+F1 "Connector_Conn_01x04_Male" 0 -300 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S 34 -195 0 -205 1 1 6 F
+S 34 -95 0 -105 1 1 6 F
+S 34 5 0 -5 1 1 6 F
+S 34 105 0 95 1 1 6 F
+P 2 1 1 6 50 -200 34 -200 N
+P 2 1 1 6 50 -100 34 -100 N
+P 2 1 1 6 50 0 34 0 N
+P 2 1 1 6 50 100 34 100 N
+X Pin_1 1 200 100 150 L 50 50 1 1 P
+X Pin_2 2 200 0 150 L 50 50 1 1 P
+X Pin_3 3 200 -100 150 L 50 50 1 1 P
+X Pin_4 4 200 -200 150 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Connector_Conn_01x11_Female
+#
+DEF Connector_Conn_01x11_Female J 0 40 Y N 1 F N
+F0 "J" 0 600 50 H V C CNN
+F1 "Connector_Conn_01x11_Female" 0 -600 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+A 0 -500 20 901 -901 1 1 6 N 0 -480 0 -520
+A 0 -400 20 901 -901 1 1 6 N 0 -380 0 -420
+A 0 -300 20 901 -901 1 1 6 N 0 -280 0 -320
+A 0 -200 20 901 -901 1 1 6 N 0 -180 0 -220
+A 0 -100 20 901 -901 1 1 6 N 0 -80 0 -120
+A 0 0 20 901 -901 1 1 6 N 0 20 0 -20
+A 0 100 20 901 -901 1 1 6 N 0 120 0 80
+A 0 200 20 901 -901 1 1 6 N 0 220 0 180
+A 0 300 20 901 -901 1 1 6 N 0 320 0 280
+A 0 400 20 901 -901 1 1 6 N 0 420 0 380
+A 0 500 20 901 -901 1 1 6 N 0 520 0 480
+P 2 1 1 6 -50 -500 -20 -500 N
+P 2 1 1 6 -50 -400 -20 -400 N
+P 2 1 1 6 -50 -300 -20 -300 N
+P 2 1 1 6 -50 -200 -20 -200 N
+P 2 1 1 6 -50 -100 -20 -100 N
+P 2 1 1 6 -50 0 -20 0 N
+P 2 1 1 6 -50 100 -20 100 N
+P 2 1 1 6 -50 200 -20 200 N
+P 2 1 1 6 -50 300 -20 300 N
+P 2 1 1 6 -50 400 -20 400 N
+P 2 1 1 6 -50 500 -20 500 N
+X Pin_1 1 -200 500 150 R 50 50 1 1 P
+X Pin_10 10 -200 -400 150 R 50 50 1 1 P
+X Pin_11 11 -200 -500 150 R 50 50 1 1 P
+X Pin_2 2 -200 400 150 R 50 50 1 1 P
+X Pin_3 3 -200 300 150 R 50 50 1 1 P
+X Pin_4 4 -200 200 150 R 50 50 1 1 P
+X Pin_5 5 -200 100 150 R 50 50 1 1 P
+X Pin_6 6 -200 0 150 R 50 50 1 1 P
+X Pin_7 7 -200 -100 150 R 50 50 1 1 P
+X Pin_8 8 -200 -200 150 R 50 50 1 1 P
+X Pin_9 9 -200 -300 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_C_Small
+#
+DEF Device_C_Small C 0 10 N N 1 F N
+F0 "C" 10 70 50 H V L CNN
+F1 "Device_C_Small" 10 -80 50 H V L CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ C_*
+$ENDFPLIST
+DRAW
+P 2 0 1 13 -60 -20 60 -20 N
+P 2 0 1 12 -60 20 60 20 N
+X ~ 1 0 100 80 D 50 50 1 1 P
+X ~ 2 0 -100 80 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_R
+#
+DEF Device_R R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "Device_R" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Device_R_Small
+#
+DEF Device_R_Small R 0 10 N N 1 F N
+F0 "R" 30 20 50 H V L CNN
+F1 "Device_R_Small" 30 -40 50 H V L CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -30 70 30 -70 0 1 8 N
+X ~ 1 0 100 30 D 50 50 1 1 P
+X ~ 2 0 -100 30 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Mechanical_MountingHole
+#
+DEF Mechanical_MountingHole H 0 40 Y Y 1 F N
+F0 "H" 0 200 50 H V C CNN
+F1 "Mechanical_MountingHole" 0 125 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ MountingHole*
+$ENDFPLIST
+DRAW
+C 0 0 50 0 1 50 N
+ENDDRAW
+ENDDEF
+#
+# Multimeter_Watch_Custom_Symbols_Touch_Pad
+#
+DEF Multimeter_Watch_Custom_Symbols_Touch_Pad PAD 0 40 Y Y 1 F N
+F0 "PAD" 0 0 50 H V C CNN
+F1 "Multimeter_Watch_Custom_Symbols_Touch_Pad" 0 -100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+A 50 0 50 -899 899 0 1 0 N 50 -50 50 50
+P 4 0 1 0 50 50 -100 50 -100 -50 50 -50 N
+X ~ ~ -200 0 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Sensor_Touch_AT42QT1070-S
+#
+DEF Sensor_Touch_AT42QT1070-S U 0 20 Y Y 1 F N
+F0 "U" -100 650 50 H V R CNN
+F1 "Sensor_Touch_AT42QT1070-S" -100 550 50 H V R CNN
+F2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SOIC*3.9x8.7mm*P1.27mm*
+$ENDFPLIST
+DRAW
+S -500 500 500 -500 0 1 10 f
+X VDD 1 0 600 100 D 50 50 1 1 W
+X KEY3 10 600 0 100 L 50 50 1 1 P
+X KEY2 11 600 100 100 L 50 50 1 1 P
+X KEY1 12 600 200 100 L 50 50 1 1 P
+X KEY0 13 600 300 100 L 50 50 1 1 P
+X VSS 14 0 -600 100 U 50 50 1 1 W
+X MODE 2 -600 -300 100 R 50 50 1 1 I
+X SDA/OUT0 3 -600 300 100 R 50 50 1 1 B
+X ~RESET 4 -600 0 100 R 50 50 1 1 I
+X ~CHANGE~/OUT4 5 -600 -100 100 R 50 50 1 1 C
+X SCL/OUT3 6 -600 200 100 R 50 50 1 1 B
+X OUT2/KEY6 7 600 -300 100 L 50 50 1 1 O
+X OUT1/KEY5 8 600 -200 100 L 50 50 1 1 O
+X KEY4 9 600 -100 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# eec_51281-1294
+#
+DEF eec_51281-1294 J 0 0 Y Y 1 L N
+F0 "J" 0 500 50 H V L CNN
+F1 "eec_51281-1294" 0 600 50 H V L CNN
+F2 "Molex-51281-1294-*" 0 700 50 H I L CNN
+F3 "http://www.molex.com/webdocs/datasheets/pdf/en-us/0512811294_FFC_FPC_CONNECTORS.pdf" 0 800 50 H I L CNN
+F4 "12" 0 900 50 H I L CNN "Circuits Loaded"
+F5 "Manufacturer URL" 0 1000 50 H I L CNN "Component Link 1 Description"
+F6 "http://www.molex.com/molex/index.jsp" 0 1100 50 H I L CNN "Component Link 1 URL"
+F7 "Package Specification" 0 1200 50 H I L CNN "Component Link 3 Description"
+F8 "http://www.molex.com/pdm_docs/sd/512811294_sd.pdf" 0 1300 50 H I L CNN "Component Link 3 URL"
+F9 "Dual" 0 1400 50 H I L CNN "Contact Position"
+F10 "0.5A" 0 1500 50 H I L CNN "Current Max per Contact"
+F11 "20" 0 1600 50 H I L CNN "Durability mating cycles max"
+F12 "90degrees Angle" 0 1700 50 H I L CNN "Entry Angle"
+F13 "1.20mm" 0 1800 50 H I L CNN "Mated Height"
+F14 "Phosphor Bronze" 0 1900 50 H I L CNN "Material   Metal"
+F15 "Gold" 0 2000 50 H I L CNN "Material   Plating Mating"
+F16 "Tin" 0 2100 50 H I L CNN "Material   Plating Termination"
+F17 "Surface Mount" 0 2200 50 H I L CNN "Mounting Technology"
+F18 "1" 0 2300 50 H I L CNN "Number of Rows"
+F19 "Right Angle" 0 2400 50 H I L CNN "Orientation"
+F20 "No" 0 2500 50 H I L CNN "PCB Locator"
+F21 "Yes" 0 2600 50 H I L CNN "PCB Retention"
+F22 "12-Lead FPC Connector, Pitch 0.5 mm" 0 2700 50 H I L CNN "Package Description"
+F23 "Rev. J, 10/2010" 0 2800 50 H I L CNN "Package Version"
+F24 "Tape and Reel" 0 2900 50 H I L CNN "Packing"
+F25 "0.50mm" 0 3000 50 H I L CNN "Pitch   Mating Interface"
+F26 "Yes" 0 3100 50 H I L CNN "Polarized to PCB"
+F27 "No" 0 3200 50 H I L CNN "Stackable"
+F28 "50V" 0 3300 50 H I L CNN "Voltage Max"
+F29 "Conn" 0 3400 50 H I L CNN "category"
+F30 "1130020" 0 3500 50 H I L CNN "ciiva ids"
+F31 "38ce8664f5d5bbe6" 0 3600 50 H I L CNN "library id"
+F32 "Molex" 0 3700 50 H I L CNN "manufacturer"
+F33 "51281-1294" 0 3800 50 H I L CNN "package"
+F34 "1411372361" 0 3900 50 H I L CNN "release date"
+F35 "Yes" 0 4000 50 H I L CNN "rohs"
+F36 "F2413D5A-E530-4996-972E-9EFD49FD3DF5" 0 4100 50 H I L CNN "vault revision"
+F37 "yes" 0 4200 50 H I L CNN "imported"
+DRAW
+C 0 300 30 1 1 0 N
+C 100 300 30 1 1 0 N
+C 200 300 30 1 1 0 N
+C 300 300 30 1 1 0 N
+C 400 300 30 1 1 0 N
+C 500 300 30 1 1 0 N
+C 600 300 30 1 1 0 N
+C 700 300 30 1 1 0 N
+C 800 300 30 1 1 0 N
+C 900 300 30 1 1 0 N
+C 1000 300 30 1 1 0 N
+C 1100 300 30 1 1 0 N
+S -100 400 1500 200 1 1 0 f
+P 2 1 1 0 0 200 0 270 N
+P 2 1 1 0 100 200 100 270 N
+P 2 1 1 0 200 200 200 270 N
+P 2 1 1 0 300 200 300 270 N
+P 2 1 1 0 400 200 400 270 N
+P 2 1 1 0 500 200 500 270 N
+P 2 1 1 0 600 200 600 270 N
+P 2 1 1 0 700 200 700 270 N
+P 2 1 1 0 800 200 800 270 N
+P 2 1 1 0 900 200 900 270 N
+P 2 1 1 0 1000 200 1000 270 N
+P 2 1 1 0 1100 200 1100 270 N
+X 1 1 0 100 100 U 40 0 1 1 P
+X 10 10 900 100 100 U 40 0 1 1 P
+X 11 11 1000 100 100 U 40 0 1 1 P
+X 12 12 1100 100 100 U 40 0 1 1 P
+X 2 2 100 100 100 U 40 0 1 1 P
+X 3 3 200 100 100 U 40 0 1 1 P
+X 4 4 300 100 100 U 40 0 1 1 P
+X 5 5 400 100 100 U 40 0 1 1 P
+X 6 6 500 100 100 U 40 0 1 1 P
+X 7 7 600 100 100 U 40 0 1 1 P
+X 8 8 700 100 100 U 40 0 1 1 P
+X 9 9 800 100 100 U 40 0 1 1 P
+X MP1 MP1 1300 100 100 U 40 0 1 1 P
+X MP2 MP2 1400 100 100 U 40 0 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library
