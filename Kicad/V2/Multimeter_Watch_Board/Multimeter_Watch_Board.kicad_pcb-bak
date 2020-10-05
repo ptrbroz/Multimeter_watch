@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 37)
+    (drawings 36)
     (tracks 577)
     (zones 0)
     (modules 52)
@@ -2465,9 +2465,6 @@
     )
   )
 
-  (gr_text "TODO: REDO SILKSCREEN LABELING HERE AND ON TOP BOARD!!!" (at 127.25 108) (layer F.Cu)
-    (effects (font (size 1.5 1.5) (thickness 0.3)))
-  )
   (gr_text :ptrbroz/Multimeter_watch (at 119.8 66.8) (layer B.SilkS)
     (effects (font (size 1.1 1.1) (thickness 0.2)) (justify mirror))
   )

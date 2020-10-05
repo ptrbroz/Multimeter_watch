@@ -1417,8 +1417,8 @@ Text Label 7750 5850 2    50   ~ 0
 PB6
 Text Label 7750 5950 2    50   ~ 0
 PB7
-Text Label 8750 5850 0    50   ~ 0
-PD6
 Text Label 8750 5950 0    50   ~ 0
+PD6
+Text Label 8750 5850 0    50   ~ 0
 PD5
 $EndSCHEMATC
