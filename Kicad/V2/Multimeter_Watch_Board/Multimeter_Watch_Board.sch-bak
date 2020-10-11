@@ -1409,10 +1409,6 @@ Text Label 8750 5450 0    50   ~ 0
 DACout
 Text Label 8750 5150 0    50   ~ 0
 VCC_HALF
-Text Label 7750 5750 2    50   ~ 0
-PE4
-Text Label 7750 5650 2    50   ~ 0
-PE5
 Text Label 7750 5850 2    50   ~ 0
 PB6
 Text Label 7750 5950 2    50   ~ 0
@@ -1421,4 +1417,8 @@ Text Label 8750 5850 0    50   ~ 0
 PD6
 Text Label 8750 5950 0    50   ~ 0
 PD5
+Text Label 7750 5750 2    50   ~ 0
+PE5
+Text Label 7750 5650 2    50   ~ 0
+PE4
 $EndSCHEMATC
