@@ -198,27 +198,27 @@ Text Label 6800 900  1    47   ~ 0
 PD5
 Text Label 6300 900  1    47   ~ 0
 PD6
-Text Label 4850 1450 3    47   ~ 0
+Text Label 4950 1450 3    47   ~ 0
 PB5
-Text Label 4450 1450 3    50   ~ 0
-PE4
 Text Label 5350 1450 3    50   ~ 0
+PE4
+Text Label 4450 1450 3    50   ~ 0
 SCL
-Text Label 5450 1450 3    50   ~ 0
+Text Label 4350 1450 3    50   ~ 0
 SDA
-Text Label 4550 1450 3    50   ~ 0
+Text Label 5250 1450 3    50   ~ 0
 PE5
 Text Label 5150 1750 3    50   ~ 0
 VCC
-Text Label 4750 1450 3    50   ~ 0
-PB7
-Text Label 4650 1450 3    50   ~ 0
-PB6
-Text Label 5250 1450 3    50   ~ 0
-GND
-Text Label 4950 1450 3    50   ~ 0
-PD5
 Text Label 5050 1450 3    50   ~ 0
+PB7
+Text Label 5150 1450 3    50   ~ 0
+PB6
+Text Label 4550 1450 3    50   ~ 0
+GND
+Text Label 4850 1450 3    50   ~ 0
+PD5
+Text Label 4750 1450 3    50   ~ 0
 PD6
 $Comp
 L Connector:Conn_01x11_Female J2
@@ -231,7 +231,7 @@ F 3 "~" H 9950 1600 50  0001 C CNN
 	1    9950 1600
 	1    0    0    -1  
 $EndComp
-Text Label 5150 1450 3    50   ~ 0
+Text Label 4650 1450 3    50   ~ 0
 GND
 Wire Wire Line
 	9750 1800 9750 1900
@@ -253,7 +253,7 @@ Wire Wire Line
 Connection ~ 9750 2000
 Wire Wire Line
 	9750 2000 9750 2100
-Text Label 4350 1450 3    50   ~ 0
+Text Label 5450 1450 3    50   ~ 0
 VCC
 Wire Notes Line
 	4150 500  4150 1950
@@ -465,7 +465,7 @@ F 3 "" H 4350 3000 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD1
+L Multimeter_Watch_DisplayBoardCapButtons-rescue:Touch_Pad-Multimeter_Watch_Custom_Symbols PAD1
 U 1 1 5F751E9A
 P 3700 2650
 F 0 "PAD1" V 3700 2600 50  0000 R CNN
@@ -476,7 +476,7 @@ F 3 "" H 3700 2650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD2
+L Multimeter_Watch_DisplayBoardCapButtons-rescue:Touch_Pad-Multimeter_Watch_Custom_Symbols PAD2
 U 1 1 5F752AB3
 P 4000 2650
 F 0 "PAD2" V 4000 2600 50  0000 R CNN

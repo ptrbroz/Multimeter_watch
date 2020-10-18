@@ -158,11 +158,11 @@ X Down 4 -200 -300 100 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Multimeter_Watch_Custom_Symbols_Touch_Pad
+# Multimeter_Watch_DisplayBoardCapButtons-rescue_Touch_Pad-Multimeter_Watch_Custom_Symbols
 #
-DEF Multimeter_Watch_Custom_Symbols_Touch_Pad PAD 0 40 Y Y 1 F N
+DEF Multimeter_Watch_DisplayBoardCapButtons-rescue_Touch_Pad-Multimeter_Watch_Custom_Symbols PAD 0 40 Y Y 1 F N
 F0 "PAD" 0 0 50 H V C CNN
-F1 "Multimeter_Watch_Custom_Symbols_Touch_Pad" 0 -100 50 H V C CNN
+F1 "Multimeter_Watch_DisplayBoardCapButtons-rescue_Touch_Pad-Multimeter_Watch_Custom_Symbols" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
