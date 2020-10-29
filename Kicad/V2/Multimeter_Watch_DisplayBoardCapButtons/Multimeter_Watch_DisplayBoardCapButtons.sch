@@ -464,28 +464,6 @@ F 3 "" H 4350 3000 50  0001 C CNN
 	1    4350 2750
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Multimeter_Watch_DisplayBoardCapButtons-rescue:Touch_Pad-Multimeter_Watch_Custom_Symbols PAD1
-U 1 1 5F751E9A
-P 3700 2650
-F 0 "PAD1" V 3700 2600 50  0000 R CNN
-F 1 "Touch_Pad" V 3850 2900 50  0000 R CNN
-F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Left" H 3700 2650 50  0001 C CNN
-F 3 "" H 3700 2650 50  0001 C CNN
-	1    3700 2650
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Multimeter_Watch_DisplayBoardCapButtons-rescue:Touch_Pad-Multimeter_Watch_Custom_Symbols PAD2
-U 1 1 5F752AB3
-P 4000 2650
-F 0 "PAD2" V 4000 2600 50  0000 R CNN
-F 1 "Touch_Pad" V 4150 2750 50  0000 R CNN
-F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Right" H 4000 2650 50  0001 C CNN
-F 3 "" H 4000 2650 50  0001 C CNN
-	1    4000 2650
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	3550 3250 3700 3250
 Wire Wire Line
@@ -510,4 +488,26 @@ Wire Wire Line
 	4000 2850 4000 3050
 Wire Wire Line
 	3550 3050 4000 3050
+$Comp
+L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD1
+U 1 1 5F9B02FC
+P 3700 2650
+F 0 "PAD1" V 3750 3100 50  0000 R CNN
+F 1 "Touch_Pad" V 3650 3200 50  0000 R CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Left" H 3700 2650 50  0001 C CNN
+F 3 "" H 3700 2650 50  0001 C CNN
+	1    3700 2650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Multimeter_Watch_Custom_Symbols:Touch_Pad PAD2
+U 1 1 5F9B0B06
+P 4000 2650
+F 0 "PAD2" V 3988 2572 50  0000 R CNN
+F 1 "Touch_Pad" V 3897 2572 50  0000 R CNN
+F 2 "Multimeter_Watch_Custom_Footprints:CapButton_Right" H 4000 2650 50  0001 C CNN
+F 3 "" H 4000 2650 50  0001 C CNN
+	1    4000 2650
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
