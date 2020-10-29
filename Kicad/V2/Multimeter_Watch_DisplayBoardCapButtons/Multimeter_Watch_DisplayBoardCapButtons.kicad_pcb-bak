@@ -3,7 +3,7 @@
   (general
     (thickness 1.6)
     (drawings 122)
-    (tracks 178)
+    (tracks 179)
     (zones 0)
     (modules 22)
     (nets 28)
@@ -34,7 +34,7 @@
   )
 
   (setup
-    (last_trace_width 0.23)
+    (last_trace_width 0.5)
     (user_trace_width 0.23)
     (user_trace_width 0.5)
     (user_trace_width 0.6)
@@ -2190,6 +2190,7 @@
   (via (at 129.5 77) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 4))
   (via (at 124.5 77) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 4))
   (via (at 106.5 77.5) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 4))
+  (segment (start 136.85 62.15) (end 136.85 63.35) (width 0.5) (layer B.Cu) (net 4))
   (segment (start 132.310001 66.075001) (end 134.150002 64.235) (width 0.25) (layer B.Cu) (net 8))
   (segment (start 134.150002 64.235) (end 134.150002 62.15) (width 0.25) (layer B.Cu) (net 8))
   (segment (start 129.950001 64.95) (end 131.075002 66.075001) (width 0.25) (layer B.Cu) (net 8))
@@ -2304,7 +2305,7 @@
   (segment (start 120.6 71.25) (end 137.8 88.45) (width 0.25) (layer F.Cu) (net 27))
   (segment (start 111.475001 67.425001) (end 109.6 65.55) (width 0.23) (layer B.Cu) (net 27))
 
-  (zone (net 4) (net_name /GND) (layer B.Cu) (tstamp 5F9B21A0) (hatch edge 0.508)
+  (zone (net 4) (net_name /GND) (layer B.Cu) (tstamp 5F9B29BB) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
@@ -2434,7 +2435,7 @@
       )
     )
   )
-  (zone (net 4) (net_name /GND) (layer F.Cu) (tstamp 5F9B219D) (hatch edge 0.508)
+  (zone (net 4) (net_name /GND) (layer F.Cu) (tstamp 5F9B29B8) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
     (min_thickness 0.254)
     (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
