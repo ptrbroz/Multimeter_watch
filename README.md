@@ -10,7 +10,7 @@ The first version consists of two pcbs, mated via pin headers. The upper pcb hol
 
 The bottom pcb holds the CPU, three 3.5mm jack connectors (for custom multimeter probes) and other circuitry.
 
-Sandwiched between the two pcbs is a Li-Po battery [todo: add battery model].
+Sandwiched between the two pcbs is a Li-Po battery.
 
 It's features include:
 
