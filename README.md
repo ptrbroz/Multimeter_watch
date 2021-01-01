@@ -1,6 +1,6 @@
 # An open-source multimeter watch
 
-Contained herein is the multimeter watch project - a multimeter small enough to wear on your wrist!  It utilizes the LGT8F328P-QFP32L CPU. 
+Contained herein is the multimeter watch project, developed by Petr Brož and David Šibrava. It is a multimeter small enough to wear on your wrist!  It utilizes the LGT8F328P-QFP32L CPU. 
 
 The developement is ongoing, thus the project's kicad folders are split into different versions for different versions of the hardware:
 
