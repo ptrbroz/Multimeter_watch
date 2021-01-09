@@ -48,7 +48,7 @@ V1:
 (10 CZK coin for scale (diameter = 24.5mm))
 ![v1assembled](https://github.com/ptrbroz/Multimeter_watch/blob/master/images/v1assembled.jpg)
 ![v1disassembled](https://github.com/ptrbroz/Multimeter_watch/blob/master/images/v1disassembled.jpg)
-![v1box](https://github.com/ptrbroz/Multimeter_watch/blob/master/images/v1box.jpg)
+![v1box](https://github.com/ptrbroz/Multimeter_watch/blob/master/images/v1box.JPG)
 
 V2:
 (to be photographed)
