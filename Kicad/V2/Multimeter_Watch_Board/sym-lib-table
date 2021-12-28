@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name Multimeter_Watch_Custom_Symbols)(type Legacy)(uri ${KIPRJMOD}/Multimeter_Watch_Custom_Symbols.lib)(options "")(descr ""))
+  (lib (name Multimeter_Watch_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/Multimeter_Watch_Board-rescue.lib)(options "")(descr ""))
 )

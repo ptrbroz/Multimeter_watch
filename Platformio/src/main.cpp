@@ -21,6 +21,8 @@
 #include "measurement.h"
 #include "dacUtils.h"
 #include "ohmMeter.h"
+#include "capacity.h"
+#include "waveformGenerator.h"
 
 int32_t timeTillSleep=10000;
 uint8_t *programMemPtr;
@@ -60,6 +62,18 @@ void setup() {
 
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
+  return;
+
+dac_init();
+wfg_generate();
+//dac_testFunGen();
+
+  while(1)
+  {
+    dischargeCapacitor();
+    uint32_t cap;
+    measureCapacity3(false,cap);
+  }
   /*while(true)
   {
     Serial.println(ohmmeter_getRawADCLowRange());

@@ -49,6 +49,10 @@ void adc_adjustADCSource(struct adcSettings& _settings, enum adcSourceValues _ad
     {
         sbi(_settings._ADCSRC,DIFS);
     }
+    else
+    {
+        cbi(_settings._ADCSRC,DIFS);
+    }
 
 }
 
