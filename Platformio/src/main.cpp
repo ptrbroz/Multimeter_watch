@@ -28,6 +28,7 @@
 #include "formula1.h"
 #include "kitchenTimer.h"
 #include <avr/interrupt.h>
+#include "WDTTest.h"
 
 int32_t timeTillSleep=10000;
 uint8_t *programMemPtr;
@@ -39,7 +40,7 @@ timeTillSleep=_t;
 
 //------------------------------------------------------------------------------
 void setup() {
-
+  testWDT();
 
   pinMode(D3,OUTPUT);
   digitalWrite(D3,HIGH);
@@ -181,6 +182,3 @@ void initOled()
 
 
 
-
-ISR(WDT_vect) { // WDT interrupt vector
-}
