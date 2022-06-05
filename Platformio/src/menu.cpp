@@ -11,7 +11,8 @@
 #include "linearPowerSupply.h"
 #include "voltmeter.h"
 #include "waveformGenerator.h"
-
+#include "ncvDetector.h"
+#include "formula1.h"
 
 
 const uint8_t menuElements = 10;
@@ -47,8 +48,8 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_linearPowerSupply,
                                         prog_voltmeter,
                                         prog_wfg,
-                                        prog_placeHolder,
-                                        prog_placeHolder
+                                        prog_ncv,
+                                        prog_f1
                                         };
 
 
