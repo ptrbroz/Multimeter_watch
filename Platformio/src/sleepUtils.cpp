@@ -12,11 +12,11 @@ void sleep_sleepTillWakeup()
   digitalWrite(A5,LOW);
   digitalWrite(D3,LOW);
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
-  cli();
+  //cli();
   sleep_enable();
   sleep_cpu();
   sleep_disable();
-  sei();
+  //sei();
   pinMode(D3,OUTPUT);
   digitalWrite(D3,HIGH);
   delay(250);

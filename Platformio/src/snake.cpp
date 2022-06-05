@@ -278,7 +278,7 @@ funRetVal snake_gameover(uint8_t *snakeBuffer){
     delay(700);
     oled.setCursor(40,3);
     oled.set2X();
-    oled.print("GAME");
+    oled.print(F("GAME"));
     delay(1000);
     oled.setCursor(40,5);
     oled.print("OVER");

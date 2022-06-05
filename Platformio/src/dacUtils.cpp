@@ -40,7 +40,7 @@ uint16_t dac_getRawAdcAcrossShunt()
     adc_adjustReference(adcs,ref_2048);
     adc_adjustMuxSource(adcs, muxSource_A2);
     adc_adjustPGANoninvSource(adcs,pgaNonInvSource_mux);
-    adc_adjustPGAInvSource(adcs,pgaInvSource_A3);
+    adc_adjustPGAInvSource(adcs,pgaInvSource_SWC);
     adc_adjustADCSource(adcs,adcSource_pga);
     adc_adjustEnablePGA(adcs,true);
     adc_applySettings(adcs);
@@ -50,15 +50,24 @@ uint16_t dac_getRawAdcAcrossShunt()
 
 uint16_t dac_getCurrentThroughShunt()
 {
-    uint16_t adcRaw=dac_getRawAdcAcrossShunt();
-    uint16_t shuntVoltage=map(adcRaw,0,4095,0,REFERENCE_2V048_EXACT);
-    return shuntVoltage/30;
+    return dac_getVoltageAcrossShunt()/30;
 }
 
+uint16_t dac_getVoltageAcrossShunt()
+{
+    uint16_t adcRaw=dac_getRawAdcAcrossShunt();
+    uint16_t shuntVoltage=map(adcRaw,0,4095,0,REFERENCE_2V048_EXACT);
+    return shuntVoltage;
+}
+
+uint16_t dac_getVoltageBeforeShunt(uint16_t _batteryVoltage)
+{
+    uint16_t rawAdc=dac_getRawAdcBeforeShunt();
+    return map(rawAdc,0,4095,0,_batteryVoltage);
+}
 uint16_t dac_getVoltageAfterShunt(uint16_t _batteryVoltage)
 {
-    uint16_t rawAdc=dac_getRawAdcAfterShunt();
-    return map(rawAdc,0,4095,0,_batteryVoltage);
+    return dac_getVoltageBeforeShunt(_batteryVoltage)-dac_getVoltageAcrossShunt();
 }
 
 void dac_testFunGen()
