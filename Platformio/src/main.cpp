@@ -45,6 +45,10 @@ void setup() {
   digitalWrite(D3,HIGH);
   delay(400);
   Serial.begin(115200);
+  while(1)
+  {
+    kitchenTimer_loop(NULL);
+  }
   uint16_t battVoltage=adc_measureBatteryVoltage();
   dac_init();
   //dac_testFunGen();
@@ -67,7 +71,7 @@ void setup() {
 
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
-  wdtTest();
+  //wdtTest();
   return;
   f1_init(NULL);
   while(1)
@@ -181,6 +185,3 @@ void initOled()
 
 
 
-
-ISR(WDT_vect) { // WDT interrupt vector
-}
