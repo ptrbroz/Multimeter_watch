@@ -2,6 +2,8 @@
 #include <avr/sleep.h>
 #include <Arduino.h>
 
+int count=0;
+
 void wdtSleep()
 {
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
@@ -10,6 +12,16 @@ void wdtSleep()
   sleep_cpu();
   sleep_disable();
   //sei();
+}
+
+SIGNAL(BADISR_vect)
+{
+  count=12345;
+}
+
+
+SIGNAL(WDT_vect) { // WDT interrupt vector
+count++;
 }
 
 
@@ -26,10 +38,9 @@ void testWDT()
   while (1)
   {
     Serial.println("KVOK!");
+    Serial.println(count);
     delay(500);
-    wdtSleep();
+    //WDT_vect();
+    //wdtSleep();
   }
-}
-
-SIGNAL(WDT_vect) { // WDT interrupt vector
 }

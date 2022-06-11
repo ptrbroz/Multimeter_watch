@@ -40,12 +40,12 @@ timeTillSleep=_t;
 
 //------------------------------------------------------------------------------
 void setup() {
-  testWDT();
 
   pinMode(D3,OUTPUT);
   digitalWrite(D3,HIGH);
   delay(400);
   Serial.begin(115200);
+  testWDT();
   uint16_t battVoltage=adc_measureBatteryVoltage();
   dac_init();
   //dac_testFunGen();
@@ -68,8 +68,8 @@ void setup() {
 
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
-  wdtTest();
   return;
+  wdtTest();
   f1_init(NULL);
   while(1)
   {

@@ -60,7 +60,7 @@ funRetVal clockSettings_loop( uint8_t *memPtr)
         return PROGRAM_END;
     }
     char temp[50];
-    snprintf(temp,50,"%2d:%2d",hourSetting,minSetting);
+    snprintf(temp,50,"%02d:%02d",hourSetting,minSetting);
     oled.set2X();
     oled.setCursor(0,1);
     oled.print(temp);
