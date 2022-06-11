@@ -41,6 +41,8 @@ static void sleep_afterSleep()
 void sleep_wdtSleep(period_t _period)
 {
   sleep_beforeSleep();
+  bitClear(ADCSRA, ADEN);//bug workaround according to https://github.com/dbuezas/lgt8fx/issues/155
   PMU.sleep(PM_POFFS0,_period);
+  bitSet(ADCSRA, ADEN); //bug workaround according to https://github.com/dbuezas/lgt8fx/issues/155
   sleep_afterSleep();
 }

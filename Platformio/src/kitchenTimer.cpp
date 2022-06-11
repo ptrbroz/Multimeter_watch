@@ -26,9 +26,12 @@ funRetVal kitchenTimer_loop( uint8_t *memPtr);
 const program prog_kitchenTimer = {kitchenTimer_init, kitchenTimer_loop,kitchenTimer_deinit, "Kitchen timer", 0};
 
 funRetVal kitchenTimer_loop( uint8_t *memPtr){
-    tone(2, 4000, 100);
-    delay(500);
-    sleep_wdtSleep(SLEEP_4S);
+    while(1)
+    {
+        tone(2, 4000, 100);
+        delay(500);
+        sleep_wdtSleep(SLEEP_256MS);
+    }
     return CONTINUE_LOOP;
 }
 

@@ -45,10 +45,6 @@ void setup() {
   digitalWrite(D3,HIGH);
   delay(400);
   Serial.begin(115200);
-  while(1)
-  {
-    kitchenTimer_loop(NULL);
-  }
   uint16_t battVoltage=adc_measureBatteryVoltage();
   dac_init();
   //dac_testFunGen();
