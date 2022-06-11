@@ -19,12 +19,6 @@ SIGNAL(BADISR_vect)
   count=12345;
 }
 
-
-SIGNAL(WDT_vect) { // WDT interrupt vector
-count++;
-}
-
-
 void testWDT()
 {
   cli();
