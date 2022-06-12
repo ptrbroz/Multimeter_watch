@@ -14,9 +14,10 @@
 #include "ncvDetector.h"
 #include "formula1.h"
 #include "kitchenTimer.h"
+#include "servoTester.h"
 
 
-const uint8_t menuElements = 11;
+const uint8_t menuElements = 12;
 const uint8_t visibleElements = 6;
 
 const uint8_t scrollLen = visibleElements;
@@ -52,6 +53,7 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_ncv,
                                         prog_f1,
                                         prog_kitchenTimer,
+                                        prog_servoTester
                                         };
 
 

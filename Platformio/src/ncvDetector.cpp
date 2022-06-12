@@ -18,7 +18,7 @@ funRetVal ncv_init(uint8_t *memPtr)
     adc_adjustPGANoninvSource(settings,pgaNonInvSource_mux);
     adc_adjustPGAInvSource(settings,pgaInvSource_gnd);
     adc_adjustPGAGain(settings,pgaGain_x32);
-    adc_adjustMuxSource(settings,muxSource_A3);
+    adc_adjustMuxSource(settings,muxSource_A3);//A3 SEEMS TO BE A11?!
     adc_adjustEnablePGA(settings,true);
     //adc_adjustPrescaler(settings,adc_prescale_1);
     adc_applySettings(settings);

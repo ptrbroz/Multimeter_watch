@@ -27,6 +27,7 @@
 #include "resistanceMeter.h"
 #include "formula1.h"
 #include "kitchenTimer.h"
+#include "servoTester.h"
 #include <avr/interrupt.h>
 
 uint8_t *programMemPtr;
@@ -63,6 +64,7 @@ void setup() {
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
   //wdtTest();
+  //servoTester_loop(0);
   return;
   f1_init(NULL);
   while(1)
