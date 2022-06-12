@@ -5,6 +5,7 @@
 #include "PMU.h"
 static void sleep_beforeSleep();
 static void sleep_afterSleep();
+int32_t timeTillSleep=10000;
 
 void sleep_sleepTillWakeup()
 {
@@ -45,4 +46,8 @@ void sleep_wdtSleep(period_t _period)
   PMU.sleep(PM_POFFS0,_period);
   bitSet(ADCSRA, ADEN); //bug workaround according to https://github.com/dbuezas/lgt8fx/issues/155
   sleep_afterSleep();
+}
+void sleep_setTimeTillSleep(int32_t _t)
+{
+  timeTillSleep=_t;
 }

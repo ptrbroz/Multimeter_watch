@@ -2,6 +2,7 @@
 #include "buttons.h"
 #include "program.h"
 #include "main.h"
+#include "sleepUtils.h"
 #include "formula1.h"
 #include <avr/pgmspace.h>
 
@@ -29,7 +30,7 @@ static prog_f1_struct s;//TODO: change
 funRetVal f1_init(uint8_t *memPtr)
 {
     s.gameStartMillis=millis();
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     for(int i=0;i<CAR_COUNT;i++)
     {
         s.carArray[i]=NO_CAR;
@@ -207,6 +208,6 @@ void f1_gameOver()
 
 funRetVal f1_deinit(uint8_t *memPtr)
 {
-    setTimeTillSleep(10000);
+    sleep_setTimeTillSleep(10000);
     return CONTINUE_LOOP;
 }

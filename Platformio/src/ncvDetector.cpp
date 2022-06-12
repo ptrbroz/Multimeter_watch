@@ -4,6 +4,7 @@
 #include "buttons.h"
 #include "program.h"
 #include "main.h"
+#include "sleepUtils.h"
 
 
 uint8_t enableBeep;
@@ -22,7 +23,7 @@ funRetVal ncv_init(uint8_t *memPtr)
     //adc_adjustPrescaler(settings,adc_prescale_1);
     adc_applySettings(settings);
     PORTB&=~(1<<PB4);//470k pulldown
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     return CONTINUE_LOOP;
 }
 
@@ -84,6 +85,6 @@ uint16_t ncv_getLevel()
 
 funRetVal ncv_deinit(uint8_t *memPtr)
 {
-    setTimeTillSleep(10000);
+    sleep_setTimeTillSleep(10000);
     return CONTINUE_LOOP;
 }

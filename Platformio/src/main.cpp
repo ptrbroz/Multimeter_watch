@@ -29,13 +29,8 @@
 #include "kitchenTimer.h"
 #include <avr/interrupt.h>
 
-int32_t timeTillSleep=10000;
 uint8_t *programMemPtr;
 
-void setTimeTillSleep(int32_t _t)
-{
-timeTillSleep=_t;
-}
 
 //------------------------------------------------------------------------------
 void setup() {

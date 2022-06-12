@@ -8,6 +8,7 @@
 #include "main.h"
 #include "dacUtils.h"
 #include "measurement.h"
+#include "sleepUtils.h"
 
 
 void adjustVoltage(menuCBData data, uint8_t len);
@@ -26,7 +27,7 @@ funRetVal linearPS_init(uint8_t *memPtr)
 {
     oled.clear();
     dac_output=0;
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     dac_init();
     //sbi(MCUSR,SWDD);//disable debug interface
     setButtonAutoRepeatRate(400,100);

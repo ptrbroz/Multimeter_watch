@@ -41,3 +41,5 @@ void resetButtonAutoRepeatRate();
 #define mask_joy_right  (1<<(JOY_RIGHT_INDEX-1))
 
 
+
+extern volatile unsigned long lastPressMillis;
