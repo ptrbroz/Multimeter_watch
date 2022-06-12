@@ -121,12 +121,12 @@ void printSavedMeasures(uint8_t *memPtr){
 void printWarning(){
     oled.set1X();
     oled.setCursor(0,2);
-    oled.println("#-------------------#  ");
-    oled.println("|    ~ WARNING ~    |  ");
-    oled.println("|Out of memory! Next|  ");
-    oled.println("|save will overwrite|  ");
-    oled.println("|   the first one!  |  ");
-    oled.println("#-------------------#  ");
+    oled.println(F("#-------------------#  "));
+    oled.println(F("|    ~ WARNING ~    |  "));
+    oled.println(F("|Out of memory! Next|  "));
+    oled.println(F("|save will overwrite|  "));
+    oled.println(F("|   the first one!  |  "));
+    oled.println(F("#-------------------#  "));
 }
 
 
@@ -134,7 +134,7 @@ void printWarning(){
 funRetVal stopWatch_beforeExit( uint8_t *memPtr){
     oled.set1X();
     oled.setCursor(0,2);
-    oled.println("Which action to take?");
+    oled.println(F("Which action to take?"));
     const char* menuItems[] = {"Do nothing          ",
                                "Exit program        ",
                                "Clear current time  ",

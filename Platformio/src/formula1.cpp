@@ -197,7 +197,7 @@ void f1_gameOver()
     oled.clear();
     oled.set2X();
     oled.setCursor(0,0);
-    oled.println("GAME OVER");
+    oled.println(F("GAME OVER"));
     char temp[20];
     delay(500);
     snprintf(temp,20,"S: %d",s.score);
