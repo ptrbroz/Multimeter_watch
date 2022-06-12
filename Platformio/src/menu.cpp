@@ -26,7 +26,7 @@ const uint8_t menuStepsPerScrollStep = (menuElements-2) / (scrollLen-2);
 
 void drawScrollbar(uint8_t menuCursor);
 
-program prog_placeHolder = {NULL, NULL, NULL, "Placeholder", 0};
+const program prog_placeHolder PROGMEM = {NULL, NULL, NULL, "Placeholder", 0};
 
 //scrolling-capable main menu, supports up to 32 elements
 funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to menu to keep signature same as program funs 
@@ -40,18 +40,18 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
     uint8_t cursorPosOnScreen = (menuState & 0xE0) >> 5;
     
     
-    program programArray[menuElements] = {
+    const program programArray[] PROGMEM  = {
                                         prog_stopWatch,
                                         prog_clockFace,
                                         prog_clockSettings,
                                         prog_snake, 
-                                        prog_KeyboardTest,
+                                        prog_placeHolder,//prog_KeyboardTest,
                                         prog_linearPowerSupply,
                                         prog_voltmeter,
                                         prog_wfg,
                                         prog_ncv,
                                         prog_f1,
-                                        prog_kitchenTimer,
+                                        prog_kitchenTimer
                                         };
 
 
@@ -63,23 +63,23 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
 
     oled.setCursor(0,0);
     oled.set2X();
-    oled.println(":Main Menu:");
+    oled.println(F(":Main Menu:"));
     oled.set1X();
 
     const uint8_t padToLen = 19;
     //generate menu elements
     for(int i = firstElement; i <= firstElement + visibleElements - 1; i++){
         if(i == menuCursor){
-            oled.print(">");
+            oled.print(F(">"));
         }
         else{
-            oled.print(" ");
+            oled.print(F(" "));
         }
         oled.print(programArray[i].name);
         if(strlen(programArray[i].name) < padToLen){
             uint8_t missingSpaces = padToLen - strlen(programArray[i].name); 
             for(int i = 0; i<missingSpaces;i++){
-                oled.print(" ");
+                oled.print(F(" "));
             }
         }
         oled.println();
@@ -127,20 +127,20 @@ void drawScrollbar(uint8_t menuCursor){
     //edge cases - cursor on first or last element - scroll handle at edge
     oled.setCursor(scrollX,scrollStartRow);
     if(menuCursor==0){
-        oled.print("@");
+        oled.print(F("@"));
         scrollHandlePos = -1;
     }
     else{
-        oled.print("^");
+        oled.print(F("^"));
     }
 
     oled.setCursor(scrollX,scrollStartRow+scrollLen-1);
     if(menuCursor==menuElements-1){
-        oled.print("@");
+        oled.print(F("@"));
         scrollHandlePos = -1;
     }
     else{
-        oled.print("v");
+        oled.print(F("v"));
     }
 
     if(scrollHandlePos!=-1){
@@ -151,10 +151,10 @@ void drawScrollbar(uint8_t menuCursor){
     for(int i = 0; i < scrollLen-2; i++){
          oled.setCursor(scrollX,scrollStartRow+1+i);
          if(i==scrollHandlePos){
-            oled.print("@");
+            oled.print(F("@"));
          }
          else{
-            oled.print("|");
+            oled.print(F("|"));
          }
 
     }

@@ -8,7 +8,7 @@
 #define hourSetting (*(memPtr+0))
 #define minSetting (*(memPtr+1))
 
-const program prog_clockSettings= {clockSettings_init, clockSettings_loop, clockSettings_deinit, "Clock settings", 2};
+const program prog_clockSettings PROGMEM = {clockSettings_init, clockSettings_loop, clockSettings_deinit, "Clock settings", 2};
 
 funRetVal clockSettings_init(uint8_t *memPtr)
 {

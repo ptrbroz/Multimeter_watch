@@ -30,7 +30,7 @@ struct program {
     funPtr deinit;
     char name[maxProgramNameLen];
     int requiredRam;
-};
+} ;
 
 funPtr getLoopFun();
 void setLoopFun(funPtr funPtr);

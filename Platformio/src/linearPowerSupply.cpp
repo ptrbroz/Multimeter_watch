@@ -21,7 +21,7 @@ uint8_t enableOutput;
 uint8_t outputLevel;
 
 
-const program prog_linearPowerSupply= {linearPS_init, linearPS_loop, linearPS_deinit, "Ref voltage gen.", 8};
+const program prog_linearPowerSupply PROGMEM= {linearPS_init, linearPS_loop, linearPS_deinit, "Ref voltage gen.", 8};
 
 funRetVal linearPS_init(uint8_t *memPtr)
 {

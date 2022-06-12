@@ -39,7 +39,7 @@ funRetVal kitchenTimer_deinit( uint8_t *memPtr){
 
 funRetVal kitchenTimer_loop( uint8_t *memPtr);
 
-const program prog_kitchenTimer = {kitchenTimer_init, kitchenTimer_loop,kitchenTimer_deinit, "Kitchen timer", 4};
+const program prog_kitchenTimer PROGMEM = {kitchenTimer_init, kitchenTimer_loop,kitchenTimer_deinit, "Kitchen timer", 4};
 
 funRetVal kitchenTimer_loop( uint8_t *memPtr){
 

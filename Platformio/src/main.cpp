@@ -11,7 +11,6 @@
 
 #include "buttons.h"
 #include "display.h"
-#include "Adafruit5x7_full.h"
 #include "snake.h"
 #include "program.h"
 #include "menu.h"

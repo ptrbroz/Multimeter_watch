@@ -15,7 +15,7 @@ struct averager voltageAverager;//TODO: make this pseudostatic
 
 
 
-const program prog_voltmeter= {voltmeter_init, voltmeter_loop, voltmeter_deinit, "Voltmeter", 8};
+const program prog_voltmeter PROGMEM= {voltmeter_init, voltmeter_loop, voltmeter_deinit, "Voltmeter", 8};
 
 funRetVal voltmeter_init(uint8_t *memPtr)
 {

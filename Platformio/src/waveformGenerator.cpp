@@ -29,7 +29,7 @@ enum wfgState{WFG_MENU,WFG_FREQ_ADJUST,WFG_OUTPUT, WFG_EXIT};
 enum wfgState currentState=WFG_MENU;
 uint8_t waveformType=0;
 
-const program prog_wfg {wfg_init, wfg_loop, wfg_deinit, "Waveform generator", 2};
+const program prog_wfg PROGMEM = {wfg_init, wfg_loop, wfg_deinit, "Waveform generator", 2};
 
 funRetVal wfg_init(uint8_t *memPtr)
 {

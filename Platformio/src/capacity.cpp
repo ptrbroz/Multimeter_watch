@@ -76,7 +76,7 @@ int measureCapacity3(bool _invertPolarity, uint32_t* _outCapacity)
                 {
                     Serial.println(adcReading);
                     Serial.println(pulsesCount);
-                    Serial.println("KVAK!");
+                    Serial.println(F("KVAK!"));
                     break;
                 }
             }
@@ -84,7 +84,7 @@ int measureCapacity3(bool _invertPolarity, uint32_t* _outCapacity)
         float capacity=getCapacityFromAdcAndPulseCount(adcReading,pulsesCount);
         char temp[50];
         getCapacityAsString(capacity,temp,50);
-        Serial.print("Capacity: ");
+        Serial.print(F("Capacity: "));
         Serial.println(temp);
     }
     return 0;

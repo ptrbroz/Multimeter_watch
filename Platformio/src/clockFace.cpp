@@ -18,7 +18,7 @@ funRetVal clockFace_deinit( uint8_t *memPtr){
 
 funRetVal clockFace_loop( uint8_t *memPtr);
 
-extern const program prog_clockFace = {clockFace_init, clockFace_loop,clockFace_deinit, "Clockface", 0};
+extern const program prog_clockFace PROGMEM = {clockFace_init, clockFace_loop,clockFace_deinit, "Clockface", 0};
 
 funRetVal clockFace_loop( uint8_t *memPtr){
 

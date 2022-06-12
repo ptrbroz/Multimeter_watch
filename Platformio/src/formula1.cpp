@@ -8,7 +8,7 @@
 
 
 
-const program prog_f1 = {f1_init, f1_loop, f1_deinit, "Formula 1", 0};
+const program prog_f1 PROGMEM= {f1_init, f1_loop, f1_deinit, "Formula 1", 0};
 
 struct prog_f1_struct
 {

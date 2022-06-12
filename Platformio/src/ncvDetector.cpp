@@ -8,7 +8,7 @@
 
 
 uint8_t enableBeep;
-const program prog_ncv= {ncv_init, ncv_loop, ncv_deinit, "NCV detector", 0};
+const program prog_ncv PROGMEM= {ncv_init, ncv_loop, ncv_deinit, "NCV detector", 0};
 
 funRetVal ncv_init(uint8_t *memPtr)
 {

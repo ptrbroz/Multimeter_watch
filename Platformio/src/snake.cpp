@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include "buttons.h"
 #include "program.h"
+#include "snake.h"
 
 funRetVal snake_loop( uint8_t *snakeBuffer);
 funRetVal snake_gameover( uint8_t *snakeBuffer);
@@ -20,7 +21,7 @@ funRetVal snake_deinit( uint8_t *snakeBuffer);
 
 #define PSEUDOSTATIC_BYTES 6 + sizeof(unsigned long)//one for each converted static uint8_t variable, one for lastMillis()
 
-extern const program prog_snake = {snake_init, snake_loop, snake_deinit, "Snake", MAXSNAKEBYTE+PSEUDOSTATIC_BYTES};
+const program prog_snake PROGMEM = {snake_init, snake_loop, snake_deinit, "Snake", MAXSNAKEBYTE+PSEUDOSTATIC_BYTES};
 
 //pseudostatic variables
 #define headIndex   (*(snakeBuffer+MAXSNAKEBYTE+0))
