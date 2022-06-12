@@ -46,7 +46,7 @@ funRetVal clockSettings_loop( uint8_t *memPtr)
         oled.clear();
         oled.setCursor(0, 0);
         oled.set2X();
-        oled.println("Time set.");
+        oled.println(F("Time set."));
         oled.set1X();
         delay(1000);
         return PROGRAM_END;
@@ -55,7 +55,7 @@ funRetVal clockSettings_loop( uint8_t *memPtr)
     {
         oled.setCursor(0, 0);
         oled.clear();
-        oled.println("Exiting without change.");
+        oled.println(F("Exiting without change."));
         delay(1000);
         return PROGRAM_END;
     }

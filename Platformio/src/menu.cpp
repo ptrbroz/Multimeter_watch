@@ -45,7 +45,7 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_clockFace,
                                         prog_clockSettings,
                                         prog_snake, 
-                                        prog_KeyboardTest,
+                                        prog_placeHolder,//prog_KeyboardTest,
                                         prog_linearPowerSupply,
                                         prog_voltmeter,
                                         prog_wfg,
