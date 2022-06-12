@@ -83,6 +83,12 @@ void adc_adjustEnablePGA(struct adcSettings& _settings, bool _enable)
     }
 }
 
+void adc_adjustPGAGain(struct adcSettings& _settings, enum adcGain _gain)
+{
+    _settings._DAPCR&=~0b01100000;
+    _settings._DAPCR|=(_gain<<5);
+}
+
 void adc_getDefaultSettings(struct adcSettings& _settings)
 {
     _settings._ADCSRA=0b10000111;//enable adc; prescaler to 128
@@ -142,6 +148,7 @@ uint16_t adc_readADCFixOffset()
   cbi(ADCSRC, SPN);
   pVal = adc_readADC();
   pVal = (pVal + nVal) >> 1;
+  pVal -= (pVal >> 7);
   return pVal;
 }
 

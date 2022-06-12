@@ -7,6 +7,9 @@ volatile uint8_t justReleasedButtons = 0;
 uint8_t autoRepeatPressedButtons=0;
 volatile unsigned long lastPressMillis;
 
+  int delayBeforeAutoRepeat=400;
+  int autoRepeatRate=250;
+
 
 void initButtons()
 {
@@ -63,17 +66,27 @@ void handleButtonEdgeDetection()
     }
 }
 
+void setButtonAutoRepeatRate(int _delayBeforeAutoRepeat, int _autoRepeatRate)
+{
+  delayBeforeAutoRepeat=_delayBeforeAutoRepeat;
+  autoRepeatRate=_autoRepeatRate;
+}
+
+void resetButtonAutoRepeatRate()
+{
+  delayBeforeAutoRepeat=400;
+  autoRepeatRate=250;
+}
+
 void handleButtonAutoRepeat()
 {
   static unsigned long lastMillis=0;
-  const int delayBeforeAutoRepeat=400;
-  const int autoRepeatRateDelay=250;
   autoRepeatPressedButtons=0;
   if(millis()-lastPressMillis<delayBeforeAutoRepeat)
   {
     return;
   }
-  if(millis()-lastMillis>autoRepeatRateDelay)
+  if(millis()-lastMillis>autoRepeatRate)
   {
     autoRepeatPressedButtons=buttonsByte;
     //Serial.println(autoRepeatPressedButtons,BIN);

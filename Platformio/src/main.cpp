@@ -23,14 +23,14 @@
 #include "ohmMeter.h"
 #include "capacity.h"
 #include "waveformGenerator.h"
+#include "ncvDetector.h"
+#include "resistanceMeter.h"
+#include "formula1.h"
+#include "kitchenTimer.h"
+#include <avr/interrupt.h>
 
-int32_t timeTillSleep=10000;
 uint8_t *programMemPtr;
 
-void setTimeTillSleep(int32_t _t)
-{
-timeTillSleep=_t;
-}
 
 //------------------------------------------------------------------------------
 void setup() {
@@ -62,9 +62,17 @@ void setup() {
 
   oled.setFont(Adafruit5x7);
   tone(2,4000,100);
+  //wdtTest();
   return;
-
+  f1_init(NULL);
+  while(1)
+  {
+    f1_loop(NULL);
+  }
+  return;
+  res_loop();
 dac_init();
+
 wfg_generate();
 //dac_testFunGen();
 
@@ -164,7 +172,6 @@ void initOled()
   delay(50);
   oled.begin(&Adafruit128x64, I2C_ADDRESS);
 }
-
 
 
 

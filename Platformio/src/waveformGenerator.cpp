@@ -9,6 +9,7 @@ float fs=938560;
 #include "program.h"
 #include "buttons.h"
 #include "main.h"
+#include "sleepUtils.h"
 
 
 #define SUBSTEP_DIVISIONS 256
@@ -39,7 +40,7 @@ funRetVal wfg_init(uint8_t *memPtr)
         frequencyStr[i]='0';
     }
     currentState=WFG_MENU;
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     return CONTINUE_LOOP;
 }
 
@@ -70,7 +71,7 @@ funRetVal wfg_loop( uint8_t *memPtr)
 
 funRetVal wfg_deinit(uint8_t *memPtr)
 {
-    setTimeTillSleep(10000UL);
+    sleep_setTimeTillSleep(10000UL);
     return CONTINUE_LOOP;
 }
 

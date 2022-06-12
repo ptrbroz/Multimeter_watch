@@ -11,10 +11,12 @@
 #include "linearPowerSupply.h"
 #include "voltmeter.h"
 #include "waveformGenerator.h"
+#include "ncvDetector.h"
+#include "formula1.h"
+#include "kitchenTimer.h"
 
 
-
-const uint8_t menuElements = 10;
+const uint8_t menuElements = 11;
 const uint8_t visibleElements = 6;
 
 const uint8_t scrollLen = visibleElements;
@@ -47,8 +49,9 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_linearPowerSupply,
                                         prog_voltmeter,
                                         prog_wfg,
-                                        prog_placeHolder,
-                                        prog_placeHolder
+                                        prog_ncv,
+                                        prog_f1,
+                                        prog_kitchenTimer,
                                         };
 
 

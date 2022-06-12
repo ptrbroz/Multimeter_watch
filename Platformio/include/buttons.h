@@ -13,6 +13,8 @@ uint8_t getButtonsByteFromPorts(uint8_t _pinB, uint8_t _pinD, uint8_t _pinE);
 void handleButtonEdgeDetection();
 void handleDebouncing();
 void handleButtonAutoRepeat();
+void setButtonAutoRepeatRate(int _delayBeforeAutoRepeat, int _autoRepeatRate);
+void resetButtonAutoRepeatRate();
 
 
 #define BUTT_LEFT(inputByte) (((inputByte) & mask_butt_left)!=0)
@@ -39,3 +41,5 @@ void handleButtonAutoRepeat();
 #define mask_joy_right  (1<<(JOY_RIGHT_INDEX-1))
 
 
+
+extern volatile unsigned long lastPressMillis;

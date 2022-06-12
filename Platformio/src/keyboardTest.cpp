@@ -6,6 +6,7 @@
 #include "time.h"
 #include "hotKeyMenu.h"
 #include "main.h"
+#include "sleepUtils.h"
 
 
 void typeKey(menuCBData data, uint8_t len);
@@ -70,7 +71,7 @@ funRetVal keyboardTest_init(uint8_t *memPtr)
 {
     oled.clear();
     setCurrentMenu(&menuAlphabet);
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     return CONTINUE_LOOP;
 }
 

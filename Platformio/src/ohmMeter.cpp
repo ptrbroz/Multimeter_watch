@@ -9,6 +9,7 @@
 #include "dacUtils.h"
 #include "measurement.h"
 #include "averager.h"
+#include "sleepUtils.h"
 
 struct averager resistanceAverager;//TODO: make this pseudostatic
 
@@ -19,7 +20,7 @@ const program prog_ohmmeter= {ohmmeter_init, ohmmeter_loop, ohmmeter_deinit, "Oh
 funRetVal ohmmeter_init(uint8_t *memPtr)
 {
     oled.clear();
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     resistanceAverager=avg_createAverager(4,200);
     return CONTINUE_LOOP;
 }
@@ -49,7 +50,7 @@ funRetVal ohmmeter_loop( uint8_t *memPtr)
 
 funRetVal ohmmeter_deinit(uint8_t *memPtr)
 {
-    setTimeTillSleep(10000UL);
+    sleep_setTimeTillSleep(10000UL);
     return CONTINUE_LOOP;
 }
 

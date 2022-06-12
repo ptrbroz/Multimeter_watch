@@ -9,6 +9,7 @@
 #include "dacUtils.h"
 #include "measurement.h"
 #include "averager.h"
+#include "sleepUtils.h"
 
 struct averager voltageAverager;//TODO: make this pseudostatic
 
@@ -19,7 +20,7 @@ const program prog_voltmeter= {voltmeter_init, voltmeter_loop, voltmeter_deinit,
 funRetVal voltmeter_init(uint8_t *memPtr)
 {
     oled.clear();
-    setTimeTillSleep(-1);//do not sleep
+    sleep_setTimeTillSleep(-1);//do not sleep
     voltageAverager=avg_createAverager(4,200);
     return CONTINUE_LOOP;
 }
@@ -48,7 +49,7 @@ funRetVal voltmeter_loop( uint8_t *memPtr)
 
 funRetVal voltmeter_deinit(uint8_t *memPtr)
 {
-    setTimeTillSleep(10000UL);
+    sleep_setTimeTillSleep(10000UL);
     return CONTINUE_LOOP;
 }
 

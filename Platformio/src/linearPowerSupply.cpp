@@ -8,149 +8,97 @@
 #include "main.h"
 #include "dacUtils.h"
 #include "measurement.h"
+#include "sleepUtils.h"
 
 
 void adjustVoltage(menuCBData data, uint8_t len);
 void exitApp(menuCBData data, uint8_t len);
 
-#define exitFlag (*(programMemPtr+0))
-#define ccMode (*(programMemPtr+1))
-#define vSetting (*(programMemPtr+2))
-#define iSetting (*(programMemPtr+3))
-#define dacOut (*((int32_t*)(programMemPtr+4)))
+uint16_t battVolts;
+uint32_t avgSum;
+uint16_t avgCount;
+uint8_t enableOutput;
+uint8_t outputLevel;
 
 
-
-MENU_ITEM_CMD(menuItemExit,"Exit",exitApp,-1,0,0,0);
-MENU_ITEM_CMD(menuItemVminus,"Voltage -",adjustVoltage,-1,0,0,0);
-MENU_ITEM_CMD(menuItemVplus,"Voltage +",adjustVoltage,1,0,0,0);
-MENU_ITEM_CMD(menuItemIminus,"Current -",adjustCurrent,-1,0,0,0);
-MENU_ITEM_CMD(menuItemIplus,"Current +",adjustCurrent,1,0,0,0);
-
-
-MENU(mainMenu,"linearPSMenu",&menuItemExit,&menuItemIminus,&menuItemVminus,&menuItemVplus,&menuItemIplus);
-
-
-const program prog_linearPowerSupply= {linearPS_init, linearPS_loop, linearPS_deinit, "Linear power supply", 8};
+const program prog_linearPowerSupply= {linearPS_init, linearPS_loop, linearPS_deinit, "Ref voltage gen.", 8};
 
 funRetVal linearPS_init(uint8_t *memPtr)
 {
     oled.clear();
-    vSetting=0;
-    iSetting=0;
-    dacOut=0;
-    exitFlag=0;
-    setCurrentMenu(&mainMenu);
-    setTimeTillSleep(-1);//do not sleep
+    dac_output=0;
+    sleep_setTimeTillSleep(-1);//do not sleep
     dac_init();
+    //sbi(MCUSR,SWDD);//disable debug interface
+    setButtonAutoRepeatRate(400,100);
     return CONTINUE_LOOP;
 }
 
 funRetVal linearPS_loop( uint8_t *memPtr)
 {
-    if(exitFlag)
+    if(BUTT_LEFT(justPressedButtons))
     {
         return PROGRAM_END;
     }
-    static unsigned long lastCCEventMillis=0;//TODO: switch to pseudostatic
-    if(justPressedButtons!=0||autoRepeatPressedButtons!=0)
+    else if(enableOutput&&JOY_UP(justPressedButtons|autoRepeatPressedButtons)&&dac_output<255)
     {
-        int index=buttonByteToMenuIndex(justPressedButtons|autoRepeatPressedButtons);
-        runCurrentMenuCB(index);
+        outputLevel++;
     }
-    oled.setCursor(0,0);
-    char temp[20];
-    snprintf(temp,20,"%1d.%1dV",vSetting/10,vSetting%10);
-    oled.print(temp);
-    uint16_t dacCurrent=dac_getCurrentThroughShunt();
-    snprintf(temp,20,"  %4dmA",dacCurrent);
-    oled.print(temp);
-    uint16_t batVolts=adc_measureBatteryVoltage();
-    uint16_t outputVolts=dac_getVoltageAfterShunt(batVolts);
-    outputVolts=(outputVolts/100);//single precision
-
-    if((int)dacCurrent>(int)iSetting-2)
+    else if(enableOutput&&JOY_DOWN(justPressedButtons|autoRepeatPressedButtons)&&dac_output>0)
     {
-        lastCCEventMillis=millis();
-        ccMode=true;
+        outputLevel--;
     }
-
-    if(millis()-lastCCEventMillis>100)//we do not need the cc mode any more
+    else if(BUTT_RIGHT(justPressedButtons))
     {
-        ccMode=false;
+        enableOutput=!enableOutput;
     }
-
-    if(outputVolts>vSetting)
+    if(enableOutput)
     {
-        ccMode=false;
-    }
-
-    if(ccMode)
-    {
-        int32_t err = (int32_t)dacCurrent- iSetting;
-        dacOut -= (err * 100) / 100;
-        //Serial.println("cc");
+        dac_output=outputLevel;
     }
     else
     {
-        int32_t err = (int32_t)outputVolts - vSetting;
-        dacOut -= (err * 150) / 100;
-        //Serial.println("cv");
+        dac_output=0;
+    }
+    char temp[20];
+    oled.set2X();
+    oled.setCursor(0,0);
+    snprintf(temp,20,"DAC: %d",(int)dac_output);
+    oled.print(temp);
+    avgSum+=adc_measureBatteryVoltage();
+    avgCount++;
+    if(avgCount>=20)
+{
+    battVolts=avgSum/avgCount;
+    avgCount=0;
+    avgSum=0;
+}
+    uint16_t outputVolts=map(dac_output,0,255,0,battVolts);//dac_getVoltageAcrossShunt();//dac_getVoltageAfterShunt(batVolts);
+    oled.setCursor(0,2);
+    snprintf(temp,20,"U: %d mV",outputVolts);
+    oled.print(temp);
+    oled.set1X();
+    oled.setCursor(0,4);
+    if(enableOutput)
+    {
+        oled.println(F("output ON "));
+    }
+    else
+    {
+        oled.println(F("output OFF"));
     }
 
-    dacOut = dacOut > 255 ? 255 : dacOut;
-    dacOut = dacOut < 0 ? 0 : dacOut;
-    dac_output = dacOut;
-    Serial.println(dac_output);
+    oled.println(F("^/v:set; >>:en"));
+    oled.println(F("<<: exit"));
+
 
    return CONTINUE_LOOP;
 }
 
 funRetVal linearPS_deinit(uint8_t *memPtr)
 {
+    resetButtonAutoRepeatRate();
     return CONTINUE_LOOP;
 }
 
 
-void adjustVoltage(menuCBData data, uint8_t len)
-{
-    if (data.ints[0] == -1) //decrease
-    {
-        if(vSetting>0)
-        {
-            vSetting--;
-        }
-    }
-    else
-    {
-        if(vSetting<45)//4.5V
-        {
-        vSetting++;
-        }
-    }
-}
-
-
-void adjustCurrent(menuCBData data, uint8_t len)
-{
-    if (data.ints[0] == -1) //decrease
-    {
-        if(iSetting>0)
-        {
-            iSetting--;
-        }
-    }
-    else
-    {
-        if(vSetting<45)//4.5V
-        {
-        iSetting++;
-        }
-    }
-}
-
-
-void exitApp(menuCBData data, uint8_t len)
-{
-    exitFlag=true;
-}

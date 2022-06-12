@@ -18,6 +18,7 @@ enum adcMuxSourceValues {muxSource_A0, muxSource_A1, muxSource_A2, muxSource_A3,
 enum adcSourceValues {adcSource_mux, adcSource_pga};
 enum adcPGAInvSourceValues {pgaInvSource_A2,pgaInvSource_A3, pgaInvSource_A8, pgaInvSource_A9, pgaInvSource_SWC, pgaInvSource_mux, pgaInvSource_gnd, pgaInvSource_none};
 enum adcPGANonInvSourceValues {pgaNonInvSource_mux, pgaNonInvSource_A0, pgaNonInvSource_A1, pgaNonInvSource_gnd};
+enum adcGain{pgaGain_x1,pgaGain_x8,pgaGain_x16,pgaGain_x32};
 
 void adc_applySettings(struct adcSettings& _settings);
 void adc_adjustPrescaler(struct adcSettings& _settings,enum adcPrescaleValues _prescale);
@@ -37,3 +38,4 @@ void printBin(uint8_t var);
 void adc_printSettings(struct adcSettings& _settings);
 uint16_t adc_measureBatteryVoltage();
 uint16_t adc_readADCFiltered(uint32_t _timeWindow);
+void adc_adjustPGAGain(struct adcSettings& _settings, enum adcGain _gain);
