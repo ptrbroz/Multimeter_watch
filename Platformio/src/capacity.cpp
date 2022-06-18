@@ -2,6 +2,72 @@
 #include "measurement.h"
 #include "capacity.h"
 
+
+
+
+#include "display.h"
+#include "program.h"
+#include "rtcUtils.h"
+#include "time.h"
+#include "buttons.h"
+#include "sleepUtils.h"
+
+
+funRetVal cap_init( uint8_t *memPtr){
+    sleep_setTimeTillSleep(-1);
+    return CONTINUE_LOOP;
+}
+
+funRetVal cap_deinit( uint8_t *memPtr){
+    sleep_setTimeTillSleep(10000);
+    return CONTINUE_LOOP;
+}
+
+funRetVal cap_loop( uint8_t *memPtr);
+
+const program prog_capacity = {cap_init, cap_loop,cap_deinit, "Capacity meas.", 0};
+
+funRetVal cap_loop( uint8_t *memPtr){
+    oled.set1X();
+    oled.setCursor(0, 6);
+    oled.print(F(">>: measure"));
+    uint16_t battVolts=adc_measureBatteryVoltage();
+
+    if (BUTT_RIGHT(justPressedButtons))
+    {
+        dischargeCapacitor();
+
+        oled.set1X();
+        oled.setCursor(0, 6);
+        oled.print(F("Measuring..."));
+        oled.set2X();
+        oled.setCursor(10, 3);
+        float capacity = measureCapacity3(0,battVolts);
+        char temp[10];
+        char temp2[20];
+        getCapacityAsString(capacity, temp, 50);
+        // Serial.print("Capacity: ");
+        // Serial.println(temp);
+
+        sprintf(temp2, "C: %s", temp);
+        oled.print(temp2);
+        oled.set1X();
+        oled.setCursor(0, 6);
+        oled.print(F(">>: measure"));
+    }
+
+    if (BUTT_LEFT(justPressedButtons))
+    {
+        oled.clear();
+        return PROGRAM_END;
+    }
+
+    return CONTINUE_LOOP;
+}
+
+
+
+
 void testADC11()
 {
     DDRB &= ~(1 << PB4);  
@@ -26,7 +92,7 @@ void testADC11()
     }
 }
 
-int measureCapacity3(bool _invertPolarity, uint32_t* _outCapacity)
+float measureCapacity3(bool _invertPolarity,uint16_t _battVoltage)
 {
     if(!_invertPolarity)
     {
@@ -81,11 +147,8 @@ int measureCapacity3(bool _invertPolarity, uint32_t* _outCapacity)
                 }
             }
         }
-        float capacity=getCapacityFromAdcAndPulseCount(adcReading,pulsesCount);
-        char temp[50];
-        getCapacityAsString(capacity,temp,50);
-        Serial.print("Capacity: ");
-        Serial.println(temp);
+        float capacity=getCapacityFromAdcAndPulseCount(adcReading,pulsesCount,_battVoltage);
+        return capacity;
     }
     return 0;
 }
@@ -95,22 +158,24 @@ void getCapacityAsString(float _capacity, char* _outStr, int _maxLen)
     if(_capacity<1e-6)//<1uf
     {
         _capacity=_capacity*1e9;
-        snprintf(_outStr,_maxLen,"%d nF",(int)_capacity);
+        snprintf(_outStr,_maxLen,"%d nF   ",(int)_capacity);
         return;
     }
     else//>=1uf
     {
         _capacity=_capacity*1e6;
-        snprintf(_outStr,_maxLen,"%d uF",(int)_capacity);
+        uint32_t remainder=_capacity*10;
+        remainder=remainder%10;
+        snprintf(_outStr,_maxLen,"%d.%duF    ",(int)_capacity,(int)remainder);
         return;
     }
 }
 
-float getCapacityFromAdcAndPulseCount(uint16_t _adc, uint16_t _pulseCount)
+float getCapacityFromAdcAndPulseCount(uint16_t _adc, uint16_t _pulseCount,uint16_t _battVoltage)
 {
     float t=_pulseCount*1000.0*1e-6;//time in seconds
     float Vt=(_adc/4096.0)*1.024;
-    float V0=3.8;
+    float V0=_battVoltage/1000.0;
     float R=470000;
     float capacity=-t/(R*log(1-(Vt/V0)));
     return capacity;

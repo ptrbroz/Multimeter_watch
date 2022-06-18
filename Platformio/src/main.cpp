@@ -82,7 +82,7 @@ wfg_generate();
   {
     dischargeCapacitor();
     uint32_t cap;
-    measureCapacity3(false,cap);
+    //measureCapacity3(false,cap);
   }
   /*while(true)
   {
