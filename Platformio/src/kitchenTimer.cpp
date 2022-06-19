@@ -107,6 +107,7 @@ funRetVal kitchenTimer_loop( uint8_t *memPtr){
         if (minSetting == 0 && secSetting == 0)
         {
             // beep beep!
+            initOled();
             timerState = TIMER_STATE_ALARM;
         }
         else
@@ -120,28 +121,15 @@ funRetVal kitchenTimer_loop( uint8_t *memPtr){
             {
                 secSetting--;
             }
-            if ((millis() - lastPressMillis) < 5000)
-            {
-                delay(1000);
-            }
-            else
-            {
-                displayDeinitialized = true;
-                sleep_wdtSleep(SLEEP_1S);
-            }
+            sleep_smartSleepFor1s();
         }
     }
     else if (timerState == TIMER_STATE_ALARM)
     {
-        initOled();
         tone(2, 4000, 100);
         delay(1000);
     }
-    if ((displayDeinitialized) && millis() - lastPressMillis < 5000)
-    {
-        displayDeinitialized = false;
-        initOled();
-    }
+
     char temp[20];
     snprintf(temp, 10, "%02d:%02d", minSetting, secSetting);
     oled.set2X();

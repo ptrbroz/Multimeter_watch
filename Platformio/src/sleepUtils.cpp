@@ -3,6 +3,9 @@
 #include "sleepUtils.h"
 #include "buttons.h"
 #include "PMU.h"
+#include "display.h"
+#include "main.h"
+
 static void sleep_beforeSleep();
 static void sleep_afterSleep();
 int32_t timeTillSleep=10000;
@@ -47,6 +50,29 @@ void sleep_wdtSleep(period_t _period)
   bitSet(ADCSRA, ADEN); //bug workaround according to https://github.com/dbuezas/lgt8fx/issues/155
   sleep_afterSleep();
 }
+
+
+void sleep_smartSleepFor1s()
+{
+  if((millis()-lastPressMillis)<10000)
+  {
+    Serial.println("Delay.");
+    delay(1000);
+  }
+  else
+  {
+    sleep_wdtSleep(SLEEP_1S);
+    Serial.println("Sleep.");
+  }
+    uint8_t btnByte=~getButtonsByteFromPorts(PINB,PIND,PINE);
+    if(BUTT_LEFT(btnByte))
+    {
+    Serial.println("BUTTON LEFT");
+      lastPressMillis=millis();
+      initOled();
+    }
+}
+
 void sleep_setTimeTillSleep(int32_t _t)
 {
   timeTillSleep=_t;

@@ -169,6 +169,7 @@ void handleSleeping()
 
 void initOled()
 {
+    Serial.println("INITOLED");
   pinMode(D3,OUTPUT);
   digitalWrite(D3,HIGH);
   delay(50);
