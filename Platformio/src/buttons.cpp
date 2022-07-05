@@ -55,6 +55,7 @@ void handleButtonEdgeDetection()
   static uint8_t lastButtonsByte;
   if (buttonsByte != lastButtonsByte)
   {
+    Serial.println("BTN DET");
     justReleasedButtons = ((lastButtonsByte)) & ~buttonsByte;
     justPressedButtons = ~lastButtonsByte & buttonsByte;
     lastButtonsByte = buttonsByte;

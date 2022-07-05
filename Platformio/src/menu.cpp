@@ -16,6 +16,7 @@
 #include "kitchenTimer.h"
 #include "servoTester.h"
 #include "capacity.h"
+#include "sequencer.h"
 
 
 const uint8_t menuElements = 12;
@@ -43,7 +44,7 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
     
     
     program programArray[menuElements] = {
-                                        prog_stopWatch,
+                                        //prog_stopWatch,
                                         prog_clockFace,
                                         prog_clockSettings,
                                         prog_snake, 
@@ -54,7 +55,8 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_ncv,
                                         prog_f1,
                                         prog_kitchenTimer,
-                                        prog_servoTester
+                                        prog_servoTester,
+                                        prog_sequencer
                                         };
 
 
