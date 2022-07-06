@@ -1,5 +1,12 @@
 #include "resistanceMeter.h"
 #include "measurement.h"
+#include "display.h"
+#include "program.h"
+#include "buttons.h"
+
+#define lastMill (*(memPtr+0))
+
+const program prog_resistanceMeter= {res_init, res_loop, res_deinit, "Res. measurement", 4};
 
 float res_measureResistance(enum resistanceRange _resRange)
 {
@@ -24,15 +31,64 @@ float res_measureResistance(enum resistanceRange _resRange)
     return 0;
 }
 
-void res_loop()
+funRetVal res_init(uint8_t* memPtr)
 {
-    while(1)
-    {
+    return CONTINUE_LOOP;
+}
+
+funRetVal res_loop(uint8_t* memPtr)
+{
         enum resistanceRange rr=res_autosetRange();
         float r = res_measureResistance(rr);
         Serial.println(r);
+        oled.set2X();
+        oled.setCursor(10, 3);
+        //char str[9];
+        //sprintf(str, "%02d", ts.tm_hour);
+        //str[2] = ':';
+        res_printResistance(r);
+        if(BUTT_LEFT(justPressedButtons))
+        {
+            return PROGRAM_END;
+        }
+        delay(250);
+        return CONTINUE_LOOP;
+}
 
+funRetVal res_deinit(uint8_t* memPtr)
+{
+    return CONTINUE_LOOP;
+}
+
+
+void res_printResistance(float _res)
+{
+    oled.set2X();
+    oled.setCursor(10, 3);
+    if (_res < 0.1)
+    {
+        oled.print(F("LOW"));
+        oled.clearToEOL();
+        return;
     }
+    if (_res > 40000000UL)
+    {
+        oled.print(F("HIGH"));
+        oled.clearToEOL();
+        return;
+    }
+    if (_res < 10000)
+    {
+        oled.print(_res);
+        oled.print(F(" Ohm"));
+        oled.clearToEOL();
+        return;
+    }
+
+    oled.print(_res / 1000.0);
+    oled.print(F("k"));
+    oled.clearToEOL();
+    return;
 }
 
 float res_calculateResistanceFromAdcRaw(uint16_t _adcRaw, float _pullupValue, float _refVoltage, float _batVoltage)

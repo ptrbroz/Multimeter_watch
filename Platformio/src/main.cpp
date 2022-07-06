@@ -11,7 +11,7 @@
 
 #include "buttons.h"
 #include "display.h"
-#include "Adafruit5x7_full.h"
+//#include "Adafruit5x7_full.h"
 #include "snake.h"
 #include "program.h"
 #include "menu.h"
@@ -62,9 +62,11 @@ void setup() {
   // Call oled.setI2cClock(frequency) to change from the default frequency.
 
   oled.setFont(Adafruit5x7);
-  tone(2,4000,100);
+  tone(2,4000,10);
   //wdtTest();
   //servoTester_loop(0);
+
+  //res_loop();
   return;
   f1_init(NULL);
   while(1)

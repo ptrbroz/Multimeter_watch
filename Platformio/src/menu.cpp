@@ -17,9 +17,10 @@
 #include "servoTester.h"
 #include "capacity.h"
 #include "sequencer.h"
+#include "resistanceMeter.h"
 
 
-const uint8_t menuElements = 12;
+const uint8_t menuElements = 13;
 const uint8_t visibleElements = 6;
 
 const uint8_t scrollLen = visibleElements;
@@ -56,7 +57,8 @@ funRetVal menu(uint8_t *unusedMemoryPointer){ //null memory pointer passed to me
                                         prog_f1,
                                         prog_kitchenTimer,
                                         prog_servoTester,
-                                        prog_sequencer
+                                        prog_sequencer,
+                                        prog_resistanceMeter
                                         };
 
 
