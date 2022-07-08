@@ -6,6 +6,9 @@
 #include "time.h"
 #include "sequencer.h"
 #include "sleepUtils.h"
+#include "rtcUtils.h"
+#include "main.h"
+#include "dacUtils.h"
 
 #define cursorScreenPos (*(memPtr+0))
 #define firstLineOnScreenIndex (*(memPtr+1))
@@ -35,9 +38,16 @@ void pcb_waitForSeconds(int32_t _param);
 uint8_t ecb_waitForSeconds(uint8_t* memptr, int32_t _param);
 void pcb_resetSequence(int32_t _param);
 uint8_t ecb_resetSequence(uint8_t* memptr, int32_t _param);
+void pcb_waitUntilTime(int32_t _param);
+uint8_t ecb_waitUntilTime(uint8_t* memptr, int32_t _param);
 
-codeLinePrintCB printCallbacks[]={pcb_doNothing, pcb_beepForSeconds,pcb_waitForSeconds,pcb_resetSequence};
-codeLineExecCB execCallbacks[]={ecb_doNothing, ecb_beepForSeconds,ecb_waitForSeconds,ecb_resetSequence};
+void pcb_waitForButtonPress(int32_t _param);
+uint8_t ecb_waitForButtonPress(uint8_t* memptr, int32_t _param);
+void pcb_setDAC(int32_t _param);
+uint8_t ecb_setDAC(uint8_t* memptr, int32_t _param);
+
+codeLinePrintCB printCallbacks[]={pcb_doNothing, pcb_beepForSeconds,pcb_waitForSeconds,pcb_waitUntilTime,pcb_waitForButtonPress,pcb_setDAC,pcb_resetSequence};
+codeLineExecCB execCallbacks[]={ecb_doNothing, ecb_beepForSeconds,ecb_waitForSeconds,ecb_waitUntilTime,ecb_waitForButtonPress,ecb_setDAC,ecb_resetSequence};
 
 #define LOC_TYPE_COUNT sizeof(execCallbacks)/sizeof(execCallbacks[0])
 
@@ -57,6 +67,85 @@ uint8_t ecb_doNothing(uint8_t* memptr, int32_t _param)
 {
     //do nothing
     return SEQ_CONTINUE;
+}
+
+void pcb_waitUntilTime(int32_t _param)
+{
+    oled.print(F("await "));
+    char temp[9];
+    _param=((uint32_t) _param)%(24*60);
+    uint8_t theHour=_param/60;
+    uint8_t theMin=_param%60;
+    snprintf(temp, 9,"%02d:%02d",theHour,theMin);
+    oled.print(temp);
+
+    struct tm currentTime=rtc_getTimeStruct(false);
+    theHour=currentTime.tm_hour;
+    theMin=currentTime.tm_min;
+    oled.print(F("("));
+    snprintf(temp, 9,"%02d:%02d",theHour,theMin);
+    oled.print(temp);
+    oled.print(F(")"));
+}
+
+uint8_t ecb_waitUntilTime(uint8_t* memptr, int32_t _param)
+{
+    uint8_t theHour=_param/60;
+    uint8_t theMin=_param%60;
+    struct tm currentTime=rtc_getTimeStruct(true);
+    if(currentTime.tm_hour==theHour && currentTime.tm_min==theMin)
+    {
+        return SEQ_CONTINUE;
+    }
+    sleep_smartSleepFor1s();
+    return SEQ_BLOCK;
+}
+
+void pcb_waitForButtonPress(int32_t _param)
+{
+    oled.print(F("Wait for "));
+    const char* buttonsList="<^>v";
+    _param=(((uint32_t)_param)%4);
+    char temp[2];
+    temp[1]='\0';
+    temp[0]=buttonsList[_param];
+    oled.print(temp);
+    oled.print(F(" press"));
+}
+
+uint8_t ecb_waitForButtonPress(uint8_t* memptr, int32_t _param)
+{
+    _param=(((uint32_t)_param)%4);
+    if(_param==0&&JOY_LEFT(justReleasedButtons))
+    {
+        return SEQ_CONTINUE;
+    }
+    if(_param==1&&JOY_UP(justReleasedButtons))
+    {
+        return SEQ_CONTINUE;
+    }
+    if(_param==2&&JOY_RIGHT(justReleasedButtons))
+    {
+        return SEQ_CONTINUE;
+    }
+    if(_param==3&&JOY_DOWN(justReleasedButtons))
+    {
+        return SEQ_CONTINUE;
+    }
+    return SEQ_BLOCK;
+}
+
+void pcb_setDAC(int32_t _param)
+{
+    _param=(((uint32_t)_param)%255);
+    oled.print(F("set DAC to "));
+    oled.print(_param);
+}
+
+uint8_t ecb_setDAC(uint8_t* memptr, int32_t _param)
+{
+    _param=(((uint32_t)_param)%255);
+    dac_output=_param;
 }
 
 void pcb_beepForSeconds(int32_t _param)
@@ -119,10 +208,12 @@ uint8_t ecb_resetSequence(uint8_t* memPtr, int32_t _param)
 
 funRetVal seq_init(uint8_t *memPtr)
 {
+    dac_init();
     oled.clear();
     cursorScreenPos=0;
     firstLineOnScreenIndex=0;
     sleep_setTimeTillSleep(-1);
+    setButtonAutoRepeatRate(500,5);
     for(int i=0;i<SEQ_MENU_ITEM_COUNT;i++)
     {
         codeLineArr[i]={0,0};
@@ -210,6 +301,7 @@ funRetVal seq_loop( uint8_t *memPtr)
         }
         oled.setCursor(0,0);
         printCallbacks[codeLineArr[locIndex].functionIndex](codeLineArr[locIndex].param); // call the function to print the line of code currently being edited
+        oled.clearToEOL();
 
         break;
     case SEQ_MODE_RUN:
@@ -222,6 +314,7 @@ funRetVal seq_loop( uint8_t *memPtr)
         //Serial.println("RUN");
         oled.setCursor(0,0);
         printCallbacks[codeLineArr[progCounter].functionIndex](codeLineArr[progCounter].param); //print the currently exectued function
+        oled.clearToEOL();
         //Serial.println(progCounter);
         //Serial.println(codeLineArr[progCounter].functionIndex);
         uint8_t returnedValue=execCallbacks[codeLineArr[progCounter].functionIndex](memPtr,codeLineArr[progCounter].param);//execute the current LOC
@@ -232,6 +325,7 @@ funRetVal seq_loop( uint8_t *memPtr)
             if(progCounter>=SEQ_MENU_ITEM_COUNT)
             {
                 mode=SEQ_MODE_MENU;
+                initOled();
                 return CONTINUE_LOOP;
             }
         }
@@ -243,6 +337,7 @@ funRetVal seq_loop( uint8_t *memPtr)
 funRetVal seq_deinit(uint8_t *memPtr)
 {
     sleep_setTimeTillSleep(10000);
+    resetButtonAutoRepeatRate();
     return CONTINUE_LOOP;
 }
 
@@ -254,17 +349,18 @@ void seq_drawMenu(uint8_t* memPtr)
         oled.setCursor(0,i);
         if(i==cursorScreenPos)
         {
-            oled.print(F("> "));
+            oled.print(F(">"));
         }
         else
         {
-            oled.print(F("  "));
+            oled.print(F(" "));
         }
         int locIndex=firstLineOnScreenIndex+i;
         char temp[5];
-        snprintf(temp,5,"%02d",locIndex);
+        snprintf(temp,5,"%02d ",locIndex);
         oled.print(temp);
         struct codeLine currentLOC=codeLineArr[locIndex];
         printCallbacks[currentLOC.functionIndex](currentLOC.param);
+        oled.clearToEOL();
     }
 }

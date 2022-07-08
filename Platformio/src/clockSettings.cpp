@@ -13,7 +13,7 @@ const program prog_clockSettings= {clockSettings_init, clockSettings_loop, clock
 funRetVal clockSettings_init(uint8_t *memPtr)
 {
     oled.clear();
-    struct tm ts=rtc_getTimeStruct();
+    struct tm ts=rtc_getTimeStruct(true);
     hourSetting=ts.tm_hour;
     minSetting=ts.tm_min;
     return CONTINUE_LOOP;

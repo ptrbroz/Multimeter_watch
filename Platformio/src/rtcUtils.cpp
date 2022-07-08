@@ -28,7 +28,7 @@ void rtc_setTimeStruct(struct tm _timeStruct)
   Wire.endTransmission(true);
 }
 
-struct tm rtc_getTimeStruct()
+struct tm rtc_getTimeStruct(bool _forceUpdate)
 {
   static struct tm retVal = {0};
   static unsigned long lastMillis=0;

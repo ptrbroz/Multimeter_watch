@@ -30,7 +30,7 @@ funRetVal linearPS_init(uint8_t *memPtr)
     sleep_setTimeTillSleep(-1);//do not sleep
     dac_init();
     //sbi(MCUSR,SWDD);//disable debug interface
-    setButtonAutoRepeatRate(400,100);
+    setButtonAutoRepeatRate(400,20);
     return CONTINUE_LOOP;
 }
 
@@ -40,11 +40,11 @@ funRetVal linearPS_loop( uint8_t *memPtr)
     {
         return PROGRAM_END;
     }
-    else if(enableOutput&&JOY_UP(justPressedButtons|autoRepeatPressedButtons)&&dac_output<255)
+    else if(JOY_UP(justPressedButtons|autoRepeatPressedButtons)&&outputLevel<255)
     {
         outputLevel++;
     }
-    else if(enableOutput&&JOY_DOWN(justPressedButtons|autoRepeatPressedButtons)&&dac_output>0)
+    else if(JOY_DOWN(justPressedButtons|autoRepeatPressedButtons)&&outputLevel>0)
     {
         outputLevel--;
     }
@@ -63,8 +63,16 @@ funRetVal linearPS_loop( uint8_t *memPtr)
     char temp[20];
     oled.set2X();
     oled.setCursor(0,0);
-    snprintf(temp,20,"DAC: %d",(int)dac_output);
+    if(enableOutput)
+    {
+        snprintf(temp,20,"DAC: %03d",(int)outputLevel);
+    }
+    else
+    {
+        snprintf(temp,20,"(DAC: %03d)",(int)outputLevel);
+    }
     oled.print(temp);
+    oled.clearToEOL();
     avgSum+=adc_measureBatteryVoltage();
     avgCount++;
     if(avgCount>=20)
@@ -73,10 +81,11 @@ funRetVal linearPS_loop( uint8_t *memPtr)
     avgCount=0;
     avgSum=0;
 }
-    uint16_t outputVolts=map(dac_output,0,255,0,battVolts);//dac_getVoltageAcrossShunt();//dac_getVoltageAfterShunt(batVolts);
+    uint16_t outputVolts=map(outputLevel,0,255,0,battVolts);//dac_getVoltageAcrossShunt();//dac_getVoltageAfterShunt(batVolts);
     oled.setCursor(0,2);
     snprintf(temp,20,"U: %d mV",outputVolts);
     oled.print(temp);
+    oled.clearToEOL();
     oled.set1X();
     oled.setCursor(0,4);
     if(enableOutput)

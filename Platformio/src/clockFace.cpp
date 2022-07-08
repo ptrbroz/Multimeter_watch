@@ -22,7 +22,7 @@ extern const program prog_clockFace = {clockFace_init, clockFace_loop,clockFace_
 
 funRetVal clockFace_loop( uint8_t *memPtr){
 
-    struct tm ts = rtc_getTimeStruct();
+    struct tm ts = rtc_getTimeStruct(false);
 
     oled.set2X();
     oled.setCursor(10, 3);
