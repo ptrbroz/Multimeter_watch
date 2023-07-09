@@ -63,8 +63,6 @@ Wire Wire Line
 	5900 950  5950 950 
 Wire Wire Line
 	6700 950  6750 950 
-Wire Wire Line
-	5200 950  5200 1050
 $Comp
 L Device:R R2
 U 1 1 5F1BCB32
@@ -108,34 +106,6 @@ Text Label 10900 900  1    47   ~ 0
 ADC3
 Text Notes 5200 1650 0    118  ~ 0
 R/L/C/Universal\n
-Wire Wire Line
-	7100 2150 7100 2250
-Wire Wire Line
-	6300 2300 5950 2300
-Text Label 5950 2300 0    47   ~ 0
-DACout
-$Comp
-L Device:R R9
-U 1 1 5F1F5ED9
-P 5350 2350
-F 0 "R9" H 5420 2396 50  0000 L CNN
-F 1 "470k" H 5420 2305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5280 2350 50  0001 C CNN
-F 3 "~" H 5350 2350 50  0001 C CNN
-	1    5350 2350
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R10
-U 1 1 5F1F5EE3
-P 5650 2350
-F 0 "R10" H 5720 2396 50  0000 L CNN
-F 1 "680" H 5720 2305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5580 2350 50  0001 C CNN
-F 3 "~" H 5650 2350 50  0001 C CNN
-	1    5650 2350
-	1    0    0    -1  
-$EndComp
 $Comp
 L Device:R R7
 U 1 1 5F1FA826
@@ -159,16 +129,6 @@ F 3 "~" H 5650 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6300 2200 5650 2200
-Wire Wire Line
-	5650 2200 5350 2200
-Connection ~ 5650 2200
-Wire Wire Line
-	5350 2200 5050 2200
-Wire Wire Line
-	5050 2200 5050 2500
-Connection ~ 5350 2200
-Wire Wire Line
 	6300 2100 5650 2100
 Wire Wire Line
 	5650 2100 5350 2100
@@ -178,18 +138,12 @@ Wire Wire Line
 Wire Wire Line
 	5050 2100 5050 1800
 Connection ~ 5350 2100
-Text Label 5350 2500 3    47   ~ 0
-PB1
-Text Label 5650 2500 3    47   ~ 0
-PB2
 Text Label 5650 1800 1    47   ~ 0
 PB3
 Text Label 5350 1800 1    47   ~ 0
 PB4
 Text Label 5550 1300 0    47   ~ 0
 ADC7
-Text Label 5050 2500 3    47   ~ 0
-ADC6
 Wire Notes Line
 	6350 1500 7550 1500
 Wire Notes Line
@@ -522,12 +476,8 @@ Wire Wire Line
 Connection ~ 7500 2150
 Wire Wire Line
 	7500 2150 7450 2150
-Wire Wire Line
-	7100 2250 7850 2250
 Text Label 6350 1300 0    50   ~ 0
 PB0
-Wire Wire Line
-	5200 1050 7350 1050
 Wire Wire Line
 	7350 950  7100 950 
 Text Notes 2250 3750 1    31   ~ 0
@@ -1421,4 +1371,54 @@ Text Label 7750 5750 2    50   ~ 0
 PE5
 Text Label 7750 5650 2    50   ~ 0
 PE4
+Text Label 5050 2500 3    47   ~ 0
+ADC6
+Text Label 5650 2500 3    47   ~ 0
+PB2
+Text Label 5350 2500 3    47   ~ 0
+PB1
+Connection ~ 5350 2200
+Wire Wire Line
+	5050 2200 5050 2500
+Wire Wire Line
+	5350 2200 5050 2200
+Connection ~ 5650 2200
+Wire Wire Line
+	5650 2200 5350 2200
+Wire Wire Line
+	6300 2200 5650 2200
+$Comp
+L Device:R R10
+U 1 1 5F1F5EE3
+P 5650 2350
+F 0 "R10" H 5720 2396 50  0000 L CNN
+F 1 "680" H 5720 2305 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5580 2350 50  0001 C CNN
+F 3 "~" H 5650 2350 50  0001 C CNN
+	1    5650 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 5F1F5ED9
+P 5350 2350
+F 0 "R9" H 5420 2396 50  0000 L CNN
+F 1 "470k" H 5420 2305 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5280 2350 50  0001 C CNN
+F 3 "~" H 5350 2350 50  0001 C CNN
+	1    5350 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2300 5950 2300
+Text Label 5950 2300 0    47   ~ 0
+DACout
+Wire Wire Line
+	7100 2350 7850 2350
+Wire Wire Line
+	7100 2150 7100 2350
+Wire Wire Line
+	5200 1150 7350 1150
+Wire Wire Line
+	5200 950  5200 1150
 $EndSCHEMATC

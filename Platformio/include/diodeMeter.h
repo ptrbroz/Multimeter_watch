@@ -1,0 +1,2 @@
+
+void diode_measureUI();

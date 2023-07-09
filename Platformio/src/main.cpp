@@ -28,6 +28,7 @@
 #include "formula1.h"
 #include "kitchenTimer.h"
 #include "servoTester.h"
+#include "diodeMeter.h"
 #include <avr/interrupt.h>
 
 uint8_t *programMemPtr;
@@ -67,6 +68,11 @@ void setup() {
   //servoTester_loop(0);
 
   //res_loop();
+  return;
+  while(1)
+  {
+    diode_measureUI();
+  }
   return;
   f1_init(NULL);
   while(1)
