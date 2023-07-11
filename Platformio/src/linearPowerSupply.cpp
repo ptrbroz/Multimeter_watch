@@ -106,6 +106,7 @@ funRetVal linearPS_loop( uint8_t *memPtr)
 
 funRetVal linearPS_deinit(uint8_t *memPtr)
 {
+    sleep_setTimeTillSleep(10000);
     resetButtonAutoRepeatRate();
     return CONTINUE_LOOP;
 }

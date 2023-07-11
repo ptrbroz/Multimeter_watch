@@ -12,4 +12,6 @@ void wfg_fillBufferWithSin(uint8_t _outBuff[256]);
 uint16_t wfg_frequencyToSamplingStep(float _frequency);
 uint32_t wfg_getFrequencyFromString(char* _freqString);
 void wfg_fillBufferWithSaw(uint8_t _outBuff[256]);
+void wfg_fillBufferWithSqw(uint8_t _outBuff[256]);
+void wfg_fillBufferWithTri(uint8_t _outBuff[256]);
 void wfg_waveformTypeToString(uint8_t _waveformType, char* _outStr);

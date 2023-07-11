@@ -47,6 +47,10 @@ funRetVal wfg_init(uint8_t *memPtr)
 funRetVal wfg_loop( uint8_t *memPtr)
 {
     //handleFrequencySetting();
+    if(justReleasedButtons!=0)
+    {
+        oled.clear();
+    }
     switch(currentState)
     {
         case WFG_MENU:
@@ -147,6 +151,12 @@ void wfg_waveformTypeToString(uint8_t _waveformType, char* _outStr)
     case 1:
         snprintf(_outStr,10,"saw");
         break;
+    case 2:
+        snprintf(_outStr,10,"tri");
+        break;
+    case 3:
+        snprintf(_outStr,10,"sqw");
+        break;
     default:
         break;
     }
@@ -182,7 +192,7 @@ void wfg_handleMenu()
     }
     else if(JOY_LEFT(justPressedButtons))
     {
-        if(wfgMenuIndex==WFG_MENU_ITEM_WAVEFORM_TYPE&&waveformType<2)
+        if(wfgMenuIndex==WFG_MENU_ITEM_WAVEFORM_TYPE&&waveformType<3)
         {
             waveformType++;
         }
@@ -223,6 +233,12 @@ void wfg_generateTillInterrupted(float _frequency, uint8_t _type)
         break;
         case 1:
             wfg_fillBufferWithSaw(data);
+            break;
+        case 2:
+            wfg_fillBufferWithTri(data);
+            break;
+        case 3:
+            wfg_fillBufferWithSqw(data);
         break;
     }
     uint16_t step=wfg_frequencyToSamplingStep(_frequency);
@@ -276,6 +292,29 @@ void wfg_fillBufferWithSaw(uint8_t _outBuff[256])
     for(int i=0;i<256;i++)
     {
         _outBuff[i]=i;
+    }
+}
+
+void wfg_fillBufferWithSqw(uint8_t _outBuff[256])
+{
+    for(int i=0;i<256;i++)
+    {
+        _outBuff[i]=(i<128)*255;
+    }
+}
+
+void wfg_fillBufferWithTri(uint8_t _outBuff[256])
+{
+    for(int i=0;i<256;i++)
+    {
+        if(i<128)
+        {
+            _outBuff[i]=i*2;
+        }
+        else
+        {
+            _outBuff[i]=255-((i-128)*2);
+        }
     }
 }
 

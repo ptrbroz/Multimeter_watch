@@ -158,6 +158,11 @@ funRetVal snake_loop( uint8_t *snakeBuffer){
     unsigned long thisMillis = millis();
 
 
+    if(BUTT_LEFT(justPressedButtons))
+    {
+        delay(200);
+        return PROGRAM_END;
+    }
     if((thisMillis-lastMillis < SNAKETIME) && (justPressedButtons==0)){ //don't wait if there is input - hopefully to make controls more responsive
         return CONTINUE_LOOP;
     }

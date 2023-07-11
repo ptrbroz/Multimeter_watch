@@ -184,6 +184,11 @@ void f1_handleInputs()
 funRetVal f1_loop(uint8_t *memPtr)
 {
     f1_step();
+    if(BUTT_LEFT(justPressedButtons))
+    {
+        delay(200);
+        return PROGRAM_END;
+    }
     f1_handleInputs();
     if(s.lives==0)
     {
